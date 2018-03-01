@@ -61,14 +61,14 @@ public class ExtKeyValuePairDialogFragment extends ExtBaseBottomDialogFragment {
         super.onViewCreated(view, savedInstanceState);
         try {
             // cancel
-            this.tvCancel = (ExtTextView) view.findViewById(R.id.tvCancel);
+            this.tvCancel = view.findViewById(R.id.tvCancel);
             this.tvCancel.setOnClickListener(v -> onClickCancel());
 
             // filter
-            this.edtSearch = (ExtEditText) view.findViewById(R.id.edtSearch);
+            this.edtSearch = view.findViewById(R.id.edtSearch);
 
             // data
-            this.lvKeyValuePair = (ExtListView) view.findViewById(R.id.lvKeyValuePair);
+            this.lvKeyValuePair = view.findViewById(R.id.lvKeyValuePair);
 
             // active key is selected
             if (this.extKeyValuePairsOrigins != null && this.extKeyValuePairsOrigins.size() > 0) {

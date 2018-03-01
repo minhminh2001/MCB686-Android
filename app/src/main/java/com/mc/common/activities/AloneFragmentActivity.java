@@ -16,10 +16,10 @@ import android.view.WindowManager;
 
 import com.mc.books.R;
 import com.mc.common.Keys;
-import com.qslib.interfaces.Consumer;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import java8.util.function.Consumer;
 
 /**
  * Created by dangpp on 2/21/2018.

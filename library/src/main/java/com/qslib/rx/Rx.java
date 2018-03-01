@@ -2,11 +2,9 @@ package com.qslib.rx;
 
 import android.support.annotation.Nullable;
 
-import com.qslib.interfaces.Consumer;
-import com.qslib.interfaces.Fun0;
-
 import java.util.concurrent.Callable;
 
+import java8.util.function.Consumer;
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
@@ -32,31 +30,6 @@ public class Rx {
     }
 
     /**
-     * @param subscription
-     * @param sub
-     */
-    public static void subscribeIfNot(@Nullable Subscription subscription, Fun0 sub) {
-        if (subscription == null || subscription.isUnsubscribed()) {
-            sub.accept();
-        }
-    }
-
-    /**
-     * @param action
-     */
-    public static void async(Fun0 action) {
-        Observable
-                .create(subscriber -> {
-                    if (action != null) action.accept();
-                    subscriber.onCompleted();
-                    subscriber.unsubscribe();
-                })
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.newThread())
-                .subscribe();
-    }
-
-    /**
      * @param action
      * @param consumer
      * @param <T>
@@ -75,23 +48,46 @@ public class Rx {
                 });
     }
 
+    /**
+     * @param action
+     * @param <T>
+     * @return
+     */
     public static <T> Observable<T> async(Func1<Subscriber, T> action) {
         return rawObservable((Observable<T>) Observable.create(action::call).compose(applySchedulers()));
     }
 
+    /**
+     * @param action
+     * @param <T>
+     * @return
+     */
     public static <T> Observable<T> async(Callable<T> action) {
         return rawObservable(Observable.fromCallable(action).compose(applySchedulers()));
     }
 
+    /**
+     * @param observable
+     * @param <T>
+     * @return
+     */
     public static <T> Observable<T> rawObservable(Observable<T> observable) {
         return observable.onBackpressureBuffer();
     }
 
+    /**
+     * @param <T>
+     * @return
+     */
     private static <T> Observable.Transformer<T, T> applySchedulers() {
         return observable -> observable.subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread());
     }
 
-    public static boolean isSubscribed(@Nullable Subscription importSubscribe) {
-        return importSubscribe != null && !importSubscribe.isUnsubscribed();
+    /**
+     * @param subscription
+     * @return
+     */
+    public static boolean isSubscribed(@Nullable Subscription subscription) {
+        return subscription != null && !subscription.isUnsubscribed();
     }
 }

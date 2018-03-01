@@ -61,13 +61,13 @@ public class ExtKeyValuePairServiceDialogFragment<AD extends ExtBaseAdapter<T>, 
         super.onViewCreated(view, savedInstanceState);
         try {
             // view
-            this.tvTitle = (ExtTextView) view.findViewById(R.id.tvTitle);
-            this.tvCancel = (ExtTextView) view.findViewById(R.id.tvCancel);
+            this.tvTitle = view.findViewById(R.id.tvTitle);
+            this.tvCancel = view.findViewById(R.id.tvCancel);
             this.tvCancel.setOnClickListener(v -> onClickCancel());
-            this.ivCancel = (ImageView) view.findViewById(R.id.ivCancel);
-            this.trSearch = (RelativeLayout) view.findViewById(R.id.trSearch);
-            this.edtSearch = (ExtEditText) view.findViewById(R.id.edtSearch);
-            this.lvData = (ExtPagingListView) view.findViewById(R.id.lvData);
+            this.ivCancel = view.findViewById(R.id.ivCancel);
+            this.trSearch = view.findViewById(R.id.trSearch);
+            this.edtSearch = view.findViewById(R.id.edtSearch);
+            this.lvData = view.findViewById(R.id.lvData);
 
             // setup view
             this.setUpView();

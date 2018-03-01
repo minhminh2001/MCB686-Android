@@ -62,16 +62,16 @@ public class ExtDateTimePickerDialogFragment extends ExtBaseBottomDialogFragment
             }
 
             // cancel
-            this.tvCancel = (ExtTextView) view.findViewById(R.id.tvCancel);
+            this.tvCancel = view.findViewById(R.id.tvCancel);
             this.tvCancel.setOnClickListener(v -> onClickCancel());
 
             // save
-            this.tvSave = (ExtTextView) view.findViewById(R.id.tvSave);
+            this.tvSave = view.findViewById(R.id.tvSave);
             this.tvSave.setOnClickListener(v -> onClickSave());
 
             // date, time picker
-            this.dpDatePicker = (DatePicker) view.findViewById(R.id.dpDatePicker);
-            this.tpTimePicker = (TimePicker) view.findViewById(R.id.tpTimePicker);
+            this.dpDatePicker = view.findViewById(R.id.dpDatePicker);
+            this.tpTimePicker = view.findViewById(R.id.tpTimePicker);
 
             // date picker
             this.dpDatePicker.init(this.calendar.get(Calendar.YEAR), this.calendar.get(Calendar.MONTH),

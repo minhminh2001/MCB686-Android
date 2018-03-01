@@ -91,19 +91,19 @@ public class ExtDayMonthYearHourMinuteDialogFragment extends ExtBaseBottomDialog
             }
 
             // cancel
-            tvCancel = (ExtTextView) view.findViewById(R.id.tvCancel);
+            tvCancel = view.findViewById(R.id.tvCancel);
             tvCancel.setOnClickListener(v -> dismiss());
 
             // save
-            tvSave = (ExtTextView) view.findViewById(R.id.tvSave);
+            tvSave = view.findViewById(R.id.tvSave);
             tvSave.setOnClickListener(v -> onSaveClick());
 
             // number picker
-            numPickerDay = (ExtNumberPicker) view.findViewById(R.id.numPickerDay);
-            numPickerMonth = (ExtNumberPicker) view.findViewById(R.id.numPickerMonth);
-            numPickerYear = (ExtNumberPicker) view.findViewById(R.id.numPickerYear);
-            numPickerHour = (ExtNumberPicker) view.findViewById(R.id.numPickerHour);
-            numPickerMinute = (ExtNumberPicker) view.findViewById(R.id.numPickerMinute);
+            numPickerDay = view.findViewById(R.id.numPickerDay);
+            numPickerMonth = view.findViewById(R.id.numPickerMonth);
+            numPickerYear = view.findViewById(R.id.numPickerYear);
+            numPickerHour = view.findViewById(R.id.numPickerHour);
+            numPickerMinute = view.findViewById(R.id.numPickerMinute);
         } catch (Exception e) {
             Logger.e(TAG, e);
         }

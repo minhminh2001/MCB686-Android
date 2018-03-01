@@ -2,6 +2,8 @@ package com.qslib.interfaces;
 
 import android.support.annotation.Nullable;
 
+import java8.util.function.Consumer;
+
 /**
  * Created by dangpp on 2/9/2018.
  */

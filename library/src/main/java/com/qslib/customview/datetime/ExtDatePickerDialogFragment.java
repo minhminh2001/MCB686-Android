@@ -61,15 +61,15 @@ public class ExtDatePickerDialogFragment extends ExtBaseBottomDialogFragment {
             }
 
             // cancel
-            this.tvCancel = (ExtTextView) view.findViewById(R.id.tvCancel);
+            this.tvCancel = view.findViewById(R.id.tvCancel);
             this.tvCancel.setOnClickListener(v -> onClickCancel());
 
             // save
-            this.tvSave = (ExtTextView) view.findViewById(R.id.tvSave);
+            this.tvSave = view.findViewById(R.id.tvSave);
             this.tvSave.setOnClickListener(v -> onClickSave());
 
             // date picker
-            this.dpDatePicker = (DatePicker) view.findViewById(R.id.dpDatePicker);
+            this.dpDatePicker = view.findViewById(R.id.dpDatePicker);
 
             this.dpDatePicker.init(this.calendar.get(Calendar.YEAR), this.calendar.get(Calendar.MONTH),
                     this.calendar.get(Calendar.DAY_OF_MONTH), (viewDatePicker, year, monthOfYear, dayOfMonth) -> {

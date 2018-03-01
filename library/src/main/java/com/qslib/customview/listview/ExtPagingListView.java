@@ -87,7 +87,7 @@ public class ExtPagingListView<T> extends FrameLayout {
             View view = inflate(context, R.layout.paging_listview, this);
 
             // refresh layout
-            this.rfLayout = (SwipeRefreshLayout) view.findViewById(R.id.rf_layout);
+            this.rfLayout = view.findViewById(R.id.rf_layout);
             this.rfLayout.setOnRefreshListener(() -> {
                 if (this.onExtRefreshListener != null) {
                     this.onExtRefreshListener.onRefresh();
@@ -95,12 +95,12 @@ public class ExtPagingListView<T> extends FrameLayout {
             });
 
             // listview
-            this.lvData = (ListView) view.findViewById(R.id.lv_data);
+            this.lvData = view.findViewById(R.id.lv_data);
             this.lvData.setFooterDividersEnabled(false);
             this.lvData.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
 
             //data not found
-            this.tvMessage = (ExtTextView) view.findViewById(R.id.tv_message);
+            this.tvMessage = view.findViewById(R.id.tv_message);
 
             //attribute config
             if (attrs != null) {

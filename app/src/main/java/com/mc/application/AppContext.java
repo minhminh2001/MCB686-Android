@@ -7,7 +7,8 @@ import com.mc.di.AppComponent;
 import com.mc.di.AppModule;
 import com.mc.di.DaggerAppComponent;
 import com.qslib.application.ExtApplication;
-import com.qslib.interfaces.Consumer;
+
+import java8.util.function.Consumer;
 
 /**
  * Created by dangpp on 2/9/2018.

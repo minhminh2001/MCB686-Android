@@ -14,7 +14,10 @@ import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby3.mvp.MvpView;
 import com.mc.application.AppContext;
 import com.mc.common.activities.BaseAppCompatActivity;
+import com.mc.di.AppComponent;
 import com.qslib.util.KeyboardUtils;
+
+import butterknife.ButterKnife;
 
 /**
  * Created by dangpp on 2/21/2018.
@@ -48,6 +51,7 @@ public abstract class BaseMvpFragment<V extends MvpView, P extends MvpPresenter<
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ButterKnife.bind(view);
 
         // update title
         mActivity.setToolbarTitle(getTitleId());
@@ -81,13 +85,14 @@ public abstract class BaseMvpFragment<V extends MvpView, P extends MvpPresenter<
         return 0;
     }
 
-    /**
-     * get app context
-     *
-     * @return
-     */
+    @Override
     public AppContext getAppContext() {
         return mActivity.getAppContext();
+    }
+
+    @Override
+    public AppComponent getAppComponent() {
+        return mActivity.getAppContext().getComponent();
     }
 
     /**
