@@ -13,7 +13,7 @@
         android:orientation="horizontal"
         android:visibility="visible">
 
-        <com.qslib.customview.textview.ExtTextView
+        <com.bon.customview.textview.ExtTextView
             android:id="@+id/tvCancel"
             style="@style/StyleContent"
             android:layout_width="wrap_content"
@@ -24,7 +24,7 @@
             android:text="@string/cancel"
             android:textSize="@dimen/font_size_title" />
 
-        <com.qslib.customview.textview.ExtTextView
+        <com.bon.customview.textview.ExtTextView
             android:id="@+id/tvTitle"
             style="@style/StyleTitle"
             android:layout_width="0dp"
@@ -35,7 +35,7 @@
             android:text="@string/select_value"
             android:textColor="@color/color_white" />
 
-        <com.qslib.customview.textview.ExtTextView
+        <com.bon.customview.textview.ExtTextView
             style="@style/StyleContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
         android:layout_margin="@dimen/padding_layout"
         android:gravity="center_vertical">
 
-        <com.qslib.customview.edittext.ExtEditText
+        <com.bon.customview.edittext.ExtEditText
             android:id="@+id/edtSearch"
             style="@style/StyleContent"
             android:layout_width="match_parent"
@@ -84,7 +84,7 @@
         android:layout_marginRight="@dimen/padding_layout"
         android:background="@color/color_border" />
 
-    <com.qslib.customview.listview.ExtPagingListView
+    <com.bon.customview.listview.ExtPagingListView
         android:id="@+id/lvData"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

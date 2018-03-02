@@ -9,7 +9,7 @@ import com.mc.interactors.service.IApiService;
 import com.mc.interactors.service.IFileService;
 import com.mc.interactors.service.ILongApiService;
 import com.mc.utilities.Config;
-import com.qslib.jackson.JacksonUtils;
+import com.bon.jackson.JacksonUtils;
 
 import java.util.concurrent.TimeUnit;
 

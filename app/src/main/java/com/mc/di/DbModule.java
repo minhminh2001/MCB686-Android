@@ -1,8 +1,8 @@
 package com.mc.di;
 
 import com.mc.interactors.database.IDbModule;
-import com.qslib.eventbus.IEvent;
-import com.qslib.eventbus.RxBus;
+import com.bon.eventbus.IEvent;
+import com.bon.eventbus.RxBus;
 
 import javax.inject.Inject;
 

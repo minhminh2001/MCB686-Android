@@ -2,7 +2,7 @@ package com.mc.interactors.service;
 
 import android.content.Context;
 
-import com.qslib.sharepreferences.AppPreferences;
+import com.bon.sharepreferences.AppPreferences;
 
 import java.io.IOException;
 

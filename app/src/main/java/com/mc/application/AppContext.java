@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import com.mc.di.AppComponent;
 import com.mc.di.AppModule;
 import com.mc.di.DaggerAppComponent;
-import com.qslib.application.ExtApplication;
+import com.bon.application.ExtApplication;
 
 import java8.util.function.Consumer;
 

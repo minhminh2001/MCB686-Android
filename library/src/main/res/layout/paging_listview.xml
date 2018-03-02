@@ -15,7 +15,7 @@
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
-    <com.qslib.customview.textview.ExtTextView
+    <com.bon.customview.textview.ExtTextView
         android:id="@+id/tv_message"
         android:gravity="center"
         android:visibility="gone"

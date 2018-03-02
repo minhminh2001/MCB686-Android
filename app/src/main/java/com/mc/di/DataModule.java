@@ -3,8 +3,8 @@ package com.mc.di;
 import android.os.Handler;
 
 import com.mc.interactors.IDataModule;
-import com.qslib.eventbus.IEvent;
-import com.qslib.eventbus.RxBus;
+import com.bon.eventbus.IEvent;
+import com.bon.eventbus.RxBus;
 
 import javax.inject.Inject;
 

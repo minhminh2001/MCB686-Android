@@ -5,7 +5,7 @@
     android:background="@drawable/bg_null_gray_selector"
     android:orientation="vertical">
 
-    <com.qslib.customview.textview.ExtTextView
+    <com.bon.customview.textview.ExtTextView
         android:id="@+id/tvContent"
         style="@style/StyleContent"
         android:gravity="center"

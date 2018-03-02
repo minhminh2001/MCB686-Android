@@ -8,9 +8,9 @@ import com.hannesdorfmann.mosby3.mvp.MvpView;
 import com.mc.di.AppComponent;
 import com.mc.interactors.IDataModule;
 import com.mc.interactors.database.IDbModule;
-import com.qslib.eventbus.IEvent;
-import com.qslib.eventbus.RxBus;
-import com.qslib.interfaces.Optional;
+import com.bon.eventbus.IEvent;
+import com.bon.eventbus.RxBus;
+import com.bon.interfaces.Optional;
 
 import javax.inject.Inject;
 
@@ -46,14 +46,17 @@ public abstract class BaseDataPresenter<V extends MvpView> extends MvpBasePresen
         return new Optional<>(getView());
     }
 
+    @Override
     public void processArguments(Bundle arguments) {
 
     }
 
+    @Override
     public void saveInstanceState(Bundle bundle) {
 
     }
 
+    @Override
     public void restoreInstanceState(Bundle bundle) {
 
     }

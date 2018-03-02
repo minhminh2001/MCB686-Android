@@ -13,7 +13,7 @@
         android:orientation="horizontal"
         android:padding="@dimen/padding_layout">
 
-        <com.qslib.customview.textview.ExtTextView
+        <com.bon.customview.textview.ExtTextView
             android:id="@+id/tvCancel"
             style="@style/StyleTitle"
             android:layout_width="wrap_content"
@@ -21,13 +21,13 @@
             android:background="@drawable/bg_null_gray_selector"
             android:text="@string/cancel" />
 
-        <com.qslib.customview.textview.ExtTextView
+        <com.bon.customview.textview.ExtTextView
             style="@style/StyleTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <com.qslib.customview.textview.ExtTextView
+        <com.bon.customview.textview.ExtTextView
             android:id="@+id/tvSave"
             style="@style/StyleTitle"
             android:layout_width="wrap_content"

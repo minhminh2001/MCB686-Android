@@ -13,7 +13,7 @@
         android:orientation="horizontal"
         android:visibility="visible">
 
-        <com.qslib.customview.textview.ExtTextView
+        <com.bon.customview.textview.ExtTextView
             android:id="@+id/tvCancel"
             style="@style/StyleTitle"
             android:layout_width="0dp"
@@ -22,13 +22,13 @@
             android:padding="@dimen/padding_layout"
             android:text="@string/cancel" />
 
-        <com.qslib.customview.textview.ExtTextView
+        <com.bon.customview.textview.ExtTextView
             style="@style/StyleTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <com.qslib.customview.textview.ExtTextView
+        <com.bon.customview.textview.ExtTextView
             android:id="@+id/tvSave"
             style="@style/StyleTitle"
             android:layout_width="0dp"
