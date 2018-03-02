@@ -75,6 +75,11 @@ public abstract class BaseAppCompatActivity extends ExtBaseActivity implements I
         return result || super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void initFragmentDefault() {
+
+    }
+
     /**
      * get application context
      *
