@@ -2,6 +2,9 @@ package com.mc.fragments.account.signin;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.mc.books.R;
@@ -26,6 +29,22 @@ public class SignInFragment extends BaseMvpFragment<ISignInView, ISignInPresente
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         presenter.onSignIn();
+    }
+
+    @Override
+    public int getTitleId() {
+        return super.getTitleId();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.main, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

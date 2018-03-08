@@ -100,11 +100,6 @@ public class AloneFragmentActivity extends BaseAppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void initFragmentDefault() {
-
-    }
-
     /**
      * @param context
      * @return
