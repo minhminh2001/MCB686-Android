@@ -1,5 +1,8 @@
 package com.mc.common.fragments;
 
+import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
+
 import com.mc.application.AppContext;
 import com.mc.di.AppComponent;
 
@@ -13,6 +16,8 @@ public interface IBaseFragment {
     AppComponent getAppComponent();
 
     int getTitleId();
+
+    void initToolbar(@NonNull ActionBar supportActionBar);
 
     void showProgress(boolean show);
 }

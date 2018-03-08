@@ -94,10 +94,6 @@ dependencies {
     implementation "com.google.guava:guava:${rootProject.ext.guavaVer}"
     // image
     implementation "com.nostra13.universalimageloader:universal-image-loader:${rootProject.ext.imageLoaderVer}"
-    // swipe layout
-    implementation "com.daimajia.swipelayout:library:${rootProject.ext.swipelayoutVer}@aar"
-    // circle indicator
-    implementation "me.relex:circleindicator:${rootProject.ext.circleindicatorVer}@aar"
     // event bus
     implementation "org.greenrobot:eventbus:${rootProject.ext.eventbusVer}"
     // mvp

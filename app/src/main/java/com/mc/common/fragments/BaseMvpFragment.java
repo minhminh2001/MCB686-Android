@@ -95,10 +95,8 @@ public abstract class BaseMvpFragment<V extends MvpView, P extends MvpPresenter<
         return mActivity.getAppContext().getComponent();
     }
 
-    /**
-     * @param supportActionBar
-     */
-    protected void initToolbar(@NonNull ActionBar supportActionBar) {
+    @Override
+    public void initToolbar(@NonNull ActionBar supportActionBar) {
         supportActionBar.setDisplayHomeAsUpEnabled(false);
         supportActionBar.setHomeAsUpIndicator(0);
         supportActionBar.setIcon(0);

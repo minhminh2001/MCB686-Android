@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import java8.util.function.Consumer;
+import rx.functions.Action0;
 
 public class NetworkUtils {
     private static final String TAG = NetworkUtils.class.getSimpleName();
@@ -41,6 +42,18 @@ public class NetworkUtils {
         }
 
         return false;
+    }
+
+    /**
+     * check network is variable
+     *
+     * @param context
+     * @param action
+     */
+    public static void isNetworkAvailable(Context context, Action0 action) {
+        if (isNetworkAvailable(context) && action != null) {
+            action.call();
+        }
     }
 
 

@@ -112,7 +112,7 @@ public class FragmentUtils {
                 FragmentManager fragmentManager = activity.getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.remove(fragment);
-                fragmentTransaction.commit();
+                fragmentTransaction.commitAllowingStateLoss();
             }
         } catch (Exception ex) {
             Logger.e(TAG, ex);

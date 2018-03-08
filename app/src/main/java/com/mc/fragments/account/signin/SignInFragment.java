@@ -25,6 +25,7 @@ public class SignInFragment extends BaseMvpFragment<ISignInView, ISignInPresente
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        presenter.onSignIn();
     }
 
     @Override

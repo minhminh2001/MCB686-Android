@@ -4,8 +4,8 @@ import android.support.multidex.MultiDexApplication;
 
 import com.bon.image.ImageLoaderUtils;
 import com.bon.logger.Logger;
-import com.bon.util.FileUtils;
 import com.bon.util.ExtUtils;
+import com.bon.util.FileUtils;
 
 import java.io.File;
 
