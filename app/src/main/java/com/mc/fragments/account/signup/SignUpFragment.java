@@ -1,12 +1,7 @@
-package com.mc.fragments.account.signin;
+package com.mc.fragments.account.signup;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -21,48 +16,28 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
-/**
- * Created by dangpp on 3/1/2018.
- */
-
-public class SignInFragment extends BaseMvpFragment<ISignInView, ISignInPresenter<ISignInView>> implements ISignInView {
+public class SignUpFragment extends BaseMvpFragment<ISignUpView, ISignUpPresenter<ISignUpView>> implements ISignUpView {
     @BindView(R.id.userName)
     ExtEditText userName;
     @BindView(R.id.password)
     ExtEditText password;
-    @BindView(R.id.login)
-    ExtButton login;
+    @BindView(R.id.register)
+    ExtButton register;
     Unbinder unbinder;
 
     @Override
-    public ISignInPresenter<ISignInView> createPresenter() {
-        return new SignInPresenter<>(getAppComponent());
+    public ISignUpPresenter<ISignUpView> createPresenter() {
+        return new SignUpPresenter<>(getAppComponent());
     }
 
     @Override
     public int getResourceId() {
-        return R.layout.sign_in_fragment;
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        return R.layout.sign_up_fragment;
     }
 
     @Override
     public int getTitleId() {
-        return super.getTitleId();
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.main, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
+        return R.string.register;
     }
 
     @Override
@@ -71,8 +46,8 @@ public class SignInFragment extends BaseMvpFragment<ISignInView, ISignInPresente
     }
 
     @Override
-    public void onEmptyUserName() {
-        userName.setEmptyErrorString("Empty");
+    public void onEmptyUsername() {
+       userName.setEmptyErrorString("Empty");
     }
 
     @Override
@@ -81,8 +56,8 @@ public class SignInFragment extends BaseMvpFragment<ISignInView, ISignInPresente
     }
 
     @Override
-    public void navigateToMain() {
-        Toast.makeText(mActivity, "Login success", Toast.LENGTH_SHORT).show();
+    public void onSignUpSuccess() {
+        Toast.makeText(mActivity, "Register success", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -99,8 +74,8 @@ public class SignInFragment extends BaseMvpFragment<ISignInView, ISignInPresente
         unbinder.unbind();
     }
 
-    @OnClick(R.id.login)
+    @OnClick(R.id.register)
     public void onViewClicked() {
-        presenter.onSignIn(userName.getText().toString(), password.getText().toString());
+        presenter.onSignUp(userName.getText().toString(), password.getText().toString());
     }
 }

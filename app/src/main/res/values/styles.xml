@@ -17,4 +17,18 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <!-- Padding style -->
+    <style name="paddingLayout">
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="marginLayout">
+        <item name="android:layout_margin">10dp</item>
+    </style>
+
+    <style name="marginItem">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
 </resources>

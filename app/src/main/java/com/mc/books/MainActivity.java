@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import com.mc.common.activities.AloneFragmentActivity;
 import com.mc.common.activities.BaseAppCompatActivity;
 import com.mc.fragments.account.signin.SignInFragment;
+import com.mc.fragments.account.signup.SignUpFragment;
 
 public class MainActivity extends BaseAppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -64,7 +65,7 @@ public class MainActivity extends BaseAppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            AloneFragmentActivity.with(this).start(SignInFragment.class);
+            AloneFragmentActivity.with(this).start(SignUpFragment.class);
             return true;
         }
 
