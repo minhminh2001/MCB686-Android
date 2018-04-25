@@ -118,6 +118,7 @@ public class AloneFragmentActivity extends BaseAppCompatActivity {
 
     public static class Builder {
         private final Context contextForOpen;
+
         private final Fragment fragmentForOpen;
         private boolean translucent;
         private boolean overrideAnim;

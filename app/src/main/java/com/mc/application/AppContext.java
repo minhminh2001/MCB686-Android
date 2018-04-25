@@ -26,6 +26,7 @@ public class AppContext extends ExtApplication {
                 .appModule(new AppModule(this))
                 .build();
         component.inject(this);
+
     }
 
     @Nullable
