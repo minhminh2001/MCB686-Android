@@ -2,17 +2,14 @@ package com.mc.fragments.account.signin;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.bon.customview.button.ExtButton;
-import com.bon.customview.edittext.ExtEditText;
 import com.mc.books.R;
 import com.mc.common.fragments.BaseMvpFragment;
 
@@ -26,12 +23,10 @@ import butterknife.Unbinder;
  */
 
 public class SignInFragment extends BaseMvpFragment<ISignInView, ISignInPresenter<ISignInView>> implements ISignInView {
-    @BindView(R.id.userName)
-    ExtEditText userName;
-    @BindView(R.id.password)
-    ExtEditText password;
-    @BindView(R.id.login)
-    ExtButton login;
+
+
+    @BindView(R.id.btnLogin)
+    ExtButton btnLogin;
     Unbinder unbinder;
 
     @Override
@@ -41,7 +36,7 @@ public class SignInFragment extends BaseMvpFragment<ISignInView, ISignInPresente
 
     @Override
     public int getResourceId() {
-        return R.layout.sign_in_fragment;
+        return R.layout.sign_in_fragment_new;
     }
 
     @Override
@@ -66,26 +61,6 @@ public class SignInFragment extends BaseMvpFragment<ISignInView, ISignInPresente
     }
 
     @Override
-    public void showLoading(boolean isLoading) {
-        showProgress(isLoading);
-    }
-
-    @Override
-    public void onEmptyUserName() {
-        userName.setEmptyErrorString("Empty");
-    }
-
-    @Override
-    public void onEmptyPassword() {
-        password.setEmptyErrorString("Empty");
-    }
-
-    @Override
-    public void navigateToMain() {
-        Toast.makeText(mActivity, "Login success", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
@@ -97,10 +72,11 @@ public class SignInFragment extends BaseMvpFragment<ISignInView, ISignInPresente
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+
     }
 
-    @OnClick(R.id.login)
+    @OnClick(R.id.btnLogin)
     public void onViewClicked() {
-        presenter.onSignIn(userName.getText().toString(), password.getText().toString());
+
     }
 }

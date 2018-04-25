@@ -12,13 +12,17 @@
         android:background="@drawable/logo"
         android:layout_centerInParent="true"/>
 
-    <ProgressBar
+    <pl.droidsonroids.gif.GifImageView
         android:id="@+id/progress"
-        style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="10dp"
         android:layout_centerInParent="true"
+        android:src="@drawable/ic_progress"
+        android:layout_marginTop="@dimen/margin_layout"
         android:layout_marginLeft="@dimen/margin_splash"
-        android:layout_marginRight="@dimen/margin_splash"/>
+        android:layout_marginRight="@dimen/margin_splash"
+        />
+    
+
 
 </RelativeLayout>

@@ -7,6 +7,7 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="margin_content">8dp</dimen>
     <dimen name="margin_layout">12dp</dimen>
+    <dimen name="margin_large">45dp</dimen>
     <dimen name="margin_splash">80dp</dimen>
     <dimen name="padding_content">8dp</dimen>
     <dimen name="padding_layout">12dp</dimen>

@@ -7,11 +7,5 @@ import com.hannesdorfmann.mosby3.mvp.MvpView;
  */
 
 public interface ISignInView extends MvpView {
-    void showLoading(boolean isLoading);
 
-    void onEmptyUserName();
-
-    void onEmptyPassword();
-
-    void navigateToMain();
 }

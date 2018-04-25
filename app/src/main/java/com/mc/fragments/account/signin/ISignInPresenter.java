@@ -8,7 +8,5 @@ import com.hannesdorfmann.mosby3.mvp.MvpView;
  */
 
 public interface ISignInPresenter<V extends MvpView> extends MvpPresenter<V> {
-    boolean isValid();
 
-    void onSignIn(String userName, String password);
 }

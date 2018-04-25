@@ -99,5 +99,7 @@ dependencies {
     // mvp
     implementation "com.hannesdorfmann.mosby3:mvp:${rootProject.ext.mosbyVer}"
     implementation "com.hannesdorfmann.mosby3:viewstate:${rootProject.ext.mosbyVer}"
+    //gif
+    implementation "pl.droidsonroids.gif:android-gif-drawable:${rootProject.ext.gif}"
 }
 

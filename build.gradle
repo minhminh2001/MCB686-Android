@@ -17,7 +17,7 @@ ext {
     buildToolsVersion = '27.0.3'
     minSdkVersion = 16
     targetSdkVersion = 26
-    androidVer = '27.0.2'
+    androidVer = '27.1.1'
     constrainLayoutVer = '1.0.2'
     butterknifeVer = '8.8.1'
     nineoldandroidsVer = '2.4.0'
@@ -34,8 +34,9 @@ ext {
     nineoldandroidsVer = '2.4.0'
     swipelayoutVer = '1.2.0'
     circleindicatorVer = '1.2.2'
-    eventbusVer='3.1.1'
-    mosbyVer = "3.1.0"
+    eventbusVer = '3.1.1'
+    mosbyVer = '3.1.0'
+    gif = '1.2.12'
 }
 
 allprojects {
