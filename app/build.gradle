@@ -101,5 +101,6 @@ dependencies {
     implementation "com.hannesdorfmann.mosby3:viewstate:${rootProject.ext.mosbyVer}"
     //gif
     implementation "pl.droidsonroids.gif:android-gif-drawable:${rootProject.ext.gif}"
+    implementation 'org.jboss.aerogear:aerogear-android-authz:3.0.1'
 }
 

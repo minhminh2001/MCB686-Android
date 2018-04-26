@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mc.books">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="com.mc.application.AppContext"
         android:allowBackup="true"
@@ -36,5 +38,6 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <service android:name="org.jboss.aerogear.android.authorization.oauth2.OAuth2AuthzService" />
     </application>
 </manifest>

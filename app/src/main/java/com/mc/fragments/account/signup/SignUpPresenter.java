@@ -20,7 +20,7 @@ public class SignUpPresenter<V extends ISignUpView> extends BaseDataPresenter<V>
             @Override
             public void run() {
                 if (userName.isEmpty()) {
-                    Log.e("SignInPresenter", "userName");
+                    Log.e("DashboadPresenter", "userName");
                     getOptView().doIfPresent(ISignUpView::onEmptyUsername);
                     getOptView().doIfPresent(v -> v.showLoading(false));
                 } else if (password.isEmpty()) {
@@ -28,7 +28,7 @@ public class SignUpPresenter<V extends ISignUpView> extends BaseDataPresenter<V>
                     getOptView().doIfPresent(ISignUpView::onEmptyPassword);
                     getOptView().doIfPresent(v -> v.showLoading(false));
                 } else {
-                    Log.e("SignInPresenter", "else");
+                    Log.e("DashboadPresenter", "else");
                     getOptView().doIfPresent(v -> v.onSignUpSuccess());
                     getOptView().doIfPresent(v -> v.showLoading(false));
                 }

@@ -1,4 +1,4 @@
-package com.mc.fragments.account.signin;
+package com.mc.fragments.home.dashboad;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,21 +28,16 @@ import butterknife.Unbinder;
  * Created by dangpp on 3/1/2018.
  */
 
-public class SignInFragment extends BaseMvpFragment<ISignInView, ISignInPresenter<ISignInView>> implements ISignInView {
-
-
-    @BindView(R.id.btnLogin)
-    ExtButton btnLogin;
-    Unbinder unbinder;
+public class DashboadFragment extends BaseMvpFragment<IDashboadView, IDashboadPresenter<IDashboadView>> implements IDashboadView {
 
     @Override
-    public ISignInPresenter<ISignInView> createPresenter() {
-        return new SignInPresenter<>(getAppComponent());
+    public IDashboadPresenter<IDashboadView> createPresenter() {
+        return new DashboadPresenter<>(getAppComponent());
     }
 
     @Override
     public int getResourceId() {
-        return R.layout.sign_in_fragment_new;
+        return R.layout.dashbroad_fragment;
     }
 
     @Override
@@ -70,42 +65,17 @@ public class SignInFragment extends BaseMvpFragment<ISignInView, ISignInPresente
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
         return rootView;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
     }
 
     @Override
     public void onSignUpSuccess() {
-        Log.e("onSignUpSuccess", "");
-        if (!KeycloakHelper.isConnected()) {
 
-            KeycloakHelper.connect(getActivity(), new Callback() {
-                        @Override
-                        public void onSuccess(Object o) {
-                            Log.e("sendPhotoToKeycloak", o.toString());
-                            //login success
-                            startActivity(new Intent(getAppContext(), MainActivity.class));
-                        }
-
-                        @Override
-                        public void onFailure(Exception e) {
-
-                        }
-                    }
-            );
-
-        } else startActivity(new Intent(getAppContext(), MainActivity.class));
     }
 
-    @OnClick(R.id.btnLogin)
-    public void onViewClicked() {
-        Log.e("onViewClicked", "");
-        presenter.onSignIn();
-    }
 }

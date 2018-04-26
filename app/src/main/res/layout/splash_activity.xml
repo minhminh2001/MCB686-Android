@@ -1,28 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_splash">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imglogo"
-        android:layout_width="240dp"
-        android:layout_height="60dp"
-        android:layout_above="@+id/progress"
-        android:background="@drawable/logo"
-        android:layout_centerInParent="true"/>
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/progress"
         android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:layout_centerInParent="true"
-        android:src="@drawable/ic_progress"
-        android:layout_marginTop="@dimen/margin_layout"
-        android:layout_marginLeft="@dimen/margin_splash"
-        android:layout_marginRight="@dimen/margin_splash"
-        />
-    
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/loading_androi" />
 
 
-</RelativeLayout>
+</LinearLayout>
