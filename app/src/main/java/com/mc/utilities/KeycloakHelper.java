@@ -28,6 +28,11 @@ import org.jboss.aerogear.android.core.Callback;
 
 import java.io.File;
 import java.net.URL;
+import java.security.Key;
+
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.impl.crypto.MacProvider;
 
 public class KeycloakHelper {
 
@@ -66,7 +71,6 @@ public class KeycloakHelper {
                 @SuppressWarnings("unchecked")
                 @Override
                 public void onSuccess(String s) {
-                    Log.e("onSuccess", s);
                     callback.onSuccess(s);
                 }
 

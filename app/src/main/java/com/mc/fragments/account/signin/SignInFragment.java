@@ -15,7 +15,9 @@ import com.bon.customview.button.ExtButton;
 import com.mc.books.MainActivity;
 import com.mc.books.R;
 import com.mc.common.fragments.BaseMvpFragment;
+import com.mc.utilities.Constant;
 import com.mc.utilities.KeycloakHelper;
+import com.mc.utilities.McBookStore;
 
 import org.jboss.aerogear.android.core.Callback;
 
@@ -30,6 +32,14 @@ import butterknife.Unbinder;
 
 public class SignInFragment extends BaseMvpFragment<ISignInView, ISignInPresenter<ISignInView>> implements ISignInView {
 
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if(!McBookStore.getInstance(getAppContext()).getString(Constant.KEY_TOKEN).equals("")){
+            startActivity(new Intent(getAppContext(), MainActivity.class));
+        }
+    }
 
     @BindView(R.id.btnLogin)
     ExtButton btnLogin;
@@ -82,14 +92,13 @@ public class SignInFragment extends BaseMvpFragment<ISignInView, ISignInPresente
 
     @Override
     public void onSignUpSuccess() {
-        Log.e("onSignUpSuccess", "");
         if (!KeycloakHelper.isConnected()) {
-
+            Log.e("onSignUpSuccess", "!isConnected");
             KeycloakHelper.connect(getActivity(), new Callback() {
                         @Override
                         public void onSuccess(Object o) {
                             Log.e("sendPhotoToKeycloak", o.toString());
-                            //login success
+                            McBookStore.getInstance(getAppContext()).putString(Constant.KEY_TOKEN, o.toString());
                             startActivity(new Intent(getAppContext(), MainActivity.class));
                         }
 
@@ -100,7 +109,7 @@ public class SignInFragment extends BaseMvpFragment<ISignInView, ISignInPresente
                     }
             );
 
-        } else startActivity(new Intent(getAppContext(), MainActivity.class));
+        }
     }
 
     @OnClick(R.id.btnLogin)

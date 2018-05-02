@@ -5,10 +5,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.auth0.android.jwt.JWT;
 import com.mc.common.activities.AloneFragmentActivity;
 import com.mc.common.activities.BaseAppCompatActivity;
 import com.mc.fragments.account.signin.SignInFragment;

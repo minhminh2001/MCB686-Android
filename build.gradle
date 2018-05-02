@@ -9,11 +9,12 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.0'
         classpath 'com.google.gms:google-services:3.1.0'
+        classpath 'com.dicedmelon.gradle:jacoco-android:0.1.1'
     }
 }
 
 ext {
-    compileSdkVersion = 26
+    compileSdkVersion = 27
     buildToolsVersion = '27.0.3'
     minSdkVersion = 16
     targetSdkVersion = 26

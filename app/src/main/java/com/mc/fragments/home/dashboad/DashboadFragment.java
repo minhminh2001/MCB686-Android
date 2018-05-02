@@ -17,8 +17,6 @@ import com.mc.books.R;
 import com.mc.common.fragments.BaseMvpFragment;
 import com.mc.utilities.KeycloakHelper;
 
-import org.jboss.aerogear.android.core.Callback;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
