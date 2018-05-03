@@ -4,12 +4,12 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.bon.jackson.JacksonUtils;
 import com.mc.interactors.service.AccessInterceptor;
 import com.mc.interactors.service.IApiService;
 import com.mc.interactors.service.IFileService;
 import com.mc.interactors.service.ILongApiService;
 import com.mc.utilities.Config;
-import com.bon.jackson.JacksonUtils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -47,6 +47,12 @@ public class ApiModule {
                 .build();
     }
 
+    @Singleton
+    @Provides
+    public AccessInterceptor provideAccessInterceptor(Context context) {
+        return new AccessInterceptor(context);
+    }
+
     @Provides
     public Retrofit provideRetrofit(JacksonConverterFactory converterFactory, OkHttpClient client) {
         return provideBaseRetrofit(Config.BASE_URL, converterFactory, client);
@@ -59,9 +65,9 @@ public class ApiModule {
 
     private OkHttpClient provideBaseOkHttp(@Nullable HttpLoggingInterceptor logging, AccessInterceptor access,
                                            @NonNull OkHttpType type) {
-        OkHttpClient.Builder client = new OkHttpClient.Builder();
-                //.retryOnConnectionFailure(Config.RETRY_POLICY)
-                // .addInterceptor(access);
+        OkHttpClient.Builder client = new OkHttpClient.Builder()
+        //.retryOnConnectionFailure(Config.RETRY_POLICY)
+         .addInterceptor(access);
 
         int reqTimeOut;
         switch (type) {
@@ -95,12 +101,6 @@ public class ApiModule {
     @Provides
     public HttpLoggingInterceptor provideLoggingInterceptor() {
         return new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
-    }
-
-    @Singleton
-    @Provides
-    public AccessInterceptor provideAccessInterceptor(Context context) {
-        return new AccessInterceptor(context);
     }
 
     @Singleton

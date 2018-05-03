@@ -2,11 +2,12 @@ package com.mc.di;
 
 import android.content.Context;
 
+import com.bon.eventbus.IEvent;
+import com.bon.eventbus.RxBus;
 import com.mc.application.AppContext;
 import com.mc.interactors.IDataModule;
 import com.mc.interactors.database.IDbModule;
-import com.bon.eventbus.IEvent;
-import com.bon.eventbus.RxBus;
+import com.mc.interactors.service.IApiService;
 
 import javax.inject.Singleton;
 
@@ -34,7 +35,13 @@ public class AppModule {
     @Singleton
     @Provides
     public Context provideContext() {
-        return appContext.getApplicationContext();
+        return appContext;
+    }
+
+    @Singleton
+    @Provides
+    public AppContext provideAppContext() {
+        return appContext;
     }
 
     @Singleton
@@ -47,5 +54,11 @@ public class AppModule {
     @Provides
     public IDbModule provideDbModule() {
         return new DbModule(appContext.getComponent());
+    }
+
+    @Singleton
+    @Provides
+    public ApiModule provideApiModule() {
+        return new ApiModule();
     }
 }
