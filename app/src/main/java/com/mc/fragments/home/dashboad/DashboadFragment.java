@@ -45,7 +45,7 @@ public class DashboadFragment extends BaseMvpFragment<IDashboadView, IDashboadPr
 
     @Override
     public int getTitleId() {
-        return super.getTitleId();
+        return R.string.app_name;
     }
 
     @Override

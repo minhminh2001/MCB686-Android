@@ -109,5 +109,6 @@ dependencies {
     implementation ('org.jboss.aerogear:aerogear-android-pipe:4.0.0') {
         exclude group: 'com.android.support', module: "support-v4"
     }
+    implementation 'com.facebook.rebound:rebound:0.3.8'
 }
 
