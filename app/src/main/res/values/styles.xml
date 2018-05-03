@@ -31,4 +31,29 @@
         <item name="android:layout_marginBottom">10dp</item>
     </style>
 
+    <style name="tabbarLinear">
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="tabbarImage">
+        <item name="android:layout_width">@dimen/bottom_icon</item>
+        <item name="android:layout_height">@dimen/bottom_icon</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="tabbarLine">
+        <item name="android:layout_width">@dimen/bottom_line_width</item>
+        <item name="android:layout_height">@dimen/bottom_line_height</item>
+        <item name="android:layout_marginBottom">3dp</item>
+        <item name="android:background">@color/colorDarkBlue</item>
+        <item name="android:visibility">invisible</item>
+    </style>
+
+
+
 </resources>
