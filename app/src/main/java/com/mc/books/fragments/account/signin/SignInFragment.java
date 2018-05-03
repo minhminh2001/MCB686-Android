@@ -102,7 +102,7 @@ public class SignInFragment extends BaseMvpFragment<ISignInView, ISignInPresente
 
                         @Override
                         public void onFailure(Exception e) {
-
+                            Log.e("onFailure", e.toString());
                         }
                     }
             );

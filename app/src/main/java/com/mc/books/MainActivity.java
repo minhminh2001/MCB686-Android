@@ -3,6 +3,7 @@ package com.mc.books;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -14,7 +15,10 @@ import android.widget.LinearLayout;
 import com.bon.sharepreferences.AppPreferences;
 import com.bon.viewanimation.Techniques;
 import com.bon.viewanimation.YoYo;
+import com.mc.books.fragments.home.dashboad.DashboardFragment;
 import com.mc.common.activities.BaseAppCompatActivity;
+import com.mc.common.fragments.BaseMvpFragment;
+import com.mc.utilities.FragmentUtils;
 import com.mc.utilities.shadow.ShadowProperty;
 import com.mc.utilities.shadow.ShadowViewDrawable;
 
@@ -53,6 +57,7 @@ public class MainActivity extends BaseAppCompatActivity {
     public static final int GIFT_TAB = 111;
     public static final int NOTIFICATION_TAB = 112;
     public static final int MORE_TAB = 113;
+    public int currentFragmentIndex = HOME_TAB;
 
     // KEY CLOARK
 //      prefsEditor.putString("refresh_token", storedAccount.getRefreshToken());
@@ -66,9 +71,6 @@ public class MainActivity extends BaseAppCompatActivity {
         ButterKnife.bind(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        this.activeTab(HOME_TAB);
-
         ShadowProperty sp = new ShadowProperty()
                 .setShadowColor(R.color.colorPink)
                 .setShadowDy(dip2px(this, 0.5f))
@@ -172,19 +174,56 @@ public class MainActivity extends BaseAppCompatActivity {
             case R.id.home:
                 this.playAnimator(home);
                 this.activeTab(HOME_TAB);
+                changeTabBottom(HOME_TAB);
                 break;
             case R.id.gift:
                 this.playAnimator(gift);
                 this.activeTab(GIFT_TAB);
+                changeTabBottom(GIFT_TAB);
                 break;
             case R.id.notification:
                 this.playAnimator(notification);
                 this.activeTab(NOTIFICATION_TAB);
+                changeTabBottom(HOME_TAB);
                 break;
             case R.id.more:
                 this.playAnimator(more);
                 this.activeTab(MORE_TAB);
+                changeTabBottom(HOME_TAB);
                 break;
+        }
+    }
+
+    public void changeTabBottom(int index) {
+        try {
+            BaseMvpFragment fragment;
+            switch (index) {
+                case HOME_TAB:
+                    fragment = DashboardFragment.newInstance();
+                    break;
+                case GIFT_TAB:
+                    fragment = DashboardFragment.newInstance();
+                    break;
+                case NOTIFICATION_TAB:
+                    fragment = DashboardFragment.newInstance();
+                    break;
+                case MORE_TAB:
+                    fragment = DashboardFragment.newInstance();
+                    break;
+                default:
+                    fragment = DashboardFragment.newInstance();
+
+            }
+
+            // replace fragment
+            FragmentUtils.replaceFragment(this, fragment);
+            // set active bottom
+            this.activeTab(index);
+
+            // set current index
+            this.currentFragmentIndex = index;
+            this.fragments.clear();
+        } catch (Exception e) {
         }
     }
 }

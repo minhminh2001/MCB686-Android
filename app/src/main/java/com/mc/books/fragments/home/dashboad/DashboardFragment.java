@@ -18,6 +18,13 @@ import com.mc.common.fragments.BaseMvpFragment;
 
 public class DashboardFragment extends BaseMvpFragment<IDashboardView, IDashboardPresenter<IDashboardView>> implements IDashboardView {
 
+    public static DashboardFragment newInstance() {
+        Bundle args = new Bundle();
+        DashboardFragment fragment = new DashboardFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public IDashboardPresenter<IDashboardView> createPresenter() {
         return new DashboardPresenter<>(getAppComponent());
