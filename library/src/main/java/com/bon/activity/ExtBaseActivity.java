@@ -15,7 +15,6 @@ import java.util.Stack;
 /**
  * Created by Dang Pham Phu on 2/1/2017.
  */
-
 public abstract class ExtBaseActivity extends AppCompatActivity {
     private static final String TAG = ExtBaseActivity.class.getSimpleName();
     public static final int NUMBER_ONE = 1;

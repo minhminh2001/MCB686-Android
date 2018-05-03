@@ -20,7 +20,11 @@ public class VibratorUtils {
 
     private static Vibrator getInstance(Context context) {
         if (vibrator == null) {
-            vibrator = (Vibrator) context.getSystemService(Service.VIBRATOR_SERVICE);
+            synchronized (VibratorUtils.class) {
+                if (vibrator == null) {
+                    vibrator = (Vibrator) context.getSystemService(Service.VIBRATOR_SERVICE);
+                }
+            }
         }
 
         return vibrator;

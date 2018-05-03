@@ -34,7 +34,11 @@ public class GcmNotification {
      */
     public static GcmNotification getInstance(Context context) {
         if (gcmNotification == null) {
-            gcmNotification = new GcmNotification(context);
+            synchronized (GcmNotification.class) {
+                if (gcmNotification == null) {
+                    gcmNotification = new GcmNotification(context);
+                }
+            }
         }
 
         return gcmNotification;

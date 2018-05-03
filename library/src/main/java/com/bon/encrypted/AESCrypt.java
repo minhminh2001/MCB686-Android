@@ -2,8 +2,8 @@ package com.bon.encrypted;
 
 import android.util.Log;
 
-import com.google.common.io.BaseEncoding;
 import com.bon.logger.Logger;
+import com.google.common.io.BaseEncoding;
 
 import java.security.MessageDigest;
 import java.security.spec.AlgorithmParameterSpec;
@@ -19,6 +19,9 @@ import javax.crypto.spec.SecretKeySpec;
 public class AESCrypt {
     private static final String TAG = AESCrypt.class.getSimpleName();
 
+    // instance
+    private static AESCrypt aesCrypt;
+
     //AESCrypt-ObjC uses CBC and PKCS7Padding
     private static final String AES_MODE = "AES/CBC/PKCS7Padding";
     private static final String CHARSET = "UTF-8";
@@ -28,6 +31,28 @@ public class AESCrypt {
     private final SecretKeySpec key;
     private AlgorithmParameterSpec spec;
 
+    /**
+     * @param password
+     * @return
+     * @throws Exception
+     */
+    public static AESCrypt getIntance(String password) throws Exception {
+        if (aesCrypt == null) {
+            synchronized (AESCrypt.class) {
+                if (aesCrypt == null) {
+                    aesCrypt = new AESCrypt(password);
+                }
+            }
+        }
+
+        return aesCrypt;
+    }
+
+
+    /**
+     * @param password
+     * @throws Exception
+     */
     public AESCrypt(String password) throws Exception {
         // hash password with SHA-256 and crop the output to 128-bit for key
         MessageDigest digest = MessageDigest.getInstance(HASH_ALGORITHM);
@@ -41,6 +66,9 @@ public class AESCrypt {
         this.spec = getIV();
     }
 
+    /**
+     * demo
+     */
     public static void main() {
         try {
             AESCrypt aesCrypt = new AESCrypt("encryptkey");
@@ -53,17 +81,32 @@ public class AESCrypt {
         }
     }
 
+    /**
+     * get iv
+     *
+     * @return
+     */
     public AlgorithmParameterSpec getIV() {
         byte[] iv = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
         return new IvParameterSpec(iv);
     }
 
+    /**
+     * @param plainText
+     * @return
+     * @throws Exception
+     */
     public String encrypt(String plainText) throws Exception {
         cipher.init(Cipher.ENCRYPT_MODE, key, spec);
         byte[] encrypted = cipher.doFinal(plainText.getBytes(CHARSET));
         return BaseEncoding.base64().encode(encrypted);
     }
 
+    /**
+     * @param cryptedText
+     * @return
+     * @throws Exception
+     */
     public String decrypt(String cryptedText) throws Exception {
         cipher.init(Cipher.DECRYPT_MODE, key, spec);
         byte[] bytes = BaseEncoding.base64().decode(cryptedText);

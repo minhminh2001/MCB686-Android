@@ -15,6 +15,7 @@ import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.util.Base64;
@@ -110,13 +111,15 @@ public class ImageUtils {
      * @param titleChooseImage
      */
     public static void chooseImageFromGallery(Activity activity, String titleChooseImage) {
-        try {
-            Intent intent = new Intent(Intent.ACTION_PICK);
-            intent.setAction(Intent.ACTION_GET_CONTENT);
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
+            Intent intent = new Intent();
             intent.setType("image/*");
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
             activity.startActivityForResult(Intent.createChooser(intent, titleChooseImage), REQUEST_PICK_CONTENT);
-        } catch (Exception e) {
-            Logger.e(TAG, e);
+        } else if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+            Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            activity.startActivityForResult(Intent.createChooser(intent, titleChooseImage), REQUEST_PICK_CONTENT);
         }
     }
 
@@ -128,10 +131,16 @@ public class ImageUtils {
      */
     public static void chooseImageFromGallery(Fragment fragment, String titleChooseImage) {
         try {
-            Intent intent = new Intent(Intent.ACTION_PICK);
-            intent.setAction(Intent.ACTION_GET_CONTENT);
-            intent.setType("image/*");
-            fragment.startActivityForResult(Intent.createChooser(intent, titleChooseImage), REQUEST_PICK_CONTENT);
+            if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                fragment.startActivityForResult(Intent.createChooser(intent, titleChooseImage), REQUEST_PICK_CONTENT);
+            } else if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+                Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                fragment.startActivityForResult(Intent.createChooser(intent, titleChooseImage), REQUEST_PICK_CONTENT);
+            }
         } catch (Exception e) {
             Logger.e(TAG, e);
         }

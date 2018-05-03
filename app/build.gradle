@@ -99,5 +99,8 @@ dependencies {
     // mvp
     implementation "com.hannesdorfmann.mosby3:mvp:${rootProject.ext.mosbyVer}"
     implementation "com.hannesdorfmann.mosby3:viewstate:${rootProject.ext.mosbyVer}"
+    // leak canary
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:${rootProject.ext.leakCanary}"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${rootProject.ext.leakCanary}"
 }
 

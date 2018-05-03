@@ -50,7 +50,9 @@ public class ProgressDialogUtils {
      */
     public ProgressDialogUtils setProgressBar(int percent) {
         try {
-            if (progressDialog != null) progressDialog.setProgress(percent);
+            if (progressDialog != null) {
+                progressDialog.setProgress(percent);
+            }
         } catch (Exception ex) {
             Logger.e(TAG, ex);
         }
@@ -78,7 +80,9 @@ public class ProgressDialogUtils {
             progressDialog.setProgressStyle(progressStyle);
             progressDialog.setProgress(0);
 
-            if (!ActivityUtils.isFinish(context)) progressDialog.show();
+            if (!ActivityUtils.isFinish(context)) {
+                progressDialog.show();
+            }
         } catch (Exception e) {
             Logger.e(TAG, e);
         }

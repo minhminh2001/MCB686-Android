@@ -48,7 +48,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     // noinspection GradleCompatible
     implementation "com.android.support:appcompat-v7:${rootProject.ext.androidVer}"
     implementation "com.android.support:design:${rootProject.ext.androidVer}"
@@ -96,4 +96,7 @@ dependencies {
     // mvp
     implementation "com.hannesdorfmann.mosby3:mvp:${rootProject.ext.mosbyVer}"
     implementation "com.hannesdorfmann.mosby3:viewstate:${rootProject.ext.mosbyVer}"
+    // leak canary
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:${rootProject.ext.leakCanary}"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:${rootProject.ext.leakCanary}"
 }

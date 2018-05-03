@@ -46,9 +46,7 @@ public class StorageUtils {
 
             String path = "";
             for (StorageInfo storageInfoEntity : storageInfoEntities) {
-                if (storageInfoEntity.internal
-                        && !StringUtils.isEmpty(storageInfoEntity.path)
-                        && !storageInfoEntity.readonly) {
+                if (storageInfoEntity.internal && !StringUtils.isEmpty(storageInfoEntity.path) && !storageInfoEntity.readonly) {
                     path = storageInfoEntity.path;
                     break;
                 }
@@ -74,9 +72,7 @@ public class StorageUtils {
 
             String path = "";
             for (StorageInfo storageInfoEntity : storageInfoEntities) {
-                if (!storageInfoEntity.internal
-                        && !StringUtils.isEmpty(storageInfoEntity.path)
-                        && !storageInfoEntity.readonly) {
+                if (!storageInfoEntity.internal && !StringUtils.isEmpty(storageInfoEntity.path) && !storageInfoEntity.readonly) {
                     path = storageInfoEntity.path;
                     break;
                 }
@@ -137,14 +133,12 @@ public class StorageUtils {
                     if (paths.contains(mountPoint)) continue;
 
                     unused = tokens.nextToken(); // file system
-                    List<String> flags = Arrays.asList(tokens.nextToken()
-                            .split(",")); // flags
+                    List<String> flags = Arrays.asList(tokens.nextToken().split(",")); // flags
                     boolean readonly = flags.contains("ro");
 
                     if (mountPoint.equals(defPath)) {
                         paths.add(defPath);
-                        storageInfoEntities.add(0, new StorageInfo(defPath,
-                                defPathInternal, readonly, -1));
+                        storageInfoEntities.add(0, new StorageInfo(defPath, defPathInternal, readonly, -1));
                     } else if (line.contains("/dev/block/vold")) {
                         if (!line.contains("/mnt/secure")
                                 && !line.contains("/mnt/asec")

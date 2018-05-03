@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 
 import com.mc.common.activities.AloneFragmentActivity;
 import com.mc.common.activities.BaseAppCompatActivity;
-import com.mc.fragments.account.signin.SignInFragment;
+import com.mc.books.fragments.account.signin.SignInFragment;
 
 /**
  * Created by HungND on 3/2/18.

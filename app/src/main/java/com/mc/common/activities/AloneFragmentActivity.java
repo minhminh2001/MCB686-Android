@@ -74,8 +74,7 @@ public class AloneFragmentActivity extends BaseAppCompatActivity {
      */
     public void replaceFragment(@NonNull Fragment fragment, boolean addToBackStack) {
         this.fragment = fragment;
-        FragmentTransaction replace = getSupportFragmentManager()
-                .beginTransaction().replace(R.id.fl_content, fragment);
+        FragmentTransaction replace = getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, fragment);
         if (addToBackStack) {
             replace.addToBackStack(null);
         }

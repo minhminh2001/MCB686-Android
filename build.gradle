@@ -7,7 +7,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.1.2'
         classpath 'com.google.gms:google-services:3.1.0'
     }
 }
@@ -35,7 +35,8 @@ ext {
     swipelayoutVer = '1.2.0'
     circleindicatorVer = '1.2.2'
     eventbusVer='3.1.1'
-    mosbyVer = "3.1.0"
+    mosbyVer = '3.1.0'
+    leakCanary='1.5.4'
 }
 
 allprojects {

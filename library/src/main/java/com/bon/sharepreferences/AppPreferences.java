@@ -5,11 +5,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.bon.encrypted.AESCrypt;
 import com.bon.jackson.JacksonUtils;
 import com.bon.logger.Logger;
 import com.bon.util.StringUtils;
+import com.fasterxml.jackson.core.type.TypeReference;
 
 public class AppPreferences {
     private static final String TAG = AppPreferences.class.getSimpleName();
@@ -31,10 +31,19 @@ public class AppPreferences {
      * @param context
      */
     public static AppPreferences getInstance(Context context) {
-        if (instance == null) instance = new AppPreferences(context);
         try {
-            if (aesCrypt == null) {
-                aesCrypt = new AESCrypt(KEY_PASSWORD_ENCRYPT);
+            if (instance == null) {
+                synchronized (AppPreferences.class) {
+                    // instance of app
+                    if (instance == null) {
+                        instance = new AppPreferences(context);
+                    }
+
+                    // instance AES crypt
+                    if (aesCrypt == null) {
+                        aesCrypt = new AESCrypt(KEY_PASSWORD_ENCRYPT);
+                    }
+                }
             }
         } catch (Exception e) {
             Logger.e(TAG, e);

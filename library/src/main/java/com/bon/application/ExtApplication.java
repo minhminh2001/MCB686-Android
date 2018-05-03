@@ -2,10 +2,13 @@ package com.bon.application;
 
 import android.support.multidex.MultiDexApplication;
 
+import com.bon.cloudmessage.GcmNotification;
 import com.bon.image.ImageLoaderUtils;
 import com.bon.logger.Logger;
+import com.bon.sharepreferences.AppPreferences;
 import com.bon.util.ExtUtils;
 import com.bon.util.FileUtils;
+import com.bon.util.LeakCanaryUtils;
 
 import java.io.File;
 
@@ -21,7 +24,17 @@ public class ExtApplication extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
         try {
+            // ext utils
             ExtUtils.init(this);
+
+            // init instance of app preference
+            AppPreferences.getInstance(this);
+
+            // init gcm notification
+            GcmNotification.getInstance(this);
+
+            // init leak canary
+            LeakCanaryUtils.init(this);
 
             // set instance application
             ExtApplication.extApplication = this;
@@ -34,6 +47,7 @@ public class ExtApplication extends MultiDexApplication {
 
             // setup Logger
             Logger.setEnableLog(true);
+
             if (ExtApplication.getPathProject() != null) {
                 Logger.setPathSaveLog(ExtApplication.getPathProject().getAbsolutePath(), getPackageName(), "log");
             }

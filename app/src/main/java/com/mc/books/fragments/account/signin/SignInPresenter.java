@@ -1,6 +1,4 @@
-package com.mc.fragments.account.signin;
-
-import android.util.Log;
+package com.mc.books.fragments.account.signin;
 
 import com.mc.common.presenters.BaseDataPresenter;
 import com.mc.di.AppComponent;
