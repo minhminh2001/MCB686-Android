@@ -1,13 +1,13 @@
 /**
  * JBoss, Home of Professional Open Source
  * Copyright Red Hat, Inc., and individual contributors
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -26,18 +26,12 @@ import org.jboss.aerogear.android.authorization.oauth2.OAuth2AuthorizationConfig
 import org.jboss.aerogear.android.authorization.oauth2.OAuthWebViewDialog;
 import org.jboss.aerogear.android.core.Callback;
 
-import java.io.File;
 import java.net.URL;
-import java.security.Key;
-
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.impl.crypto.MacProvider;
 
 public class KeycloakHelper {
 
     private static final String SHOOT_SERVER_URL = "http://103.101.160.49:8080";
-    private static final String AUTHZ_URL = SHOOT_SERVER_URL +"/auth";
+    private static final String AUTHZ_URL = SHOOT_SERVER_URL + "/auth";
     private static final String AUTHZ_ENDPOINT = "/realms/MCB686/protocol/openid-connect/auth";
     private static final String ACCESS_TOKEN_ENDPOINT = "/realms/MCB686/protocol/openid-connect/token";
     private static final String REFRESH_TOKEN_ENDPOINT = "/realms/MCB686/protocol/openid-connect/token";

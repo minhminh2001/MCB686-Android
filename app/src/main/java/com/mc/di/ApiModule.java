@@ -59,9 +59,9 @@ public class ApiModule {
 
     private OkHttpClient provideBaseOkHttp(@Nullable HttpLoggingInterceptor logging, AccessInterceptor access,
                                            @NonNull OkHttpType type) {
-        OkHttpClient.Builder client = new OkHttpClient.Builder()
+        OkHttpClient.Builder client = new OkHttpClient.Builder();
                 //.retryOnConnectionFailure(Config.RETRY_POLICY)
-                .addInterceptor(access);
+                // .addInterceptor(access);
 
         int reqTimeOut;
         switch (type) {

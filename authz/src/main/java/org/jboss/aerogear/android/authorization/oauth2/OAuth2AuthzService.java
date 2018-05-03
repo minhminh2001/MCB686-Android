@@ -1,13 +1,13 @@
 /**
  * JBoss, Home of Professional Open Source
  * Copyright Red Hat, Inc., and individual contributors.
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- * 	http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,8 +18,10 @@ package org.jboss.aerogear.android.authorization.oauth2;
 
 import android.app.Service;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
@@ -29,28 +31,34 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
-import org.jboss.aerogear.android.store.DataManager;
-import org.jboss.aerogear.android.store.generator.IdGenerator;
+
 import org.jboss.aerogear.android.pipe.http.HeaderAndBody;
 import org.jboss.aerogear.android.pipe.http.HttpException;
 import org.jboss.aerogear.android.pipe.http.HttpProvider;
+import org.jboss.aerogear.android.pipe.http.HttpRestProvider;
+import org.jboss.aerogear.android.store.DataManager;
+import org.jboss.aerogear.android.store.generator.IdGenerator;
 import org.jboss.aerogear.android.store.sql.SQLStore;
 import org.jboss.aerogear.android.store.sql.SQLStoreConfiguration;
-import org.jboss.aerogear.android.pipe.http.HttpRestProvider;
 
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import static org.jboss.aerogear.android.pipe.util.UrlUtils.appendToBaseURL;
 
 /**
  * This service manages tokens for Authorization sessions. It can also perform
  * basic OAuth2 Access Token/ Authorization exchange and manages refresh tokens.
- * 
  */
 public class OAuth2AuthzService extends Service {
 
@@ -58,6 +66,8 @@ public class OAuth2AuthzService extends Service {
 
     private SQLStore<OAuth2AuthzSession> sessionStore;
     private static final String TAG = OAuth2AuthzService.class.getSimpleName();
+    SharedPreferences appSharedPrefs;
+    SharedPreferences.Editor prefsEditor;
 
     public OAuth2AuthzService() {
     }
@@ -65,22 +75,35 @@ public class OAuth2AuthzService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        appSharedPrefs = getApplicationContext().getSharedPreferences(getApplicationContext().getPackageName(), Context.MODE_PRIVATE);
+        prefsEditor = appSharedPrefs.edit();
     }
 
     /**
      * This will exchange an Authorization token for an Access Token
-     * 
+     *
      * @param accountId the ID for the {@link OAuth2AuthzSession}
-     * @param config the config
+     * @param config    the config
      * @return an accesstoken
      * @throws OAuth2AuthorizationException if something went wrong in the
-     *             exchange
+     *                                      exchange
      */
     public String fetchAccessToken(String accountId, OAuth2Properties config) throws OAuth2AuthorizationException {
+        Log.e("fetchAccessToken", "accountId:: " + accountId);
+
         OAuth2AuthzSession storedAccount = sessionStore.read(accountId);
         if (storedAccount == null) {
             return null;
         }
+
+        // save token
+        prefsEditor.putString("refresh_token", storedAccount.getRefreshToken());
+        prefsEditor.putString("accessToken", storedAccount.getAccessToken());
+        prefsEditor.putString("authorizationCode", storedAccount.getAuthorizationCode());
+        prefsEditor.commit();
+
+
+        Log.e("fetchAccessToken", "storedAccount:: " + storedAccount.toString());
 
         if (!isNullOrEmpty(storedAccount.getAccessToken()) && storedAccount.tokenIsNotExpired()) {
             return storedAccount.getAccessToken();
@@ -100,7 +123,7 @@ public class OAuth2AuthzService extends Service {
 
     /**
      * Put a session into the store.
-     * 
+     *
      * @param account a new session
      */
     public void addAccount(OAuth2AuthzSession account) {
@@ -116,7 +139,7 @@ public class OAuth2AuthzService extends Service {
     /**
      * Will check if there is an account which has previously been granted an
      * authorization code and access code
-     * 
+     *
      * @param accountId the accountId to check
      * @return true if there is a session for the account.
      */
@@ -131,7 +154,7 @@ public class OAuth2AuthzService extends Service {
 
     /**
      * Returns the OAuth2AuthzSession for accountId if any
-     * 
+     *
      * @param accountId the accountId to look up
      * @return an OAuth2AuthzSession or null
      */
@@ -141,19 +164,19 @@ public class OAuth2AuthzService extends Service {
 
     /**
      * Fetches all OAuth2AuthzSessions in the system.
-     * 
+     *
      * @return all OAuth2AuthzSession's in the system
      */
     public List<String> getAccounts() {
         Collection<OAuth2AuthzSession> sessions = sessionStore.readAll();
         ArrayList<String> accountIds = new ArrayList<String>();
-        
+
         for (OAuth2AuthzSession session : sessions) {
             accountIds.add(session.getAccountId());
         }
-        
+
         return accountIds;
-        
+
     }
 
     @Override
@@ -211,6 +234,8 @@ public class OAuth2AuthzService extends Service {
     private void refreshAccount(OAuth2AuthzSession storedAccount, OAuth2Properties config) throws OAuth2AuthorizationException {
         final Map<String, String> data = new HashMap<String, String>();
 
+        Log.e("refreshAccount", "refreshAccount");
+
         data.put("refresh_token", storedAccount.getRefreshToken());
         data.put("grant_type", "refresh_token");
         data.put("client_id", storedAccount.getClientId());
@@ -264,13 +289,13 @@ public class OAuth2AuthzService extends Service {
                     String error = "";
                     if (jsonResponseObject.has("error")) {
                         JsonElement errorObject = jsonResponseObject.get("error");
-                        if (errorObject.isJsonPrimitive())  {
+                        if (errorObject.isJsonPrimitive()) {
                             error = errorObject.getAsString();
                         } else {
                             error = errorObject.toString();
                         }
-                        
-                        
+
+
                     }
 
                     throw new OAuth2AuthorizationException(error);
@@ -301,7 +326,7 @@ public class OAuth2AuthzService extends Service {
                         storedAccount.setRefreshToken(refreshToken);
                     }
                 }
-            } catch (JsonParseException parseEx){
+            } catch (JsonParseException parseEx) {
                 try {
                     //Check if body is http form format
                     String[] values = responseString.split("&");
@@ -329,6 +354,11 @@ public class OAuth2AuthzService extends Service {
 
             storedAccount.setAuthorizationCode("");
 
+            // save token
+            prefsEditor.putString("refresh_token", storedAccount.getRefreshToken());
+            prefsEditor.putString("accessToken", storedAccount.getAccessToken());
+            prefsEditor.putString("authorizationCode", storedAccount.getAuthorizationCode());
+            prefsEditor.commit();
         } catch (UnsupportedEncodingException ex) {
             // Should never happen...
             Log.d(OAuth2AuthzService.class.getName(), null, ex);
@@ -339,7 +369,7 @@ public class OAuth2AuthzService extends Service {
     /**
      * This method allows an implementation to change how the HttpProvider is
      * fetched. Override is mostly used for testing.
-     * 
+     *
      * @param url the url endpoint
      * @return a httpProvider
      */
@@ -349,8 +379,8 @@ public class OAuth2AuthzService extends Service {
 
     /**
      * Removes the account with the provided ID
-     * 
-     * @param accountId 
+     *
+     * @param accountId
      */
     public void removeAccount(String accountId) {
         sessionStore.remove(accountId);
@@ -384,7 +414,7 @@ public class OAuth2AuthzService extends Service {
 
         @Override
         public void onServiceConnected(ComponentName className,
-                IBinder iBinder) {
+                                       IBinder iBinder) {
             // We've bound to LocalService, cast the IBinder and get LocalService instance
             AuthzBinder binder = (AuthzBinder) iBinder;
             this.service = binder.service;

@@ -19,4 +19,11 @@
     <dimen name="bottom_icon">30dp</dimen>
     <dimen name="bottom_line_width">55dp</dimen>
     <dimen name="bottom_line_height">3dp</dimen>
+
+    <!--progress bar-->
+    <dimen name="progress_bar_padding">3dp</dimen>
+    <dimen name="progress_bar_radius">10dp</dimen>
+    <dimen name="progress_bar_min_height">10dp</dimen>
+    <dimen name="progress_bar_max_height">30dp</dimen>
+    <dimen name="progress_bar_height">15dp</dimen>
 </resources>

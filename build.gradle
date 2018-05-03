@@ -40,8 +40,8 @@ ext {
     circleindicatorVer = '1.2.2'
     eventbusVer = '3.1.1'
     mosbyVer = '3.1.0'
-    gif = '1.2.12'
     leakCanary = '1.5.4'
+    gif = '1.2.12'
 }
 
 allprojects {
