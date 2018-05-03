@@ -1,4 +1,4 @@
-package com.mc.fragments.account.signin;
+package com.mc.books.fragments.home.dashboad;
 
 import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby3.mvp.MvpView;
@@ -7,6 +7,6 @@ import com.hannesdorfmann.mosby3.mvp.MvpView;
  * Created by dangpp on 3/1/2018.
  */
 
-public interface ISignInPresenter<V extends MvpView> extends MvpPresenter<V> {
+public interface IDashboardPresenter<V extends MvpView> extends MvpPresenter<V> {
     void onSignIn();
 }

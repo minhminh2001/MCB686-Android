@@ -1,4 +1,4 @@
-package com.mc.fragments.account.signin;
+package com.mc.books.fragments.account.signin;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,8 +31,6 @@ import butterknife.Unbinder;
  */
 
 public class SignInFragment extends BaseMvpFragment<ISignInView, ISignInPresenter<ISignInView>> implements ISignInView {
-
-
     @Override
     public void onStart() {
         super.onStart();
@@ -110,6 +108,11 @@ public class SignInFragment extends BaseMvpFragment<ISignInView, ISignInPresente
             );
 
         }
+    }
+
+    @Override
+    public void showLoading(boolean isLoading) {
+        showProgress(isLoading);
     }
 
     @OnClick(R.id.btnLogin)

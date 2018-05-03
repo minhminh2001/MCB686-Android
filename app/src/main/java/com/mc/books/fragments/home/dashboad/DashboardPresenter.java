@@ -1,4 +1,4 @@
-package com.mc.fragments.home.dashboad;
+package com.mc.books.fragments.home.dashboad;
 
 import android.util.Log;
 
@@ -7,9 +7,9 @@ import com.mc.di.AppComponent;
 import com.mc.events.SignInEvent;
 
 
-public class DashboadPresenter<V extends IDashboadView> extends BaseDataPresenter<V> implements IDashboadPresenter<V> {
+public class DashboardPresenter<V extends IDashboardView> extends BaseDataPresenter<V> implements IDashboardPresenter<V> {
 
-    protected DashboadPresenter(AppComponent appComponent) {
+    protected DashboardPresenter(AppComponent appComponent) {
         super(appComponent);
         bus.subscribe(this, SignInEvent.class, signInEvent -> {
         });
@@ -17,7 +17,7 @@ public class DashboadPresenter<V extends IDashboadView> extends BaseDataPresente
 
     @Override
     public void onSignIn() {
-        Log.e("DashboadPresenter", "");
+        Log.e("DashboardPresenter", "");
         getOptView().doIfPresent(v -> v.onSignUpSuccess());
     }
 }

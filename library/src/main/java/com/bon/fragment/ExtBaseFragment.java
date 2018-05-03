@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.bon.activity.ExtBaseActivity;
+import com.bon.interfaces.Optional;
 import com.bon.logger.Logger;
 import com.bon.util.KeyboardUtils;
 
@@ -34,14 +35,7 @@ public class ExtBaseFragment extends Fragment {
      * show dialog
      */
     protected ExtBaseFragment showProgressDialog() {
-        try {
-            if (mExtBaseActivity != null) {
-                mExtBaseActivity.showProgressDialog();
-            }
-        } catch (Exception ex) {
-            Logger.e(TAG, ex);
-        }
-
+        Optional.from(mExtBaseActivity).doIfPresent(consumer -> consumer.showProgressDialog());
         return this;
     }
 
@@ -49,14 +43,7 @@ public class ExtBaseFragment extends Fragment {
      * hide dialog
      */
     protected ExtBaseFragment hideProgressDialog() {
-        try {
-            if (mExtBaseActivity != null) {
-                mExtBaseActivity.hideProgressDialog();
-            }
-        } catch (Exception ex) {
-            Logger.e(TAG, ex);
-        }
-
+        Optional.from(mExtBaseActivity).doIfPresent(consumer -> consumer.hideProgressDialog());
         return this;
     }
 

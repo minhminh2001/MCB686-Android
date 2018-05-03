@@ -3,15 +3,15 @@ package com.bon.database.orm;
 import android.content.ContentValues;
 import android.database.Cursor;
 
+import com.bon.database.orm.annotations.Column;
+import com.bon.database.orm.annotations.Embedded;
+import com.bon.logger.Logger;
 import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.bon.database.orm.annotations.Column;
-import com.bon.database.orm.annotations.Embedded;
-import com.bon.logger.Logger;
 
 import java.lang.reflect.Field;
 import java.util.List;
@@ -65,7 +65,11 @@ public class MicroOrm {
      */
     public static MicroOrm getInstance() {
         if (microOrm == null) {
-            microOrm = new MicroOrm();
+            synchronized (MicroOrm.class) {
+                if (microOrm == null) {
+                    microOrm = new MicroOrm();
+                }
+            }
         }
 
         return microOrm;

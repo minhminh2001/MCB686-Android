@@ -21,7 +21,11 @@ public class DaoUtils {
      */
     public static void newInstance(SQLiteOpenHelper sqLiteOpenHelper) {
         if (sqLiteDatabase == null) {
-            sqLiteDatabase = sqLiteOpenHelper.getWritableDatabase();
+            synchronized (DaoUtils.class) {
+                if (sqLiteDatabase == null) {
+                    sqLiteDatabase = sqLiteOpenHelper.getWritableDatabase();
+                }
+            }
         }
     }
 
@@ -91,8 +95,7 @@ public class DaoUtils {
 
         try {
             sqLiteDatabase.beginTransaction();
-            id = sqLiteDatabase.update(tableName, values, whereClause,
-                    whereArgs);
+            id = sqLiteDatabase.update(tableName, values, whereClause, whereArgs);
             sqLiteDatabase.setTransactionSuccessful();
         } catch (Exception e) {
             Logger.e(TAG, e);

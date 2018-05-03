@@ -3,10 +3,12 @@ package com.mc.application;
 import android.content.Context;
 import android.support.annotation.Nullable;
 
+import com.bon.application.ExtApplication;
+import com.bon.logger.Logger;
+import com.mc.books.BuildConfig;
 import com.mc.di.AppComponent;
 import com.mc.di.AppModule;
 import com.mc.di.DaggerAppComponent;
-import com.bon.application.ExtApplication;
 
 import java8.util.function.Consumer;
 
@@ -22,13 +24,21 @@ public class AppContext extends ExtApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // dagger
         component = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
                 .build();
         component.inject(this);
 
+        // logger
+        Logger.setEnableLog(BuildConfig.DEBUG);
     }
 
+    /**
+     * @param context
+     * @return
+     */
     @Nullable
     public static AppComponent getComponentFromContext(@Nullable Context context) {
         if (context == null) return null;
@@ -43,6 +53,10 @@ public class AppContext extends ExtApplication {
         return component;
     }
 
+    /**
+     * @param context
+     * @return
+     */
     @Nullable
     public static AppContext from(@Nullable Context context) {
         if (context == null) return null;
@@ -54,6 +68,10 @@ public class AppContext extends ExtApplication {
         return (AppContext) context.getApplicationContext();
     }
 
+    /**
+     * @param context
+     * @param contextConsumer
+     */
     public static void ifPresent(@Nullable Context context, Consumer<AppContext> contextConsumer) {
         if (context == null || contextConsumer == null) return;
 
@@ -65,6 +83,11 @@ public class AppContext extends ExtApplication {
         contextConsumer.accept((AppContext) context.getApplicationContext());
     }
 
+    /**
+     * get app component
+     *
+     * @return
+     */
     public AppComponent getComponent() {
         return component;
     }

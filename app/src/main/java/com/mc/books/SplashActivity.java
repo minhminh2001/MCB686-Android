@@ -13,7 +13,7 @@ import android.view.WindowManager;
 import com.auth0.android.jwt.JWT;
 import com.mc.common.activities.AloneFragmentActivity;
 import com.mc.common.activities.BaseAppCompatActivity;
-import com.mc.fragments.account.signin.SignInFragment;
+import com.mc.books.fragments.account.signin.SignInFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

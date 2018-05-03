@@ -1,15 +1,18 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-
     repositories {
         google()
         jcenter()
     }
+
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.0'
+        classpath 'com.android.tools.build:gradle:3.1.2'
         classpath 'com.google.gms:google-services:3.1.0'
         classpath 'com.dicedmelon.gradle:jacoco-android:0.1.1'
+        classpath('org.codehaus.groovy:groovy-all:2.4.12') {
+            exclude group: 'org.codehaus.groovy', module: 'groovy-all'
+        }
     }
 }
 
@@ -38,6 +41,7 @@ ext {
     eventbusVer = '3.1.1'
     mosbyVer = '3.1.0'
     gif = '1.2.12'
+    leakCanary = '1.5.4'
 }
 
 allprojects {

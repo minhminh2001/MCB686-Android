@@ -93,10 +93,17 @@ public class RxBus<T extends IEvent> {
         return null;
     }
 
+    /**
+     * @param subscriber
+     * @return
+     */
     private String getKey(@NonNull Object subscriber) {
         return subscriber.getClass().getCanonicalName() + "_" + System.identityHashCode(subscriber);
     }
 
+    /**
+     * @param subscription
+     */
     private void unSubscribe(Subscription subscription) {
         try {
             if (!subscription.isUnsubscribed()) {
@@ -107,6 +114,9 @@ public class RxBus<T extends IEvent> {
         }
     }
 
+    /**
+     * @param subscriber
+     */
     public void unSubscribe(@NonNull Object subscriber) {
         try {
             final String key = getKey(subscriber);
@@ -134,6 +144,10 @@ public class RxBus<T extends IEvent> {
         private final Subscription subscription;
         private final String clazz;
 
+        /**
+         * @param subscription
+         * @param clazz
+         */
         TypedSubscription(@NonNull Subscription subscription, @NonNull String clazz) {
             this.subscription = subscription;
             this.clazz = clazz;

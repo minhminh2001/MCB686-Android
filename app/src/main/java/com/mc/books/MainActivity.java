@@ -49,7 +49,6 @@ public class MainActivity extends BaseAppCompatActivity {
     public static final int NOTIFICATION_TAB = 112;
     public static final int MORE_TAB = 113;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +56,7 @@ public class MainActivity extends BaseAppCompatActivity {
         ButterKnife.bind(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         this.activeTab(HOME_TAB);
 
         ShadowProperty sp = new ShadowProperty()

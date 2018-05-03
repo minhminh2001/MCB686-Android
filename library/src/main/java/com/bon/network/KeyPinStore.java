@@ -35,10 +35,14 @@ public class KeyPinStore {
      * @throws NoSuchAlgorithmException
      * @throws KeyManagementException
      */
-    public static synchronized KeyPinStore getInstance(Activity activity, String crtCertificateAsset)
+    public static KeyPinStore getInstance(Activity activity, String crtCertificateAsset)
             throws CertificateException, IOException, KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
         if (instance == null) {
-            instance = new KeyPinStore(activity, crtCertificateAsset);
+            synchronized (KeyPinStore.class) {
+                if (instance == null) {
+                    instance = new KeyPinStore(activity, crtCertificateAsset);
+                }
+            }
         }
 
         return instance;

@@ -9,13 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bon.interfaces.Optional;
+import com.bon.util.KeyboardUtils;
 import com.hannesdorfmann.mosby3.mvp.MvpFragment;
 import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby3.mvp.MvpView;
 import com.mc.application.AppContext;
 import com.mc.common.activities.BaseAppCompatActivity;
 import com.mc.di.AppComponent;
-import com.bon.util.KeyboardUtils;
 
 import butterknife.ButterKnife;
 
@@ -25,6 +26,7 @@ import butterknife.ButterKnife;
 
 public abstract class BaseMvpFragment<V extends MvpView, P extends MvpPresenter<V>>
         extends MvpFragment<V, P> implements IBaseFragment, IResourceFragment {
+    private static final String TAG = BaseMvpFragment.class.getSimpleName();
 
     protected BaseAppCompatActivity mActivity;
 
@@ -39,7 +41,11 @@ public abstract class BaseMvpFragment<V extends MvpView, P extends MvpPresenter<
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // inject component
         getAppContext().getComponent().inject((BaseMvpFragment<MvpView, MvpPresenter<MvpView>>) this);
+
+        // retain this fragment when activity is re-initialized
+        setRetainInstance(true);
     }
 
     @Nullable
@@ -57,10 +63,8 @@ public abstract class BaseMvpFragment<V extends MvpView, P extends MvpPresenter<
         mActivity.setToolbarTitle(getTitleId());
 
         // update toolbar
-        ActionBar supportActionBar = mActivity.getSupportActionBar();
-        if (supportActionBar != null) {
-            initToolbar(supportActionBar);
-        }
+        Optional.from(mActivity.getSupportActionBar())
+                .doIfPresent(actionBar -> initToolbar(actionBar));
     }
 
     @Override

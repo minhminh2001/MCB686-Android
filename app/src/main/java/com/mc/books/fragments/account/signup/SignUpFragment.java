@@ -1,4 +1,4 @@
-package com.mc.fragments.account.signup;
+package com.mc.books.fragments.account.signup;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package com.mc.fragments.account.signin;
+package com.mc.books.fragments.account.signin;
 
 import com.hannesdorfmann.mosby3.mvp.MvpView;
 
@@ -7,5 +7,7 @@ import com.hannesdorfmann.mosby3.mvp.MvpView;
  */
 
 public interface ISignInView extends MvpView {
- void onSignUpSuccess();
+    void onSignUpSuccess();
+
+    void showLoading(boolean isLoading);
 }

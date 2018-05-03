@@ -1,4 +1,4 @@
-package com.mc.fragments.account.signup;
+package com.mc.books.fragments.account.signup;
 
 import com.hannesdorfmann.mosby3.mvp.MvpView;
 
