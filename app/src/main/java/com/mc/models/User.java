@@ -9,7 +9,7 @@ public class User {
     private Integer accountId;
     @SerializedName("fullname")
     @Expose
-    private String fullname;
+    private String fullName;
     @SerializedName("email")
     @Expose
     private String email;
@@ -34,12 +34,12 @@ public class User {
         this.accountId = accountId;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getEmail() {
@@ -80,5 +80,18 @@ public class User {
 
     public void setTokenType(String tokenType) {
         this.tokenType = tokenType;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "accountId=" + accountId +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", accountAvatar='" + accountAvatar + '\'' +
+                ", accountIsUpdate=" + accountIsUpdate +
+                ", accessToken='" + accessToken + '\'' +
+                ", tokenType='" + tokenType + '\'' +
+                '}';
     }
 }

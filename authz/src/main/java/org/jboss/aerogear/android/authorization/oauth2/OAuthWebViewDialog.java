@@ -1,13 +1,13 @@
 /**
  * JBoss, Home of Professional Open Source
  * Copyright Red Hat, Inc., and individual contributors.
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- * 	http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,7 +17,9 @@
 package org.jboss.aerogear.android.authorization.oauth2;
 
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -33,12 +35,12 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import org.jboss.aerogear.android.authorization.R;
+
 import java.net.URL;
 
 /**
  * This is a WebView Dialog which is opened to a OAuth2 sign in page and sends
  * data back to the calling activity.
- * 
  */
 public class OAuthWebViewDialog extends DialogFragment {
 
@@ -50,6 +52,7 @@ public class OAuthWebViewDialog extends DialogFragment {
     private WebView webView;
     private ProgressBar progressBar;
     private String authorizeUrl;
+
     final private OAuthViewClient client = new OAuthViewClient() {
 
         @Override
@@ -58,12 +61,11 @@ public class OAuthWebViewDialog extends DialogFragment {
 
             progressBar.setVisibility(View.GONE);
         }
-
     };
+
     private String redirectURL;
 
     private class OAuthViewClient extends WebViewClient {
-
         private OAuthReceiver receiver;
         private String redirectURL;
 
@@ -71,6 +73,9 @@ public class OAuthWebViewDialog extends DialogFragment {
         public void onPageFinished(WebView view, String url) {
             if (url.startsWith(redirectURL)) {
                 if (url.contains("code=")) {
+                    prefsEditor.putString("REDIRECT_URL", url);
+                    prefsEditor.commit();
+
                     final String token = fetchToken(url);
                     Log.d("TOKEN", token);
                     if (receiver != null) {
@@ -107,6 +112,9 @@ public class OAuthWebViewDialog extends DialogFragment {
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             if (url.startsWith(redirectURL)) {
                 if (url.contains("code=")) {
+                    prefsEditor.putString("REDIRECT_URL", url);
+                    prefsEditor.commit();
+
                     final String token = fetchToken(url);
                     Log.d("TOKEN", token);
                     if (receiver != null) {
@@ -164,6 +172,9 @@ public class OAuthWebViewDialog extends DialogFragment {
         return instance;
     }
 
+    SharedPreferences appSharedPrefs;
+    SharedPreferences.Editor prefsEditor;
+
     @Override
     public void onViewCreated(View arg0, Bundle arg1) {
         super.onViewCreated(arg0, arg1);
@@ -181,6 +192,9 @@ public class OAuthWebViewDialog extends DialogFragment {
             webSettings.setLoadWithOverviewMode(true);
         }
 
+        appSharedPrefs = getActivity().getApplicationContext().getSharedPreferences(getActivity().getApplicationContext().getPackageName(),
+                Context.MODE_PRIVATE);
+        prefsEditor = appSharedPrefs.edit();
     }
 
     @Override
@@ -204,7 +218,7 @@ public class OAuthWebViewDialog extends DialogFragment {
 
     @Override
     public void onDismiss(DialogInterface dialog) {
-        super.onDismiss(dialog); 
+        super.onDismiss(dialog);
         if (client.receiver != null) {
             client.receiver.receiveOAuthError(OAuthReceiver.DISMISS_ERROR);
         }
@@ -221,7 +235,7 @@ public class OAuthWebViewDialog extends DialogFragment {
     public interface OAuthReceiver {
 
         public static final String DISMISS_ERROR = "dialog_dismissed";
-        
+
         void receiveOAuthCode(String code);
 
         public void receiveOAuthError(String error);

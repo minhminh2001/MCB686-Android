@@ -7,6 +7,7 @@ import com.bon.application.ExtApplication;
 import com.bon.logger.Logger;
 import com.mc.books.BuildConfig;
 import com.mc.books.R;
+import com.mc.di.ApiModule;
 import com.mc.di.AppComponent;
 import com.mc.di.AppModule;
 import com.mc.di.DaggerAppComponent;
@@ -30,6 +31,7 @@ public class AppContext extends ExtApplication {
         // dagger
         component = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
+                .apiModule(new ApiModule())
                 .build();
         component.inject(this);
 

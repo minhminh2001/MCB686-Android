@@ -28,6 +28,6 @@ public class SignInPresenter<V extends ISignInView> extends BaseDataPresenter<V>
 
     @Override
     public void onSignIn() {
-        getOptView().doIfPresent(v -> v.showLoading(true));
+        getOptView().doIfPresent(v -> v.onSignUpSuccess());
     }
 }

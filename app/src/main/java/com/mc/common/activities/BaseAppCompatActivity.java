@@ -6,13 +6,14 @@ import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.view.MenuItem;
 
+import com.bon.eventbus.IEvent;
+import com.bon.eventbus.RxBus;
+import com.bon.util.KeyboardUtils;
 import com.mc.application.AppContext;
 import com.mc.common.actions.IToolbarAction;
 import com.mc.interactors.IDataModule;
 import com.mc.interactors.database.IDbModule;
-import com.bon.eventbus.IEvent;
-import com.bon.eventbus.RxBus;
-import com.bon.util.KeyboardUtils;
+import com.mc.interactors.service.IApiService;
 
 import javax.inject.Inject;
 
@@ -31,6 +32,9 @@ public abstract class BaseAppCompatActivity extends ExtBaseActivity implements I
 
     @Inject
     protected IDbModule dbModule;
+
+    @Inject
+    protected IApiService apiService;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
