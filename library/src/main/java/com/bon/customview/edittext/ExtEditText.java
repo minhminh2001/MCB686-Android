@@ -47,7 +47,7 @@ public class ExtEditText extends EditText {
     /**
      * @var Validators heap
      */
-    protected boolean isEmpty = true;
+    protected boolean isEmpty = false;
     protected String errorString = null;
     protected String emptyErrorString = null;
     protected ArrayList<Validator> validators = new ArrayList<>();
@@ -88,7 +88,7 @@ public class ExtEditText extends EditText {
             // valid
             this.errorString = typedArray.getString(R.styleable.ExtEditText_errorString);
             this.emptyErrorString = typedArray.getString(R.styleable.ExtEditText_emptyErrorString);
-            this.isEmpty = typedArray.getBoolean(R.styleable.ExtEditText_isEmpty, true);
+            this.isEmpty = typedArray.getBoolean(R.styleable.ExtEditText_isEmpty, false);
 
             // empty string
             if (StringUtils.isEmpty(this.emptyErrorString)) {

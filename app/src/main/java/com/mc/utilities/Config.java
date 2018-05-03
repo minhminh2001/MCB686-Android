@@ -6,7 +6,7 @@ package com.mc.utilities;
 
 public interface Config {
     // base url
-    String BASE_URL = "https://google.com.vn";
+    String BASE_URL = "http://www.json-generator.com/api/";
 
     // retry policy
     boolean RETRY_POLICY = true;

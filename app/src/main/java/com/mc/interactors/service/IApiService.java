@@ -1,7 +1,10 @@
 package com.mc.interactors.service;
 
+import com.mc.models.User;
+
 import java.util.List;
 
+import retrofit2.http.GET;
 import retrofit2.http.Url;
 import rx.Observer;
 
@@ -10,6 +13,8 @@ import rx.Observer;
  */
 
 public interface IApiService {
+    Observer<User> getUsers();
 
-    Observer<List<String>> getUsers();
+    @GET("/json/get/bItCmtKbAO?indent=2")
+    Observer<User> login();
 }

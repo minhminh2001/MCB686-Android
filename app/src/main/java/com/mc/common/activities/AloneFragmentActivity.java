@@ -29,8 +29,8 @@ public class AloneFragmentActivity extends BaseAppCompatActivity {
     private static final String FRAGMENT_NAME = "fragment_name";
     private static final String TRANSLUCENT = "translucent";
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+//    @BindView(R.id.toolbar)
+//    Toolbar toolbar;
 
     // fragment
     private Fragment fragment;
@@ -43,9 +43,9 @@ public class AloneFragmentActivity extends BaseAppCompatActivity {
         }
 
         setContentView(R.layout.alone_fragment_activity);
-        ButterKnife.bind(this);
+//        ButterKnife.bind(this);
 
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
         if (savedInstanceState == null) {
             Bundle bundle = getIntent().getExtras();
             getFragmentForOpen(bundle, fr -> replaceFragment(fr, false));
@@ -117,6 +117,7 @@ public class AloneFragmentActivity extends BaseAppCompatActivity {
 
     public static class Builder {
         private final Context contextForOpen;
+
         private final Fragment fragmentForOpen;
         private boolean translucent;
         private boolean overrideAnim;

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main">
+
+    <ImageView
+        android:id="@+id/imglogo"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/txtLogin"
+        android:layout_centerInParent="true"
+        android:background="@drawable/logo" />
+
+    <com.bon.customview.textview.ExtTextView
+        android:id="@+id/txtLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="@dimen/margin_large"
+        android:text="@string/login"
+        android:textAllCaps="true"
+        android:textColor="@color/colorTextGray"
+        android:textSize="20sp" />
+
+    <com.bon.customview.button.ExtButton
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtLogin"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_large"
+        android:background="@drawable/btn_orange"
+        android:elevation="24dp"
+        android:text="@string/login_btn"
+        android:textColor="@color/colorWhite"
+        android:textSize="16sp" />
+
+</RelativeLayout>

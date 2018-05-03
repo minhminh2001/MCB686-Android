@@ -7,5 +7,7 @@ import com.hannesdorfmann.mosby3.mvp.MvpView;
  */
 
 public interface ISignInView extends MvpView {
+    void onSignUpSuccess();
+
     void showLoading(boolean isLoading);
 }

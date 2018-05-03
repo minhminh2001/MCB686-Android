@@ -1,83 +1,70 @@
 package com.mc.books;
 
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 
-import com.mc.common.activities.AloneFragmentActivity;
+import com.bon.viewanimation.Techniques;
+import com.bon.viewanimation.YoYo;
 import com.mc.common.activities.BaseAppCompatActivity;
-import com.mc.fragments.account.signin.SignInFragment;
 
-public class MainActivity extends BaseAppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+public class MainActivity extends BaseAppCompatActivity {
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.fl_content)
+    FrameLayout flContent;
+    @BindView(R.id.home)
+    ImageView home;
+    @BindView(R.id.gift)
+    ImageView gift;
+    @BindView(R.id.notification)
+    ImageView notification;
+    @BindView(R.id.profile)
+    ImageView profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
+        ButterKnife.bind(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
     }
+
 
     @Override
     public void initFragmentDefault() {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+    private void playAnimator(View view) {
+        YoYo.with(Techniques.ReBounceAnimator)
+                .duration(1000)
+                .playOn(view);
+    }
+
+    @OnClick({R.id.home, R.id.gift, R.id.notification, R.id.profile})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.home:
+                this.playAnimator(home);
+                break;
+            case R.id.gift:
+                this.playAnimator(gift);
+                break;
+            case R.id.notification:
+                this.playAnimator(notification);
+                break;
+            case R.id.profile:
+                this.playAnimator(profile);
+                break;
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            AloneFragmentActivity.with(this).start(SignInFragment.class);
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
 }
