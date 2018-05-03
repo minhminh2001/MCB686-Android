@@ -6,9 +6,11 @@ import android.support.annotation.Nullable;
 import com.bon.application.ExtApplication;
 import com.bon.logger.Logger;
 import com.mc.books.BuildConfig;
+import com.mc.books.R;
 import com.mc.di.AppComponent;
 import com.mc.di.AppModule;
 import com.mc.di.DaggerAppComponent;
+import com.mc.utilities.FragmentUtils;
 
 import java8.util.function.Consumer;
 
@@ -33,6 +35,9 @@ public class AppContext extends ExtApplication {
 
         // logger
         Logger.setEnableLog(BuildConfig.DEBUG);
+
+        // init fragment
+        FragmentUtils.setContainerViewId(R.id.fl_content);
     }
 
     /**
