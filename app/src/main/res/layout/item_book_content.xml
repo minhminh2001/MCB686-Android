@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_layout"
+    android:layout_marginBottom="@dimen/margin_layout">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_cardview_book">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="130dp">
+
+                <ImageView
+                    android:id="@+id/imgMore"
+                    style="@style/iconSmall"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="@dimen/margin_content"
+                    android:layout_marginRight="@dimen/margin_content"
+                    app:srcCompat="@drawable/ic_more_horiz_white" />
+
+                <com.bon.customview.textview.ExtTextView
+                    android:id="@+id/txtBookName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imgMore"
+                    android:maxLines="2"
+                    android:text="The Martian"
+                    app:textViewFontAssetName="@string/font_bold"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp" />
+
+                <com.bon.customview.textview.ExtTextView
+                    android:id="@+id/txtBookAuthor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtBookName"
+                    android:lines="1"
+                    android:text="Andy Weir"
+                    app:textViewFontAssetName="@string/font_italic"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp" />
+
+                <ProgressBar
+                    android:id="@+id/customProgress"
+                    style="@style/CustomProgressBar"
+                    android:layout_width="140dp"
+                    android:layout_above="@+id/txtReadmore"
+                    android:layout_marginRight="@dimen/margin_layout"
+                    android:layout_marginBottom="@dimen/margin_content"
+                    android:progress="50" />
+
+
+                <com.bon.customview.textview.ExtTextView
+                    android:id="@+id/txtProgress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/txtReadmore"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/margin_layout"
+                    android:layout_toRightOf="@id/customProgress"
+                    android:lines="1"
+                    android:text="50%"
+                    android:textSize="16sp"
+                    app:textViewFontAssetName="@string/font_black"
+                    android:textColor="@color/colorWhite" />
+
+                <com.bon.customview.textview.ExtTextView
+                    android:id="@+id/txtReadmore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="30dp"
+                    android:lines="1"
+                    android:text="Đọc tiếp"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    app:textViewFontAssetName="@string/font_bold" />
+
+                <ImageView
+                    android:id="@+id/imgNext"
+                    style="@style/iconSmall"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginRight="@dimen/margin_layout"
+                    android:layout_marginTop="@dimen/margin_content"
+                    app:srcCompat="@drawable/ic_arrow_forward_white" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="190dp"
+        android:elevation="10dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/img_book_test" />
+
+
+</RelativeLayout>

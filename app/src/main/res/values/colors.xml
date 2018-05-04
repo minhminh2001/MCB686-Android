@@ -17,4 +17,6 @@
     <color name="colorDarkBlue">#0071BB</color>
     <color name="colorGreen">#00B822</color>
     <color name="colorPink">#f5d5d5</color>
+    <color name="colorYellow">#f8e1aa</color>
+    <color name="colorTextHint">#031f31</color>
 </resources>

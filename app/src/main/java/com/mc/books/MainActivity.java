@@ -78,7 +78,7 @@ public class MainActivity extends BaseAppCompatActivity {
         ViewCompat.setLayerType(llBottomBar, ViewCompat.LAYER_TYPE_SOFTWARE, null);
 
         // get callback url
-
+        this.changeTabBottom(HOME_TAB);
         Log.e("redirectUrl", "redirectUrl:: " + AppPreferences.getInstance(this).getString("REDIRECT_URL"));
         Log.e("refresh_token", "refresh_token:: " + AppPreferences.getInstance(this).getString("refresh_token"));
         Log.e("accessToken", "accessToken:: " + AppPreferences.getInstance(this).getString("accessToken"));
@@ -178,12 +178,12 @@ public class MainActivity extends BaseAppCompatActivity {
             case R.id.notification:
                 this.playAnimator(notification);
                 this.activeTab(NOTIFICATION_TAB);
-                changeTabBottom(HOME_TAB);
+                changeTabBottom(NOTIFICATION_TAB);
                 break;
             case R.id.more:
                 this.playAnimator(more);
                 this.activeTab(MORE_TAB);
-                changeTabBottom(HOME_TAB);
+                changeTabBottom(MORE_TAB);
                 break;
         }
     }
@@ -209,12 +209,8 @@ public class MainActivity extends BaseAppCompatActivity {
 
             }
 
-            // replace fragment
             FragmentUtils.replaceFragment(this, fragment);
-            // set active bottom
             this.activeTab(index);
-
-            // set current index
             this.currentFragmentIndex = index;
             this.fragments.clear();
         } catch (Exception e) {

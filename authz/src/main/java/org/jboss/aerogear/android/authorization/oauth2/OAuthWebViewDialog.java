@@ -48,6 +48,8 @@ public class OAuthWebViewDialog extends DialogFragment {
     private static final String TITLE = "org.jboss.aerogear.android.authorize.OAuthWebViewDialog.TITLE";
     private static final String AUTHORIZE_URL = "org.jboss.aerogear.android.authorize.OAuthWebViewDialog.AUTHORIZE_URL";
     private static final String REDIRECT_URL = "org.jboss.aerogear.android.authorize.OAuthWebViewDialog.REDIRECT_URL";
+    public static final String USER_AGENT = "Mozilla/5.0 (Linux; Android 7.0; Android SDK built for x86 Build/NYC; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/65.0.3325.109 Mobile Safari/537.36";
+
 
     private WebView webView;
     private ProgressBar progressBar;
@@ -68,6 +70,8 @@ public class OAuthWebViewDialog extends DialogFragment {
     private class OAuthViewClient extends WebViewClient {
         private OAuthReceiver receiver;
         private String redirectURL;
+
+
 
         @Override
         public void onPageFinished(WebView view, String url) {
@@ -110,6 +114,7 @@ public class OAuthWebViewDialog extends DialogFragment {
 
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            Log.e("HIEPUH", webView.getSettings().getUserAgentString());
             if (url.startsWith(redirectURL)) {
                 if (url.contains("code=")) {
                     prefsEditor.putString("REDIRECT_URL", url);
@@ -186,7 +191,9 @@ public class OAuthWebViewDialog extends DialogFragment {
 
         // activates JavaScript (just in case)
         WebSettings webSettings = webView.getSettings();
+//        webSettings.setUserAgentString(USER_AGENT);
         webSettings.setJavaScriptEnabled(true);
+
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR2) {
             webSettings.setUseWideViewPort(true);
             webSettings.setLoadWithOverviewMode(true);

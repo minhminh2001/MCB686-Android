@@ -14,10 +14,4 @@
         android:src="@drawable/loading"
         android:visibility="visible" />
 
-    <!--<ProgressBar-->
-        <!--android:layout_margin="10dp"-->
-        <!--android:id="@+id/customProgress"-->
-        <!--style="@style/CustomProgressBar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:progress="50" />-->
 </LinearLayout>

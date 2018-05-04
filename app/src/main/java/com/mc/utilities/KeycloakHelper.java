@@ -30,7 +30,7 @@ import java.net.URL;
 
 public class KeycloakHelper {
 
-    private static final String SHOOT_SERVER_URL = "http://103.101.160.49:8080";
+    private static final String SHOOT_SERVER_URL = "http://sso.mcbooks.vn:8080";
     private static final String AUTHZ_URL = SHOOT_SERVER_URL + "/auth";
     private static final String AUTHZ_ENDPOINT = "/realms/MCB686/protocol/openid-connect/auth";
     private static final String ACCESS_TOKEN_ENDPOINT = "/realms/MCB686/protocol/openid-connect/token";

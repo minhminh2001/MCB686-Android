@@ -1,8 +1,9 @@
 <resources>
     <!--FONT-->
-    <string name="font_italic">fonts/lato_italic.ttf</string>
-    <string name="font_bold">fonts/lato_bold.ttf</string>
-    <string name="font_regular">fonts/lato_regular.ttf</string>
+    <string name="font_italic">fonts/SF-Pro-Display-RegularItalic.otf</string>
+    <string name="font_bold">fonts/SF-Pro-Display-Bold.otf</string>
+    <string name="font_regular">fonts/SF-Pro-Display-Regular.otf</string>
+    <string name="font_black">fonts/SF-Pro-Display-Black.otf</string>
     <string name="percent_label">%</string>
 
     <!--APP-->

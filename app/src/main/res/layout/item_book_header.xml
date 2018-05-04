@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.bon.customview.textview.ExtTextView
+        android:id="@+id/txtHeaderBook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="Tiếng Anh"
+        android:textColor="@color/colorOrange"
+        app:textViewFontAssetName="@string/font_bold"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

@@ -60,4 +60,15 @@
         <item name="android:maxHeight">@dimen/progress_bar_max_height</item>
         <item name="android:layout_height">@dimen/progress_bar_height</item>
     </style>
+
+    <style name="iconSmall">
+        <item name="android:layout_width">@dimen/icon_small</item>
+        <item name="android:layout_height">@dimen/icon_small</item>
+    </style>
+
+    <style name="iconMedium">
+        <item name="android:layout_width">@dimen/icon_medium</item>
+        <item name="android:layout_height">@dimen/icon_medium</item>
+
+    </style>
 </resources>
