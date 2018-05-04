@@ -25,6 +25,9 @@ import com.mc.utilities.shadow.ShadowViewDrawable;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import rx.Scheduler;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 
 public class MainActivity extends BaseAppCompatActivity {
     @BindView(R.id.toolbar)
@@ -112,6 +115,9 @@ public class MainActivity extends BaseAppCompatActivity {
 //                            Log.d("keyCloarkModel", "keyCloarkModel:: " + keyCloarkModel);
 //                        }
 //                    });
+
+        apiService.getDemo("http://www.json-generator.com/api/json/get/bOsmhbEpIO?indent=2").subscribeOn(Schedulers.io())
+                .subscribe(s -> Log.e("test", "test:: "+ s));
 
     }
 
