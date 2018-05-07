@@ -1,7 +1,9 @@
 package com.mc.books;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
@@ -27,6 +29,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Scheduler;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
@@ -71,7 +74,7 @@ public class MainActivity extends BaseAppCompatActivity {
         setContentView(R.layout.main_activity);
         ButterKnife.bind(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
         ShadowProperty sp = new ShadowProperty()
                 .setShadowColor(R.color.colorPink)
                 .setShadowDy(dip2px(this, 0.5f))
@@ -87,7 +90,6 @@ public class MainActivity extends BaseAppCompatActivity {
         Log.e("refresh_token", "refresh_token:: " + AppPreferences.getInstance(this).getString("refresh_token"));
         Log.e("accessToken", "accessToken:: " + AppPreferences.getInstance(this).getString("accessToken"));
         Log.e("authorizationCode", "authorizationCode:: " + AppPreferences.getInstance(this).getString("authorizationCode"));
-
 
 //            apiService.getKeyCloarkInfo("http://103.101.160.49:8080/auth/realms/MCB686/protocol/openid-connect/token", "authorization_code",
 //                    code, "mobile", "http://oauth2callback")
@@ -116,9 +118,9 @@ public class MainActivity extends BaseAppCompatActivity {
 //                            Log.d("keyCloarkModel", "keyCloarkModel:: " + keyCloarkModel);
 //                        }
 //                    });
-
-        apiService.getDemo("http://www.json-generator.com/api/json/get/bOsmhbEpIO?indent=2").subscribeOn(Schedulers.io())
-                .subscribe(s -> Log.e("test", "test:: "+ s));
+//
+//        apiService.getDemo("http://www.json-generator.com/api/json/get/bOsmhbEpIO?indent=2").subscribeOn(Schedulers.io())
+//                .subscribe(s -> Log.e("test", "test:: "+ s));
 
     }
 

@@ -37,9 +37,23 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <!--<intent-filter>-->
-            <!--<data android:scheme="com.mc.books" android:host="oauth2Callback" />-->
-        <!--</intent-filter>-->
+        <activity
+            android:name=".SignInActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter android:label="@string/app_name">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="oauth2Callback"
+                    android:scheme="com.mc.books" />
+            </intent-filter>
+        </activity>
+
 
         <service android:name="org.jboss.aerogear.android.authorization.oauth2.OAuth2AuthzService" />
     </application>

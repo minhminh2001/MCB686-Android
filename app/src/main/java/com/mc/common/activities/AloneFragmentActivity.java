@@ -10,9 +10,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.WindowManager;
 
+import com.bon.sharepreferences.AppPreferences;
 import com.mc.books.R;
 import com.mc.common.Keys;
 
@@ -45,6 +47,11 @@ public class AloneFragmentActivity extends BaseAppCompatActivity {
 //        setSupportActionBar(toolbar);
         if (savedInstanceState == null) {
             Bundle bundle = getIntent().getExtras();
+            try {
+                AppPreferences.getInstance(getAppContext()).putString("FRAGMENT_INTENT", bundle.getString(FRAGMENT_NAME));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             getFragmentForOpen(bundle, fr -> replaceFragment(fr, false));
         }
     }
@@ -54,6 +61,7 @@ public class AloneFragmentActivity extends BaseAppCompatActivity {
      * @return
      */
     protected Bundle getArgsForFragment(Bundle bundle) {
+        if (bundle == null) return null;
         return bundle.getBundle(Keys.ARGS);
     }
 
@@ -62,7 +70,12 @@ public class AloneFragmentActivity extends BaseAppCompatActivity {
      * @param fragmentForOpen
      */
     protected void getFragmentForOpen(Bundle bundle, Consumer<Fragment> fragmentForOpen) {
-        fragmentForOpen.accept(Fragment.instantiate(getBaseContext(), bundle.getString(FRAGMENT_NAME), getArgsForFragment(bundle)));
+        String fragment;
+        if (bundle.getString(FRAGMENT_NAME) == null) {
+            fragment = AppPreferences.getInstance(getAppContext()).getString("FRAGMENT_INTENT");
+        } else
+            fragment = bundle.getString(FRAGMENT_NAME);
+        fragmentForOpen.accept(Fragment.instantiate(getBaseContext(), fragment, getArgsForFragment(bundle)));
     }
 
     /**

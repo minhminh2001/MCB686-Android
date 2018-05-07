@@ -1,5 +1,6 @@
 package com.mc.books;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -32,8 +33,7 @@ public class SplashActivity extends BaseAppCompatActivity {
 
         final Handler handler = new Handler();
         handler.postDelayed(() -> {
-            AloneFragmentActivity.with(getAppContext())
-                    .start(SignInFragment.class);
+            startActivity(new Intent(SplashActivity.this, SignInActivity.class));
             finish();
         }, 2000);
     }
