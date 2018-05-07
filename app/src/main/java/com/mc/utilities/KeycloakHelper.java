@@ -37,7 +37,7 @@ public class KeycloakHelper {
     private static final String REFRESH_TOKEN_ENDPOINT = "/realms/MCB686/protocol/openid-connect/token";
     private static final String AUTHZ_ACCOOUNT_ID = "mobile";
     private static final String AUTHZ_CLIENT_ID = "mobile";
-    private static final String AUTHZ_REDIRECT_URL = "http://oauth2callback";
+    private static final String AUTHZ_REDIRECT_URL = "com.mc.books://oauth2Callback";
     private static final String MODULE_NAME = "mobile";
 
     static {
@@ -50,6 +50,7 @@ public class KeycloakHelper {
                     .setAccountId(AUTHZ_ACCOOUNT_ID)
                     .setClientId(AUTHZ_CLIENT_ID)
                     .setRedirectURL(AUTHZ_REDIRECT_URL)
+                    .setWithIntent(true)
                     .asModule();
 
         } catch (Exception e) {
