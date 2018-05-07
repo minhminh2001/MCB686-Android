@@ -16,6 +16,7 @@ import com.bon.sharepreferences.AppPreferences;
 import com.bon.viewanimation.Techniques;
 import com.bon.viewanimation.YoYo;
 import com.mc.books.fragments.home.dashboad.DashboardFragment;
+import com.mc.books.fragments.more.MoreFragment;
 import com.mc.common.activities.BaseAppCompatActivity;
 import com.mc.common.fragments.BaseMvpFragment;
 import com.mc.utilities.FragmentUtils;
@@ -208,7 +209,7 @@ public class MainActivity extends BaseAppCompatActivity {
                     fragment = DashboardFragment.newInstance();
                     break;
                 case MORE_TAB:
-                    fragment = DashboardFragment.newInstance();
+                    fragment = MoreFragment.newInstance();
                     break;
                 default:
                     fragment = DashboardFragment.newInstance();

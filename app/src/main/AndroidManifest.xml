@@ -37,6 +37,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
+        <!--<intent-filter>-->
+            <!--<data android:scheme="com.mc.books" android:host="oauth2Callback" />-->
+        <!--</intent-filter>-->
+
         <service android:name="org.jboss.aerogear.android.authorization.oauth2.OAuth2AuthzService" />
     </application>
 </manifest>
