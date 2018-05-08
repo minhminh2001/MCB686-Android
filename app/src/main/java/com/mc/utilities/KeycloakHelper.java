@@ -50,7 +50,7 @@ public class KeycloakHelper {
                     .setAccountId(AUTHZ_ACCOOUNT_ID)
                     .setClientId(AUTHZ_CLIENT_ID)
                     .setRedirectURL(AUTHZ_REDIRECT_URL)
-                    .setWithIntent(false)
+                    .setWithIntent(true)
                     .asModule();
 
         } catch (Exception e) {

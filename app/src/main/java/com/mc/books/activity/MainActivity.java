@@ -1,4 +1,4 @@
-package com.mc.books;
+package com.mc.books.activity;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 
 import com.bon.viewanimation.Techniques;
 import com.bon.viewanimation.YoYo;
+import com.mc.books.R;
 import com.mc.books.fragments.home.dashboad.DashboardFragment;
 import com.mc.books.fragments.more.MoreFragment;
 import com.mc.common.activities.BaseAppCompatActivity;
