@@ -1,18 +1,18 @@
-package com.mc.books.activity;
+package com.mc.books;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.annotation.NonNull;
+import android.support.annotation.StringRes;
 import android.support.v4.view.ViewCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.bon.sharepreferences.AppPreferences;
 import com.bon.viewanimation.Techniques;
 import com.bon.viewanimation.YoYo;
 import com.mc.books.R;
@@ -27,9 +27,6 @@ import com.mc.utilities.shadow.ShadowViewDrawable;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import rx.Scheduler;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
 
 public class MainActivity extends BaseAppCompatActivity {
     @BindView(R.id.toolbar)
@@ -61,11 +58,6 @@ public class MainActivity extends BaseAppCompatActivity {
     public static final int MORE_TAB = 113;
     public int currentFragmentIndex = HOME_TAB;
 
-    // KEY CLOARK
-//      prefsEditor.putString("refresh_token", storedAccount.getRefreshToken());
-//        prefsEditor.putString("accessToken", storedAccount.getAccessToken());
-//        prefsEditor.putString("authorizationCode", storedAccount.getAuthorizationCode());
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +65,7 @@ public class MainActivity extends BaseAppCompatActivity {
         ButterKnife.bind(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         ShadowProperty sp = new ShadowProperty()
                 .setShadowColor(R.color.colorPink)
                 .setShadowDy(dip2px(this, 0.5f))
@@ -82,51 +75,22 @@ public class MainActivity extends BaseAppCompatActivity {
         ViewCompat.setBackground(llBottomBar, sd);
         ViewCompat.setLayerType(llBottomBar, ViewCompat.LAYER_TYPE_SOFTWARE, null);
 
-        // get callback url
-        this.changeTabBottom(HOME_TAB);
-        Log.e("redirectUrl", "redirectUrl:: " + AppPreferences.getInstance(this).getString("REDIRECT_URL"));
-        Log.e("refresh_token", "refresh_token:: " + AppPreferences.getInstance(this).getString("refresh_token"));
-        Log.e("accessToken", "accessToken:: " + AppPreferences.getInstance(this).getString("accessToken"));
-        Log.e("authorizationCode", "authorizationCode:: " + AppPreferences.getInstance(this).getString("authorizationCode"));
-
-
-//            apiService.getKeyCloarkInfo("http://103.101.160.49:8080/auth/realms/MCB686/protocol/openid-connect/token", "authorization_code",
-//                    code, "mobile", "http://oauth2callback")
-//                    .observeOn(AndroidSchedulers.mainThread())
-//                    .subscribeOn(Schedulers.io())
-//                    .doOnError(new Action1<Throwable>() {
-//                        @Override
-//                        public void call(Throwable throwable) {
-//                            throwable.printStackTrace();
-//                            Log.e("throwable", "throwable::" + throwable.getMessage());
-//                        }
-//                    })
-//                    .subscribe(new Subscriber<KeyCloarkModel>() {
-//                        @Override
-//                        public void onCompleted() {
-//
-//                        }
-//
-//                        @Override
-//                        public void onError(Throwable e) {
-//                            Log.d("keyCloarkModel", "Throwable:: " + e.getMessage());
-//                        }
-//
-//                        @Override
-//                        public void onNext(KeyCloarkModel keyCloarkModel) {
-//                            Log.d("keyCloarkModel", "keyCloarkModel:: " + keyCloarkModel);
-//                        }
-//                    });
-
-        apiService.getDemo("http://www.json-generator.com/api/json/get/bOsmhbEpIO?indent=2").subscribeOn(Schedulers.io())
-                .subscribe(s -> Log.e("test", "test:: "+ s));
+        this.initFragmentDefault();
+//        Log.e("redirectUrl", "redirectUrl:: " + AppPreferences.getInstance(this).getString("REDIRECT_URL"));
+//        Log.e("refresh_token", "refresh_token:: " + AppPreferences.getInstance(this).getString("refresh_token"));
+//        Log.e("accessToken", "accessToken:: " + AppPreferences.getInstance(this).getString("accessToken"));
+//        Log.e("authorizationCode", "authorizationCode:: " + AppPreferences.getInstance(this).getString("authorizationCode"));
 
     }
 
+    @Override
+    public ActionBar getAppSupportActionBar() {
+        return getSupportActionBar();
+    }
 
     @Override
     public void initFragmentDefault() {
-
+        this.changeTabBottom(HOME_TAB);
     }
 
     private void playAnimator(View view) {

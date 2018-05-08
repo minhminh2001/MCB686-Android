@@ -2,7 +2,9 @@ package com.mc.books.fragments.account.signin;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -60,7 +62,7 @@ public class SignInFragment extends BaseMvpFragment<ISignInView, ISignInPresente
 
     @Override
     public int getTitleId() {
-        return super.getTitleId();
+        return R.string.login;
     }
 
     @Override

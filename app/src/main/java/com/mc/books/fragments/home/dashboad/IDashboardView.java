@@ -1,5 +1,7 @@
 package com.mc.books.fragments.home.dashboad;
 
+import android.view.View;
+
 import com.hannesdorfmann.mosby3.mvp.MvpView;
 
 /**
@@ -7,5 +9,5 @@ import com.hannesdorfmann.mosby3.mvp.MvpView;
  */
 
 public interface IDashboardView extends MvpView {
-    void onSignUpSuccess();
+    void onShowDialog(boolean isShow, View view);
 }

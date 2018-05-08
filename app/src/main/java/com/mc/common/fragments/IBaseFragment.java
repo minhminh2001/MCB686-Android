@@ -17,6 +17,8 @@ public interface IBaseFragment {
 
     int getTitleId();
 
+    String getTitleString();
+
     void initToolbar(@NonNull ActionBar supportActionBar);
 
     void showProgress(boolean show);

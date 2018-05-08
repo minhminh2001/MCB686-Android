@@ -1,8 +1,10 @@
-package com.mc.books.activity;
+package com.mc.books;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -35,8 +37,14 @@ public class SplashActivity extends BaseAppCompatActivity {
         handler.postDelayed(() -> {
             AloneFragmentActivity.with(getApplicationContext())
                     .start(SignInFragment.class);
+            startActivity(new Intent(SplashActivity.this, SignInActivity.class));
             finish();
         }, 2000);
+    }
+
+    @Override
+    public ActionBar getAppSupportActionBar() {
+        return null;
     }
 
     @Override

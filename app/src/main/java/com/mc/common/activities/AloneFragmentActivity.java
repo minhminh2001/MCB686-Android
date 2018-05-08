@@ -10,12 +10,17 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.WindowManager;
 
+import com.bon.sharepreferences.AppPreferences;
 import com.mc.books.R;
 import com.mc.common.Keys;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import java8.util.function.Consumer;
 
 /**
@@ -26,8 +31,8 @@ public class AloneFragmentActivity extends BaseAppCompatActivity {
     private static final String FRAGMENT_NAME = "fragment_name";
     private static final String TRANSLUCENT = "translucent";
 
-//    @BindView(R.id.toolbar)
-//    Toolbar toolbar;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     // fragment
     private Fragment fragment;
@@ -40,9 +45,9 @@ public class AloneFragmentActivity extends BaseAppCompatActivity {
         }
 
         setContentView(R.layout.alone_fragment_activity);
-//        ButterKnife.bind(this);
+        ButterKnife.bind(this);
 
-//        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
         if (savedInstanceState == null) {
             Bundle bundle = getIntent().getExtras();
             getFragmentForOpen(bundle, fr -> replaceFragment(fr, false));
@@ -54,6 +59,7 @@ public class AloneFragmentActivity extends BaseAppCompatActivity {
      * @return
      */
     protected Bundle getArgsForFragment(Bundle bundle) {
+        if (bundle == null) return null;
         return bundle.getBundle(Keys.ARGS);
     }
 
@@ -62,7 +68,12 @@ public class AloneFragmentActivity extends BaseAppCompatActivity {
      * @param fragmentForOpen
      */
     protected void getFragmentForOpen(Bundle bundle, Consumer<Fragment> fragmentForOpen) {
-        fragmentForOpen.accept(Fragment.instantiate(getBaseContext(), bundle.getString(FRAGMENT_NAME), getArgsForFragment(bundle)));
+        String fragment;
+        if (bundle.getString(FRAGMENT_NAME) == null) {
+            fragment = AppPreferences.getInstance(getAppContext()).getString("FRAGMENT_INTENT");
+        } else
+            fragment = bundle.getString(FRAGMENT_NAME);
+        fragmentForOpen.accept(Fragment.instantiate(getBaseContext(), fragment, getArgsForFragment(bundle)));
     }
 
     /**
@@ -94,6 +105,11 @@ public class AloneFragmentActivity extends BaseAppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public ActionBar getAppSupportActionBar() {
+        return getSupportActionBar();
     }
 
     /**

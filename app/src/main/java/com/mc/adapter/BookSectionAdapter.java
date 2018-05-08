@@ -1,5 +1,6 @@
 package com.mc.adapter;
 
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,7 +8,10 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.bon.customview.textview.ExtTextView;
+import com.bon.eventbus.IEvent;
+import com.bon.eventbus.RxBus;
 import com.mc.books.R;
+import com.mc.events.DashboadEvent;
 
 import java.util.List;
 
@@ -15,19 +19,25 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionParameters;
 import io.github.luizgrp.sectionedrecyclerviewadapter.StatelessSection;
+import java8.util.function.Consumer;
 
 public class BookSectionAdapter extends StatelessSection {
 
-    String categoryBook;
-    List<String> list;
+    private String categoryBook;
+    private List<String> list;
+    private RxBus<IEvent> bus;
+    private Consumer<View> imgMoreConsumer;
+    private Consumer<String> cvBookConsumer;
 
-    public BookSectionAdapter(String categoryBook, List<String> list) {
+    public BookSectionAdapter(String categoryBook, List<String> list, Consumer<View> imgMoreConsumer, Consumer<String> cvBookConsumer) {
         super(SectionParameters.builder()
                 .itemResourceId(R.layout.item_book_content)
                 .headerResourceId(R.layout.item_book_header)
                 .build());
         this.categoryBook = categoryBook;
         this.list = list;
+        this.imgMoreConsumer = imgMoreConsumer;
+        this.cvBookConsumer = cvBookConsumer;
     }
 
     @Override
@@ -48,7 +58,8 @@ public class BookSectionAdapter extends StatelessSection {
     @Override
     public void onBindItemViewHolder(RecyclerView.ViewHolder holder, int position) {
       ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
-
+        itemViewHolder.imgMore.setOnClickListener(view -> imgMoreConsumer.accept(itemViewHolder.imgMore));
+        itemViewHolder.cvBook.setOnClickListener(view -> cvBookConsumer.accept("123"));
     }
 
     @Override
@@ -72,6 +83,8 @@ public class BookSectionAdapter extends StatelessSection {
         ExtTextView txtReadmore;
         @BindView(R.id.imgNext)
         ImageView imgNext;
+        @BindView(R.id.cvBook)
+        CardView cvBook;
 
         public ItemViewHolder(View itemView) {
             super(itemView);

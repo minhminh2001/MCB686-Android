@@ -1,9 +1,11 @@
 package com.mc.books.fragments.home.dashboad;
 
 import android.util.Log;
+import android.view.View;
 
 import com.mc.common.presenters.BaseDataPresenter;
 import com.mc.di.AppComponent;
+import com.mc.events.DashboadEvent;
 import com.mc.events.SignInEvent;
 
 
@@ -11,13 +13,12 @@ public class DashboardPresenter<V extends IDashboardView> extends BaseDataPresen
 
     protected DashboardPresenter(AppComponent appComponent) {
         super(appComponent);
-        bus.subscribe(this, SignInEvent.class, signInEvent -> {
+        bus.subscribe(this, DashboadEvent.class, dashbroadevent -> {
         });
     }
 
     @Override
-    public void onSignIn() {
-        Log.e("DashboardPresenter", "");
-        getOptView().doIfPresent(v -> v.onSignUpSuccess());
+    public void showDialog(boolean isShow, View view) {
+        getOptView().doIfPresent(v -> v.onShowDialog(isShow, view));
     }
 }

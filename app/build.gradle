@@ -136,6 +136,9 @@ dependencies {
         exclude group: 'com.android.support', module: "support-v4"
 
     }
+
     implementation 'io.github.luizgrp.sectionedrecyclerviewadapter:sectionedrecyclerviewadapter:1.2.0'
+
+    implementation 'com.github.skydoves:powermenu:2.0.4'
 }
 
