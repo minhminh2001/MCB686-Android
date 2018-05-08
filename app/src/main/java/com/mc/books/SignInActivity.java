@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -36,6 +37,11 @@ public class SignInActivity extends BaseAppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_in_activity);
         ButterKnife.bind(this);
+    }
+
+    @Override
+    public ActionBar getAppSupportActionBar() {
+        return null;
     }
 
     @Override
@@ -78,15 +84,5 @@ public class SignInActivity extends BaseAppCompatActivity {
                     public void onFailure(Exception e) { }
                 }
         );
-    }
-
-    @Override
-    public void setToolbarTitle(int titleId) {
-
-    }
-
-    @Override
-    public void setToolbarTitle(@NonNull String titleId) {
-
     }
 }

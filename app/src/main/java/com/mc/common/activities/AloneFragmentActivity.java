@@ -8,9 +8,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.WindowManager;
@@ -51,24 +51,6 @@ public class AloneFragmentActivity extends BaseAppCompatActivity {
         if (savedInstanceState == null) {
             Bundle bundle = getIntent().getExtras();
             getFragmentForOpen(bundle, fr -> replaceFragment(fr, false));
-        }
-    }
-
-    @Override
-    public void setToolbarTitle(@StringRes int titleId) {
-        if (getSupportActionBar() != null) {
-            if (titleId == 0) {
-                setToolbarTitle("");
-            } else {
-                setToolbarTitle(getResources().getString(titleId));
-            }
-        }
-    }
-
-    @Override
-    public void setToolbarTitle(@NonNull String titleId) {
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(titleId);
         }
     }
 
@@ -123,6 +105,11 @@ public class AloneFragmentActivity extends BaseAppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public ActionBar getAppSupportActionBar() {
+        return getSupportActionBar();
     }
 
     /**

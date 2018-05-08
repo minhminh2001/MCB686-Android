@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.v4.view.ViewCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -82,21 +83,8 @@ public class MainActivity extends BaseAppCompatActivity {
     }
 
     @Override
-    public void setToolbarTitle(@StringRes int titleId) {
-        if (getSupportActionBar() != null) {
-            if (titleId == 0) {
-                setToolbarTitle("");
-            } else {
-                setToolbarTitle(getResources().getString(titleId));
-            }
-        }
-    }
-
-    @Override
-    public void setToolbarTitle(@NonNull String titleId) {
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(titleId);
-        }
+    public ActionBar getAppSupportActionBar() {
+        return getSupportActionBar();
     }
 
     @Override

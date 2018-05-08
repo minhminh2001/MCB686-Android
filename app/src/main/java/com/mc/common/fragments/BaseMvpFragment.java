@@ -87,7 +87,7 @@ public abstract class BaseMvpFragment<V extends MvpView, P extends MvpPresenter<
         }
 
         // update toolbar
-        Optional.from(mActivity.getSupportActionBar())
+        Optional.from(mActivity.getAppSupportActionBar())
                 .doIfPresent(actionBar -> initToolbar(actionBar));
     }
 

@@ -3,13 +3,11 @@ package com.mc.books;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.mc.books.fragments.account.signin.SignInFragment;
-import com.mc.common.activities.AloneFragmentActivity;
 import com.mc.common.activities.BaseAppCompatActivity;
 
 import butterknife.BindView;
@@ -34,25 +32,19 @@ public class SplashActivity extends BaseAppCompatActivity {
 
         final Handler handler = new Handler();
         handler.postDelayed(() -> {
-            // startActivity(new Intent(SplashActivity.this, SignInActivity.class));
-            AloneFragmentActivity.with(SplashActivity.this).start(SignInFragment.class);
+            startActivity(new Intent(SplashActivity.this, SignInActivity.class));
             finish();
         }, 2000);
     }
 
     @Override
+    public ActionBar getAppSupportActionBar() {
+        return null;
+    }
+
+    @Override
     protected void onStop() {
         super.onStop();
-
-    }
-
-    @Override
-    public void setToolbarTitle(int titleId) {
-
-    }
-
-    @Override
-    public void setToolbarTitle(@NonNull String titleId) {
 
     }
 }
