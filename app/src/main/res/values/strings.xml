@@ -11,4 +11,6 @@
     <string name="login">Đăng nhập</string>
     <string name="login_btn">Tham gia với MCBoooks</string>
     <string name="search_book">Tìm kiếm sách</string>
+    <string name="delete_book">Xóa sách</string>
+    <string name="share_book">Chia sẻ</string>
 </resources>

@@ -63,11 +63,6 @@ public class MainActivity extends BaseAppCompatActivity {
     public static final int MORE_TAB = 113;
     public int currentFragmentIndex = HOME_TAB;
 
-    // KEY CLOARK
-//      prefsEditor.putString("refresh_token", storedAccount.getRefreshToken());
-//        prefsEditor.putString("accessToken", storedAccount.getAccessToken());
-//        prefsEditor.putString("authorizationCode", storedAccount.getAuthorizationCode());
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,8 +79,8 @@ public class MainActivity extends BaseAppCompatActivity {
         ViewCompat.setBackground(llBottomBar, sd);
         ViewCompat.setLayerType(llBottomBar, ViewCompat.LAYER_TYPE_SOFTWARE, null);
 
-        // get callback url
         this.changeTabBottom(HOME_TAB);
+
         Log.e("redirectUrl", "redirectUrl:: " + AppPreferences.getInstance(this).getString("REDIRECT_URL"));
         Log.e("refresh_token", "refresh_token:: " + AppPreferences.getInstance(this).getString("refresh_token"));
         Log.e("accessToken", "accessToken:: " + AppPreferences.getInstance(this).getString("accessToken"));

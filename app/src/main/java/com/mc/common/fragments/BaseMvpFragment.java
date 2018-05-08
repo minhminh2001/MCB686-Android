@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bon.eventbus.IEvent;
+import com.bon.eventbus.RxBus;
 import com.bon.interfaces.Optional;
 import com.bon.util.KeyboardUtils;
 import com.hannesdorfmann.mosby3.mvp.MvpFragment;
@@ -17,6 +19,11 @@ import com.hannesdorfmann.mosby3.mvp.MvpView;
 import com.mc.application.AppContext;
 import com.mc.common.activities.BaseAppCompatActivity;
 import com.mc.di.AppComponent;
+import com.mc.interactors.IDataModule;
+import com.mc.interactors.database.IDbModule;
+import com.mc.interactors.service.IApiService;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 
@@ -29,6 +36,18 @@ public abstract class BaseMvpFragment<V extends MvpView, P extends MvpPresenter<
     private static final String TAG = BaseMvpFragment.class.getSimpleName();
 
     protected BaseAppCompatActivity mActivity;
+
+    @Inject
+    protected RxBus<IEvent> bus;
+
+    @Inject
+    protected IDataModule dataModule;
+
+    @Inject
+    protected IDbModule dbModule;
+
+    @Inject
+    protected IApiService apiService;
 
     @Override
     public void onAttach(Activity activity) {

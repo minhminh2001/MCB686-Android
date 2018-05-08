@@ -1,4 +1,4 @@
-package com.mc.models;
+package com.mc.models.home;
 
 public class BookResponse {
 
