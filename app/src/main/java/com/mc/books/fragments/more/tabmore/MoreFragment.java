@@ -1,4 +1,4 @@
-package com.mc.books.fragments.more;
+package com.mc.books.fragments.more.tabmore;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 
 import com.bon.customview.textview.ExtTextView;
 import com.mc.books.R;
-import com.mc.books.fragments.profile.UserProfileFragment;
+import com.mc.books.fragments.more.profile.UserProfileFragment;
 import com.mc.common.fragments.BaseMvpFragment;
 import com.mc.utilities.FragmentUtils;
 

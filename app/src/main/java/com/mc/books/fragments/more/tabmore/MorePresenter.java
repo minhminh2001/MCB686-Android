@@ -1,6 +1,4 @@
-package com.mc.books.fragments.more;
-
-import android.util.Log;
+package com.mc.books.fragments.more.tabmore;
 
 import com.mc.common.presenters.BaseDataPresenter;
 import com.mc.di.AppComponent;

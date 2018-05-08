@@ -1,10 +1,12 @@
-package com.mc.books.fragments.profile;
+package com.mc.books.fragments.more.profile;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatSpinner;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,8 +20,6 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 public class UserProfileFragment extends BaseMvpFragment<IUserProfileView, IUserProfilePresenter<IUserProfileView>> implements IUserProfileView {
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
     @BindView(R.id.imgAvartar)
     ImageView imgAvartar;
     @BindView(R.id.edUserName)
@@ -71,6 +71,13 @@ public class UserProfileFragment extends BaseMvpFragment<IUserProfileView, IUser
         return R.layout.user_profile_fragment;
     }
 
+    @Override
+    public void initToolbar(@NonNull ActionBar supportActionBar) {
+        supportActionBar.setDisplayHomeAsUpEnabled(true);
+        supportActionBar.setHomeAsUpIndicator(R.drawable.ic_arrow_right);
+        supportActionBar.setTitle(R.string.title_toolbar);
+        mActivity.getAppSupportActionBar().show();
+    }
 
     @Override
     public void onDestroyView() {
@@ -93,9 +100,5 @@ public class UserProfileFragment extends BaseMvpFragment<IUserProfileView, IUser
         }
     }
 
-    @Override
-    public void initToolbar(@NonNull ActionBar supportActionBar) {
-        super.initToolbar(supportActionBar);
 
-    }
 }
