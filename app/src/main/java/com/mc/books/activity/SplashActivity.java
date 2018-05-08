@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.view.Window;
 import android.view.WindowManager;
+
 import com.mc.books.R;
 import com.mc.books.SignInActivity;
 import com.mc.common.activities.BaseAppCompatActivity;

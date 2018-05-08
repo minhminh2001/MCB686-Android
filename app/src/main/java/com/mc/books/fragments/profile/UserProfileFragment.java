@@ -1,12 +1,11 @@
 package com.mc.books.fragments.profile;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.AppCompatSpinner;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -16,11 +15,9 @@ import com.mc.books.R;
 import com.mc.common.fragments.BaseMvpFragment;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
-public class UserProfileFragment extends BaseMvpFragment<UserProfileView, IUserProfilePresenter<UserProfileView>> implements UserProfileView {
+public class UserProfileFragment extends BaseMvpFragment<IUserProfileView, IUserProfilePresenter<IUserProfileView>> implements IUserProfileView {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.imgAvartar)
@@ -60,7 +57,7 @@ public class UserProfileFragment extends BaseMvpFragment<UserProfileView, IUserP
     }
 
     @Override
-    public IUserProfilePresenter<UserProfileView> createPresenter() {
+    public IUserProfilePresenter<IUserProfileView> createPresenter() {
         return new UserProfilePresenter<>(getAppComponent());
     }
 
@@ -73,7 +70,7 @@ public class UserProfileFragment extends BaseMvpFragment<UserProfileView, IUserP
     public int getResourceId() {
         return R.layout.user_profile_fragment;
     }
-    
+
 
     @Override
     public void onDestroyView() {
@@ -94,5 +91,11 @@ public class UserProfileFragment extends BaseMvpFragment<UserProfileView, IUserP
             case R.id.btnSaveProfile:
                 break;
         }
+    }
+
+    @Override
+    public void initToolbar(@NonNull ActionBar supportActionBar) {
+        super.initToolbar(supportActionBar);
+
     }
 }

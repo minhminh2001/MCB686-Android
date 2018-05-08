@@ -15,7 +15,6 @@ import android.widget.LinearLayout;
 
 import com.bon.viewanimation.Techniques;
 import com.bon.viewanimation.YoYo;
-import com.mc.books.R;
 import com.mc.books.fragments.home.dashboad.DashboardFragment;
 import com.mc.books.fragments.more.MoreFragment;
 import com.mc.common.activities.BaseAppCompatActivity;
@@ -131,7 +130,6 @@ public class MainActivity extends BaseAppCompatActivity {
         } else if (index == MORE_TAB) {
             more.setImageResource(R.drawable.ic_bars_line_active);
             lineMore.setVisibility(View.VISIBLE);
-            toolbar.setVisibility(View.GONE);
         }
     }
 
