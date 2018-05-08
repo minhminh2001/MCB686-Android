@@ -44,7 +44,6 @@ public class DashboardFragment extends BaseMvpFragment<IDashboardView, IDashboar
     @BindView(R.id.rlDashbroad)
     RelativeLayout rlDashbroad;
 
-    private DisplayMetrics displayMetrics;
     private SectionedRecyclerViewAdapter sectionAdapter;
     private CustomPowerMenu dialogBookMenu;
 

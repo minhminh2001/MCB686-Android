@@ -17,4 +17,9 @@
     <string name="book_tab_1">Thông tin chung</string>
     <string name="book_tab_3">Bài học</string>
     <string name="book_tab_2">Bài tập</string>
+    <string name="general">Tổng quát</string>
+    <string name="showMore">Xem thêm</string>
+    <string name="showLess">Thu gọn</string>
+    <string name="information_book">Thông tin chung</string>
+
 </resources>
