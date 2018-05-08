@@ -88,7 +88,7 @@
     <style name="tabMoreImage">
         <item name="android:layout_width">@dimen/width_image_tab_more</item>
         <item name="android:layout_height">@dimen/height_image_tab_more</item>
-
+        <item name="android:scaleType">fitCenter</item>
     </style>
 
     <style name="tabMoreText">

@@ -1,4 +1,4 @@
-package com.mc.books;
+package com.mc.books.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,10 +7,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.view.Window;
 import android.view.WindowManager;
-
 import com.mc.books.R;
-import com.mc.books.fragments.account.signin.SignInFragment;
-import com.mc.common.activities.AloneFragmentActivity;
+import com.mc.books.SignInActivity;
 import com.mc.common.activities.BaseAppCompatActivity;
 
 import butterknife.BindView;
@@ -35,8 +33,8 @@ public class SplashActivity extends BaseAppCompatActivity {
 
         final Handler handler = new Handler();
         handler.postDelayed(() -> {
-            AloneFragmentActivity.with(getApplicationContext())
-                    .start(SignInFragment.class);
+//            AloneFragmentActivity.with(getApplicationContext())
+//                    .start(SignInFragment.class);
             startActivity(new Intent(SplashActivity.this, SignInActivity.class));
             finish();
         }, 2000);
