@@ -1,15 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
-    <com.bon.customview.textview.ExtTextView
-        android:id="@+id/abc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        app:textViewFontAssetName="@string/font_bold"
-        android:text="more"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/header_tab_more"
+            android:background="@drawable/header_tab_more"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_image_avatar"
+                android:layout_marginTop="@dimen/margin_top_avatar"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgAvartar"
+                    android:layout_width="@dimen/width_image_avatar"
+                    android:layout_height="@dimen/height_image_avatar"
+                    android:layout_marginLeft="@dimen/margin_left_avatar"
+                    android:background="@drawable/bg_border_avatar"
+                    android:padding="@dimen/padding_circleImageView_avatar"
+                    android:src="@drawable/ic_avatar" />
+
+                <com.bon.customview.textview.ExtTextView
+                    android:id="@+id/txtName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/margin_left_title_name"
+                    android:fontFamily="@string/font_bold"
+                    android:text="Nguyen Thu Trang"
+                    android:textColor="@color/colorDarkBlue"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLineTabMore" />
+
+
+        <com.bon.customview.scrollview.ExtScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_main"
+                android:orientation="vertical">
+
+                <LinearLayout android:id="@+id/llBooksname"
+                    style="@style/tabMoreLinear">
+
+                    <ImageView
+                        style="@style/tabMoreImage"
+                        android:src="@drawable/ic_book_1" />
+
+                    <com.bon.customview.textview.ExtTextView
+                        style="@style/tabMoreText"
+                        android:text="@string/book_name"
+                         />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llCharts"
+                    style="@style/tabMoreLinear">
+
+                    <ImageView
+                        style="@style/tabMoreImage"
+                        android:src="@drawable/ic_people" />
+
+                    <com.bon.customview.textview.ExtTextView
+                        android:text="@string/charts"
+                        style="@style/tabMoreText" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llFanpage"
+                    style="@style/tabMoreLinear">
+
+                    <ImageView
+                        style="@style/tabMoreImage"
+                        android:src="@drawable/ic_facebook_logo" />
+
+                    <com.bon.customview.textview.ExtTextView
+                        style="@style/tabMoreText"
+                        android:text="@string/fan_page"
+                         />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llSetting"
+                    style="@style/tabMoreLinear">
+
+                    <ImageView
+                        style="@style/tabMoreImage"
+                        android:src="@drawable/ic_settings" />
+
+                    <com.bon.customview.textview.ExtTextView
+                        style="@style/tabMoreText"
+                        android:text="@string/setting"
+                       />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llChangePassword"
+                    style="@style/tabMoreLinear">
+
+                    <ImageView
+                        style="@style/tabMoreImage"
+                        android:src="@drawable/ic_lock" />
+
+                    <com.bon.customview.textview.ExtTextView
+                        style="@style/tabMoreText"
+                        android:text="@string/change_password"
+                         />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llUsermanual"
+                    style="@style/tabMoreLinear">
+
+                    <ImageView
+                        style="@style/tabMoreImage"
+                        android:src="@drawable/ic_file_group_solid" />
+
+                    <com.bon.customview.textview.ExtTextView
+                        style="@style/tabMoreText"
+                        android:text="@string/user_manual"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llFeedback"
+                    style="@style/tabMoreLinear">
+
+                    <ImageView
+                        style="@style/tabMoreImage"
+                        android:src="@drawable/ic_email" />
+
+                    <com.bon.customview.textview.ExtTextView
+                        style="@style/tabMoreText"
+                        android:text="@string/feedback"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llLegal"
+                    style="@style/tabMoreLinear">
+
+                    <ImageView
+                        style="@style/tabMoreImage"
+                        android:src="@drawable/ic_balance_line" />
+
+                    <com.bon.customview.textview.ExtTextView
+                        style="@style/tabMoreText"
+                        android:text="@string/legal"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llSupport"
+                    style="@style/tabMoreLinear">
+
+                    <ImageView
+                        style="@style/tabMoreImage"
+                        android:src="@drawable/ic_help_solid" />
+
+                    <com.bon.customview.textview.ExtTextView
+                        style="@style/tabMoreText"
+                        android:text="@string/support"
+                         />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llSignout"
+                    style="@style/tabMoreLinear">
+
+                    <ImageView
+                        style="@style/tabMoreImage"
+                        android:src="@drawable/ic_sign_out_option" />
+
+                    <com.bon.customview.textview.ExtTextView
+                        style="@style/tabMoreText"
+                        android:text="@string/sign_out"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+        </com.bon.customview.scrollview.ExtScrollView>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_image_avatar"
+        android:layout_marginTop="@dimen/margin_top_avatar">
+
+        <ImageView
+            android:id="@+id/imgNameChange"
+            android:layout_width="@dimen/width_image_button_edit"
+            android:layout_height="@dimen/height_image_button_edit"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_right_icon_edit"
+            android:background="@drawable/bg_btn_click"
+            app:srcCompat="@drawable/ic_border_color" />
+    </RelativeLayout>
+</RelativeLayout>

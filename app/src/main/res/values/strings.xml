@@ -11,4 +11,30 @@
     <string name="login">Đăng nhập</string>
     <string name="login_btn">Tham gia với MCBoooks</string>
     <string name="search_book">Tìm kiếm sách</string>
+
+    //Tab_more
+    <string name="book_name">Sách quan tâm</string>
+    <string name="charts">Bảng xếp hạng</string>
+    <string name="fan_page">Fanpage</string>
+    <string name="setting">Cài đặt</string>
+    <string name="change_password">Đổi mật khẩu</string>
+    <string name="user_manual">Hướng dẫn sử dụng</string>
+    <string name="feedback">Góp ý</string>
+    <string name="legal">Pháp lý</string>
+    <string name="support">Hỗ trợ</string>
+    <string name="sign_out">Đăng xuất</string>
+
+    //activityUserProfile
+    <string name="name">Họ và tên</string>
+    <string name="date_of_birth">Ngày sinh</string>
+    <string name="phone_number">Số điện thoại</string>
+    <string name="sex">Giới tính</string>
+    <string name="email">Email</string>
+    <string name="city">Tỉnh/Thành phố</string>
+    <string name="county">Quận/Huyện</string>
+    <string name="address">Địa chỉ</string>
+    <string name="btn_save_profile">Lưu</string>
+    <string name="title_toolbar">Thông tin tài khoản</string>
+
+
 </resources>

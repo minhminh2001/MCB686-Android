@@ -1,4 +1,4 @@
-package com.mc.books;
+package com.mc.books.activity;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.mc.books.R;
 import com.mc.books.fragments.account.signin.SignInFragment;
 import com.mc.common.activities.AloneFragmentActivity;
 import com.mc.common.activities.BaseAppCompatActivity;
@@ -32,7 +33,7 @@ public class SplashActivity extends BaseAppCompatActivity {
 
         final Handler handler = new Handler();
         handler.postDelayed(() -> {
-            AloneFragmentActivity.with(getAppContext())
+            AloneFragmentActivity.with(getApplicationContext())
                     .start(SignInFragment.class);
             finish();
         }, 2000);

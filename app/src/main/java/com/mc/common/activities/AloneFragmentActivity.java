@@ -154,6 +154,7 @@ public class AloneFragmentActivity extends BaseAppCompatActivity {
 
         public Intent createIntentForStart(Class<? extends Fragment> fragmentClass) {
             Intent intent = getIntent(contextForOpen, fragmentForOpen, params, AloneFragmentActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.putExtra(FRAGMENT_NAME, fragmentClass.getName());
             intent.putExtra(TRANSLUCENT, translucent);
             return intent;
