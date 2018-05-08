@@ -8,9 +8,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.WindowManager;
 
@@ -18,6 +19,8 @@ import com.bon.sharepreferences.AppPreferences;
 import com.mc.books.R;
 import com.mc.common.Keys;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import java8.util.function.Consumer;
 
 /**
@@ -28,8 +31,8 @@ public class AloneFragmentActivity extends BaseAppCompatActivity {
     private static final String FRAGMENT_NAME = "fragment_name";
     private static final String TRANSLUCENT = "translucent";
 
-//    @BindView(R.id.toolbar)
-//    Toolbar toolbar;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     // fragment
     private Fragment fragment;
@@ -42,17 +45,30 @@ public class AloneFragmentActivity extends BaseAppCompatActivity {
         }
 
         setContentView(R.layout.alone_fragment_activity);
-//        ButterKnife.bind(this);
+        ButterKnife.bind(this);
 
-//        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
         if (savedInstanceState == null) {
             Bundle bundle = getIntent().getExtras();
-            try {
-                AppPreferences.getInstance(getAppContext()).putString("FRAGMENT_INTENT", bundle.getString(FRAGMENT_NAME));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
             getFragmentForOpen(bundle, fr -> replaceFragment(fr, false));
+        }
+    }
+
+    @Override
+    public void setToolbarTitle(@StringRes int titleId) {
+        if (getSupportActionBar() != null) {
+            if (titleId == 0) {
+                setToolbarTitle("");
+            } else {
+                setToolbarTitle(getResources().getString(titleId));
+            }
+        }
+    }
+
+    @Override
+    public void setToolbarTitle(@NonNull String titleId) {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(titleId);
         }
     }
 

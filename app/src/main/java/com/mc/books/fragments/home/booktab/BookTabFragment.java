@@ -34,12 +34,7 @@ public class BookTabFragment extends BaseMvpFragment<IBookTabView, IBookTabPrese
     }
 
     @Override
-    public int getTitleId() {
-        return super.getTitleId();
-    }
-
-    @Override
-    public String getTitle() {
+    public String getTitleString() {
         return "300 bài hát thiếu nhi";
     }
 }

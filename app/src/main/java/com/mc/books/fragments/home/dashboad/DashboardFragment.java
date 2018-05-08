@@ -15,12 +15,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.bon.customview.datetime.ExtDatePickerDialogFragment;
 import com.mc.adapter.BookSectionAdapter;
 import com.mc.books.R;
 import com.mc.books.fragments.home.booktab.BookTabFragment;
 import com.mc.common.fragments.BaseMvpFragment;
-import com.mc.events.DashboadEvent;
 import com.mc.models.home.DialogBookMenuItem;
 import com.mc.utilities.FragmentUtils;
 import com.mc.utilities.MenuUtil;
@@ -28,7 +26,6 @@ import com.skydoves.powermenu.CustomPowerMenu;
 import com.skydoves.powermenu.OnMenuItemClickListener;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import butterknife.BindView;
@@ -36,7 +33,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
-import java8.util.function.Consumer;
 
 
 public class DashboardFragment extends BaseMvpFragment<IDashboardView, IDashboardPresenter<IDashboardView>> implements IDashboardView {
@@ -95,17 +91,12 @@ public class DashboardFragment extends BaseMvpFragment<IDashboardView, IDashboar
     }
 
     private void goToBookTab() {
-        FragmentUtils.replaceFragment( getActivity(), BookTabFragment.newInstance());
+        FragmentUtils.replaceFragment(getActivity(), BookTabFragment.newInstance());
     }
 
     @Override
     public int getTitleId() {
         return R.string.my_book;
-    }
-
-    @Override
-    public String getTitle() {
-        return getAppContext().getResources().getString(R.string.my_book);
     }
 
     @Override

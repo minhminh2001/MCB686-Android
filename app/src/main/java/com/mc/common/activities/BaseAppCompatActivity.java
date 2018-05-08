@@ -43,24 +43,6 @@ public abstract class BaseAppCompatActivity extends ExtBaseActivity implements I
     }
 
     @Override
-    public void setToolbarTitle(@StringRes int titleId) {
-        if (getSupportActionBar() != null) {
-            if (titleId == 0) {
-                setToolbarTitle("");
-            } else {
-                setToolbarTitle(getResources().getString(titleId));
-            }
-        }
-    }
-
-    @Override
-    public void setToolbarTitle(@NonNull String titleId) {
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(titleId);
-        }
-    }
-
-    @Override
     protected void onDestroy() {
         super.onDestroy();
         KeyboardUtils.hideSoftKeyboard(this);

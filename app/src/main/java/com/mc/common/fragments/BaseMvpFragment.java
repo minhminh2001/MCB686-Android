@@ -13,11 +13,11 @@ import com.bon.eventbus.IEvent;
 import com.bon.eventbus.RxBus;
 import com.bon.interfaces.Optional;
 import com.bon.util.KeyboardUtils;
+import com.bon.util.StringUtils;
 import com.hannesdorfmann.mosby3.mvp.MvpFragment;
 import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby3.mvp.MvpView;
 import com.mc.application.AppContext;
-import com.mc.books.MainActivity;
 import com.mc.common.activities.BaseAppCompatActivity;
 import com.mc.di.AppComponent;
 import com.mc.interactors.IDataModule;
@@ -37,7 +37,6 @@ public abstract class BaseMvpFragment<V extends MvpView, P extends MvpPresenter<
     private static final String TAG = BaseMvpFragment.class.getSimpleName();
 
     protected BaseAppCompatActivity mActivity;
-    protected MainActivity mMainActivity;
 
     @Inject
     protected RxBus<IEvent> bus;
@@ -56,9 +55,6 @@ public abstract class BaseMvpFragment<V extends MvpView, P extends MvpPresenter<
         super.onAttach(activity);
         if (activity instanceof BaseAppCompatActivity) {
             this.mActivity = (BaseAppCompatActivity) activity;
-        if (activity instanceof MainActivity) {
-            this.mMainActivity = (MainActivity) activity;
-        }
         }
     }
 
@@ -84,10 +80,14 @@ public abstract class BaseMvpFragment<V extends MvpView, P extends MvpPresenter<
         ButterKnife.bind(view);
 
         // update title
-        mMainActivity.setToolbarTitle(getTitle());
+        if (StringUtils.isEmpty(getTitleString())) {
+            mActivity.setToolbarTitle(getTitleId());
+        } else {
+            mActivity.setToolbarTitle(getTitleString());
+        }
 
         // update toolbar
-        Optional.from(mMainActivity.getSupportActionBar())
+        Optional.from(mActivity.getSupportActionBar())
                 .doIfPresent(actionBar -> initToolbar(actionBar));
     }
 
@@ -114,7 +114,7 @@ public abstract class BaseMvpFragment<V extends MvpView, P extends MvpPresenter<
     }
 
     @Override
-    public String getTitle() {
+    public String getTitleString() {
         return "";
     }
 

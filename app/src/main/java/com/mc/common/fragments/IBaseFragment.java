@@ -17,7 +17,7 @@ public interface IBaseFragment {
 
     int getTitleId();
 
-    String getTitle();
+    String getTitleString();
 
     void initToolbar(@NonNull ActionBar supportActionBar);
 

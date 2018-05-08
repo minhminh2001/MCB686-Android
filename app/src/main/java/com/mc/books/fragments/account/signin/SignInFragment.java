@@ -60,7 +60,7 @@ public class SignInFragment extends BaseMvpFragment<ISignInView, ISignInPresente
 
     @Override
     public int getTitleId() {
-        return super.getTitleId();
+        return R.string.login;
     }
 
     @Override
