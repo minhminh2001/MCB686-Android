@@ -1,9 +1,7 @@
 <resources>
     <string name="app_name">McBook</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
@@ -11,6 +9,26 @@
     <string name="login">Đăng nhập</string>
     <string name="login_btn">Tham gia với MCBoooks</string>
     <string name="search_book">Tìm kiếm sách</string>
+    <string name="book_name">Sách quan tâm</string>
+    <string name="charts">Bảng xếp hạng</string>
+    <string name="fan_page">Fanpage</string>
+    <string name="setting">Cài đặt</string>
+    <string name="change_password">Đổi mật khẩu</string>
+    <string name="user_manual">Hướng dẫn sử dụng</string>
+    <string name="feedback">Góp ý</string>
+    <string name="legal">Pháp lý</string>
+    <string name="support">Hỗ trợ</string>
+    <string name="sign_out">Đăng xuất</string>
+    <string name="name">Họ và tên</string>
+    <string name="date_of_birth">Ngày sinh</string>
+    <string name="phone_number">Số điện thoại</string>
+    <string name="sex">Giới tính</string>
+    <string name="email">Email</string>
+    <string name="city">Tỉnh/Thành phố</string>
+    <string name="county">Quận/Huyện</string>
+    <string name="address">Địa chỉ</string>
+    <string name="btn_save_profile">Lưu</string>
+    <string name="title_toolbar">Thông tin tài khoản</string>
     <string name="delete_book">Xóa sách</string>
     <string name="share_book">Chia sẻ</string>
     <string name="my_book">Sách của tôi</string>
@@ -21,5 +39,5 @@
     <string name="showMore">Xem thêm</string>
     <string name="showLess">Thu gọn</string>
     <string name="information_book">Thông tin chung</string>
-
 </resources>
+

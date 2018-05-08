@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bon.customview.button.ExtButton;
-import com.mc.books.MainActivity;
+import com.mc.books.activity.MainActivity;
 import com.mc.books.R;
 import com.mc.common.fragments.BaseMvpFragment;
 import com.mc.utilities.Constant;

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_toolbar"
+                android:background="@color/colorWhite"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+        </android.support.design.widget.AppBarLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/progress_bar_padding"
+            android:background="@color/colorLineTabMore" />
+
+        <com.bon.customview.scrollview.ExtScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_main"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_image">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/width_image"
+                        android:layout_height="@dimen/height_image"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/margin_left_avatar"
+                        android:src="@drawable/download" />
+
+                    <ImageView
+                        android:id="@+id/imgAvartar"
+                        android:layout_width="@dimen/width_button_image"
+                        android:layout_height="@dimen/height_button_image"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginBottom="@dimen/margin_bottom_button_image"
+                        android:padding="@dimen/padding_button_image"
+                        app:srcCompat="@drawable/ic_ic_photo_camera_gray" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_left_ll"
+                    android:layout_marginRight="@dimen/margin_right_ll"
+                    android:layout_marginTop="@dimen/margin_top_ll"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.bon.customview.textview.ExtTextView
+                            style="@style/activityUserProfileText"
+                            android:text="@string/name" />
+
+                        <com.bon.customview.edittext.ExtEditText
+                            android:id="@+id/edUserName"
+                            style="@style/activityUserProfileEdittext"
+                            android:alpha="0.7"
+                            android:backgroundTint="@color/colorLineTabMore" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/activityUserProfileLL">
+
+                        <com.bon.customview.textview.ExtTextView
+                            style="@style/activityUserProfileText"
+                            android:text="@string/date_of_birth" />
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/edDateofBirth"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:alpha="0.3"
+                                android:ems="10"
+                                android:maxLines="1"
+                                android:padding="5dp"
+                                android:singleLine="true" />
+
+                            <android.support.v7.widget.AppCompatSpinner
+                                android:id="@+id/spDateofBirth"
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right"
+                                android:spinnerMode="dropdown" />
+
+                        </FrameLayout>
+                        <!--<Spinner-->
+                        <!--android:id="@+id/spDateofBirth"-->
+                        <!--style="@style/ThemeSpinner"-->
+                        <!--&gt;-->
+
+                        <!--</Spinner>-->
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/activityUserProfileLL">
+
+                        <com.bon.customview.textview.ExtTextView
+                            style="@style/activityUserProfileText"
+                            android:text="@string/phone_number" />
+
+                        <com.bon.customview.edittext.ExtEditText
+                            android:id="@+id/edPhoneNumber"
+                            style="@style/activityUserProfileEdittext"
+                            android:alpha="0.7"
+                            android:backgroundTint="@color/colorLineTabMore" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/activityUserProfileLL">
+
+                        <com.bon.customview.textview.ExtTextView
+                            style="@style/activityUserProfileText"
+                            android:text="@string/sex" />
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/edSex"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:alpha="0.3"
+                                android:ems="10"
+                                android:maxLines="1"
+                                android:padding="5dp"
+                                android:singleLine="true" />
+
+                            <android.support.v7.widget.AppCompatSpinner
+                                android:id="@+id/spSex"
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right"
+                                android:spinnerMode="dropdown" />
+
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/activityUserProfileLL">
+
+                        <com.bon.customview.textview.ExtTextView
+                            style="@style/activityUserProfileText"
+                            android:text="@string/email" />
+
+                        <com.bon.customview.edittext.ExtEditText
+                            android:id="@+id/edEmail"
+                            style="@style/activityUserProfileEdittext"
+                            android:alpha="0.7"
+                            android:backgroundTint="@color/colorLineTabMore" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/activityUserProfileLL">
+
+                        <com.bon.customview.textview.ExtTextView
+                            style="@style/activityUserProfileText"
+                            android:text="@string/city" />
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/edCity"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:alpha="0.3"
+                                android:ems="10"
+                                android:maxLines="1"
+                                android:padding="5dp"
+                                android:singleLine="true" />
+
+                            <android.support.v7.widget.AppCompatSpinner
+                                android:id="@+id/spCity"
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right"
+                                android:spinnerMode="dropdown" />
+
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/activityUserProfileLL">
+
+                        <com.bon.customview.textview.ExtTextView
+                            style="@style/activityUserProfileText"
+                            android:text="@string/county" />
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/edCounty"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:alpha="0.3"
+                                android:ems="10"
+                                android:maxLines="1"
+                                android:padding="5dp"
+                                android:singleLine="true" />
+
+                            <android.support.v7.widget.AppCompatSpinner
+                                android:id="@+id/spCounty"
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right"
+                                android:spinnerMode="dropdown" />
+
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/activityUserProfileLL">
+
+                        <com.bon.customview.textview.ExtTextView
+                            style="@style/activityUserProfileText"
+                            android:text="@string/address" />
+
+                        <com.bon.customview.edittext.ExtEditText
+                            android:id="@+id/edAddress"
+                            style="@style/activityUserProfileEdittext"
+                            android:alpha="0.7"
+                            android:backgroundTint="@color/colorLineTabMore" />
+                    </LinearLayout>
+
+                    <com.bon.customview.button.ExtButton
+                        android:id="@+id/btnSaveProfile"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_button_save"
+                        android:layout_marginBottom="@dimen/margin_bottom_button_save"
+                        android:layout_marginTop="@dimen/margin_top_button_save"
+                        android:background="@drawable/bg_btn_save_profile"
+                        android:fontFamily="@string/font_regular"
+                        android:text="@string/btn_save_profile"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_16"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.bon.customview.scrollview.ExtScrollView>
+    </LinearLayout>
+</RelativeLayout>

@@ -13,6 +13,8 @@ buildscript {
         classpath('org.codehaus.groovy:groovy-all:2.4.12') {
             exclude group: 'org.codehaus.groovy', module: 'groovy-all'
         }
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath 'com.jakewharton:butterknife-gradle-plugin:8.8.1'
     }
 }
 
@@ -20,7 +22,7 @@ ext {
     compileSdkVersion = 27
     buildToolsVersion = '27.0.3'
     minSdkVersion = 16
-    targetSdkVersion = 26
+    targetSdkVersion = 27
     androidVer = '27.1.1'
     constrainLayoutVer = '1.0.2'
     butterknifeVer = '8.8.1'
@@ -42,12 +44,16 @@ ext {
     mosbyVer = '3.1.0'
     leakCanary = '1.5.4'
     gif = '1.2.12'
+    circleImageView='2.2.0'
+    imagepicker='1.2.1'
 }
 
 allprojects {
     repositories {
         google()
         jcenter()
+        maven { url "https://maven.google.com" }
+        maven { url "https://jitpack.io" }
     }
 }
 

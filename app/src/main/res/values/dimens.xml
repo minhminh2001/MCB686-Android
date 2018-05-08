@@ -32,4 +32,50 @@
 
     <dimen name="fab_size">56dp</dimen>
     <dimen name="img_book_tab">85dp</dimen>
+    //tabMore
+    <dimen name="header_tab_more">119dp</dimen>
+    <dimen name="width_image_avatar">80dp</dimen>
+    <dimen name="height_image_avatar">80dp</dimen>
+    <dimen name="margin_top_avatar">19dp</dimen>
+    <dimen name="margin_left_avatar">20dp</dimen>
+    <dimen name="margin_left_title_name">15dp</dimen>
+    <dimen name="width_image_button_edit">24dp</dimen>
+    <dimen name="height_image_button_edit">24dp</dimen>
+    <dimen name="padding_circleImageView_avatar">2dp</dimen>
+    <dimen name="margin_right_icon_edit">50dp</dimen>
+    <dimen name="width_image_tab_more">16dp</dimen>
+    <dimen name="height_image_tab_more">20dp</dimen>
+    <dimen name="margin_left_image_tab_more">24dp</dimen>
+    <dimen name="margin_top_image_tab_more">31dp</dimen>
+    <dimen name="margin_top_image_tab_more2">28dp</dimen>
+
+    //text size
+    <dimen name="text_size_10">10sp</dimen>
+    <dimen name="text_size_12">12sp</dimen>
+    <dimen name="text_size_14">14sp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
+
+    //activityProfile
+    <dimen name="height_toolbar">44dp</dimen>
+    <dimen name="height_image">174dp</dimen>
+    <dimen name="width_image">174dp</dimen>
+    <dimen name="margin_bottom_button_image">13dp</dimen>
+    <dimen name="height_button_image">32dp</dimen>
+    <dimen name="width_button_image">32dp</dimen>
+    <dimen name="padding_button_image">2dp</dimen>
+    <dimen name="margin_top_ll">17dp</dimen>
+    <dimen name="margin_left_ll">38dp</dimen>
+    <dimen name="margin_right_ll">37dp</dimen>
+    <dimen name="margin_left_edittext">4dp</dimen>
+    <dimen name="margin_top_ll2">28dp</dimen>
+    <dimen name="height_button_save">40dp</dimen>
+    <dimen name="margin_top_button_save">60dp</dimen>
+    <dimen name="margin_bottom_button_save">98dp</dimen>
+
+
+
+
+
 </resources>
