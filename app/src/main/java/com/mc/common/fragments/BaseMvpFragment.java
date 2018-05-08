@@ -17,6 +17,7 @@ import com.hannesdorfmann.mosby3.mvp.MvpFragment;
 import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby3.mvp.MvpView;
 import com.mc.application.AppContext;
+import com.mc.books.MainActivity;
 import com.mc.common.activities.BaseAppCompatActivity;
 import com.mc.di.AppComponent;
 import com.mc.interactors.IDataModule;
@@ -36,6 +37,7 @@ public abstract class BaseMvpFragment<V extends MvpView, P extends MvpPresenter<
     private static final String TAG = BaseMvpFragment.class.getSimpleName();
 
     protected BaseAppCompatActivity mActivity;
+    protected MainActivity mMainActivity;
 
     @Inject
     protected RxBus<IEvent> bus;
@@ -54,6 +56,9 @@ public abstract class BaseMvpFragment<V extends MvpView, P extends MvpPresenter<
         super.onAttach(activity);
         if (activity instanceof BaseAppCompatActivity) {
             this.mActivity = (BaseAppCompatActivity) activity;
+        if (activity instanceof MainActivity) {
+            this.mMainActivity = (MainActivity) activity;
+        }
         }
     }
 
@@ -79,10 +84,10 @@ public abstract class BaseMvpFragment<V extends MvpView, P extends MvpPresenter<
         ButterKnife.bind(view);
 
         // update title
-        mActivity.setToolbarTitle(getTitleId());
+        mMainActivity.setToolbarTitle(getTitle());
 
         // update toolbar
-        Optional.from(mActivity.getSupportActionBar())
+        Optional.from(mMainActivity.getSupportActionBar())
                 .doIfPresent(actionBar -> initToolbar(actionBar));
     }
 
@@ -106,6 +111,11 @@ public abstract class BaseMvpFragment<V extends MvpView, P extends MvpPresenter<
     @Override
     public int getTitleId() {
         return 0;
+    }
+
+    @Override
+    public String getTitle() {
+        return "";
     }
 
     @Override

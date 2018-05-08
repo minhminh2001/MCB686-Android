@@ -31,4 +31,5 @@
     <dimen name="icon_medium">30dp</dimen>
 
     <dimen name="fab_size">56dp</dimen>
+    <dimen name="img_book_tab">85dp</dimen>
 </resources>

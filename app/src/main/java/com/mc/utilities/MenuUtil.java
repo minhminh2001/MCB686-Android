@@ -19,7 +19,7 @@ public class MenuUtil {
                 .addItem(new DialogBookMenuItem(context.getResources().getString(R.string.delete_book)))
                 .addItem(new DialogBookMenuItem(context.getResources().getString(R.string.share_book)))
                 .setLifecycleOwner(lifecycleOwner)
-                .setAnimation(MenuAnimation.FADE)
+                .setAnimation(MenuAnimation.SHOWUP_TOP_RIGHT)
                 .setMenuRadius(10f)
                 .setMenuShadow(10f)
                 .setDivider(drawable)

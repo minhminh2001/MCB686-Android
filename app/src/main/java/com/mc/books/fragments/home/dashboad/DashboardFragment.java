@@ -18,9 +18,11 @@ import android.widget.RelativeLayout;
 import com.bon.customview.datetime.ExtDatePickerDialogFragment;
 import com.mc.adapter.BookSectionAdapter;
 import com.mc.books.R;
+import com.mc.books.fragments.home.booktab.BookTabFragment;
 import com.mc.common.fragments.BaseMvpFragment;
 import com.mc.events.DashboadEvent;
 import com.mc.models.home.DialogBookMenuItem;
+import com.mc.utilities.FragmentUtils;
 import com.mc.utilities.MenuUtil;
 import com.skydoves.powermenu.CustomPowerMenu;
 import com.skydoves.powermenu.OnMenuItemClickListener;
@@ -78,13 +80,13 @@ public class DashboardFragment extends BaseMvpFragment<IDashboardView, IDashboar
         categoryBook.add("3");
         sectionAdapter.addSection(new BookSectionAdapter("Tiếng Anh", categoryBook, imgMoreViewHolder -> {
             presenter.showDialog(true, imgMoreViewHolder);
-        }));
+        }, cvConsunmer -> this.goToBookTab()));
         sectionAdapter.addSection(new BookSectionAdapter("Kinh dị", categoryBook, imgMoreViewHolder -> {
             presenter.showDialog(true, imgMoreViewHolder);
-        }));
+        }, cvConsunmer -> this.goToBookTab()));
         sectionAdapter.addSection(new BookSectionAdapter("Ngôn Tình", categoryBook, imgMoreViewHolder -> {
             presenter.showDialog(true, imgMoreViewHolder);
-        }));
+        }, cvConsunmer -> this.goToBookTab()));
 
         rvBook.setLayoutManager(new LinearLayoutManager(getContext()));
         rvBook.setAdapter(sectionAdapter);
@@ -92,9 +94,18 @@ public class DashboardFragment extends BaseMvpFragment<IDashboardView, IDashboar
         dialogBookMenu = MenuUtil.getBookMenu(getAppContext(), this, onBookmenuListener);
     }
 
+    private void goToBookTab() {
+        FragmentUtils.replaceFragment( getActivity(), BookTabFragment.newInstance());
+    }
+
     @Override
     public int getTitleId() {
-        return R.string.app_name;
+        return R.string.my_book;
+    }
+
+    @Override
+    public String getTitle() {
+        return getAppContext().getResources().getString(R.string.my_book);
     }
 
     @Override
@@ -122,7 +133,10 @@ public class DashboardFragment extends BaseMvpFragment<IDashboardView, IDashboar
         unbinder.unbind();
     }
 
-    private OnMenuItemClickListener<DialogBookMenuItem> onBookmenuListener = (position, item) -> presenter.showDialog(false, null);
+    private OnMenuItemClickListener<DialogBookMenuItem> onBookmenuListener = (position, item) -> {
+        Log.e("DialogBookMenuItem", "" + position);
+        presenter.showDialog(false, null);
+    };
 
     @OnClick(R.id.fbCreateBook)
     public void onViewClicked() {

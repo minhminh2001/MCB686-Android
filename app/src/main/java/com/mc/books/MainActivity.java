@@ -69,7 +69,7 @@ public class MainActivity extends BaseAppCompatActivity {
         setContentView(R.layout.main_activity);
         ButterKnife.bind(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
         ShadowProperty sp = new ShadowProperty()
                 .setShadowColor(R.color.colorPink)
                 .setShadowDy(dip2px(this, 0.5f))
