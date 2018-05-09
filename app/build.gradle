@@ -125,7 +125,7 @@ dependencies {
     //CircleImageView
     implementation "de.hdodenhof:circleimageview:${rootProject.ext.circleImageView}"
 
-    compile 'com.github.nguyenhoanglam:ImagePicker:1.2.1'
+    implementation 'com.github.nguyenhoanglam:ImagePicker:1.2.1'
 
 
     // auth

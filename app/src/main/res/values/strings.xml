@@ -9,6 +9,7 @@
     <string name="login">Đăng nhập</string>
     <string name="login_btn">Tham gia với MCBoooks</string>
     <string name="search_book">Tìm kiếm sách</string>
+    <string name="search_gift">Tìm quà tặng</string>
     <string name="book_name">Sách quan tâm</string>
     <string name="charts">Bảng xếp hạng</string>
     <string name="fan_page">Fanpage</string>
@@ -46,5 +47,7 @@
     <string name="delete_gift_dialog">Bạn có chắc chắn muốn xoá quà tặng này?</string>
     <string name="cancel">Hủy</string>
     <string name="delete">Xóa</string>
+    <string name="gift">Quà tặng</string>
+
 </resources>
 

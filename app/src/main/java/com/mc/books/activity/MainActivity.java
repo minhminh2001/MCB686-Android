@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import com.bon.viewanimation.Techniques;
 import com.bon.viewanimation.YoYo;
 import com.mc.books.R;
+import com.mc.books.fragments.gift.GiftFragment;
 import com.mc.books.fragments.home.dashboad.DashboardFragment;
 import com.mc.books.fragments.more.tabmore.MoreFragment;
 import com.mc.common.activities.BaseAppCompatActivity;
@@ -25,6 +26,8 @@ import com.mc.utilities.shadow.ShadowViewDrawable;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static com.mc.utilities.AppUtils.dip2px;
 
 public class MainActivity extends BaseAppCompatActivity {
     @BindView(R.id.toolbar)
@@ -97,15 +100,7 @@ public class MainActivity extends BaseAppCompatActivity {
                 .playOn(view);
     }
 
-    public static int dip2px(Context context, float dpValue) {
-        try {
-            final float scale = context.getResources().getDisplayMetrics().density;
-            return (int) (dpValue * scale + 0.5f);
-        } catch (Throwable throwable) {
-            // igonre
-        }
-        return 0;
-    }
+
 
     private void activeTab(int index) {
         home.setImageResource(R.drawable.ic_book_normal);
@@ -167,7 +162,7 @@ public class MainActivity extends BaseAppCompatActivity {
                     fragment = DashboardFragment.newInstance();
                     break;
                 case GIFT_TAB:
-                    fragment = DashboardFragment.newInstance();
+                    fragment = GiftFragment.newInstance();
                     break;
                 case NOTIFICATION_TAB:
                     fragment = DashboardFragment.newInstance();
