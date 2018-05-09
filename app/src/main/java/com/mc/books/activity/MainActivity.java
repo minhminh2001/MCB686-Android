@@ -3,8 +3,6 @@ package com.mc.books.activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
@@ -17,7 +15,7 @@ import com.bon.viewanimation.Techniques;
 import com.bon.viewanimation.YoYo;
 import com.mc.books.R;
 import com.mc.books.fragments.home.dashboad.DashboardFragment;
-import com.mc.books.fragments.more.MoreFragment;
+import com.mc.books.fragments.more.tabmore.MoreFragment;
 import com.mc.common.activities.BaseAppCompatActivity;
 import com.mc.common.fragments.BaseMvpFragment;
 import com.mc.utilities.FragmentUtils;
@@ -131,6 +129,7 @@ public class MainActivity extends BaseAppCompatActivity {
         } else if (index == MORE_TAB) {
             more.setImageResource(R.drawable.ic_bars_line_active);
             lineMore.setVisibility(View.VISIBLE);
+            toolbar.setVisibility(View.GONE);
         }
     }
 

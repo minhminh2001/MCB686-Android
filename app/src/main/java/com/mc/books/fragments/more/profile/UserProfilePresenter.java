@@ -1,4 +1,4 @@
-package com.mc.books.fragments.profile;
+package com.mc.books.fragments.more.profile;
 
 import com.mc.common.presenters.BaseDataPresenter;
 import com.mc.di.AppComponent;
