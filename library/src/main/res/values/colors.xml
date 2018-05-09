@@ -18,7 +18,7 @@
     <color name="color_black">#000000</color>
     <color name="color_black_selector">#c8000000</color>
     <color name="color_gray">#acacac</color>
-    <color name="color_gray_selector">#c8acacac</color>
+    <color name="color_gray_selector">#32bbbbbb</color>
     <color name="color_disable">#959496</color>
     <color name="color_white">#ffffff</color>
 

@@ -1,8 +1,7 @@
 package com.mc.books.fragments.account.signup;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.ActionBar;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,6 @@ import com.mc.common.fragments.BaseMvpFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 public class SignUpFragment extends BaseMvpFragment<ISignUpView, ISignUpPresenter<ISignUpView>> implements ISignUpView {
     @BindView(R.id.userName)
@@ -25,11 +23,16 @@ public class SignUpFragment extends BaseMvpFragment<ISignUpView, ISignUpPresente
     ExtEditText password;
     @BindView(R.id.register)
     ExtButton register;
-    Unbinder unbinder;
 
     @Override
     public ISignUpPresenter<ISignUpView> createPresenter() {
         return new SignUpPresenter<>(getAppComponent());
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        bindButterKnife(view);
     }
 
     @Override
@@ -60,20 +63,6 @@ public class SignUpFragment extends BaseMvpFragment<ISignUpView, ISignUpPresente
     @Override
     public void onSignUpSuccess() {
         Toast.makeText(mActivity, "Register success", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
     }
 
     @OnClick(R.id.register)

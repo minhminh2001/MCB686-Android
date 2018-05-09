@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
@@ -17,6 +17,28 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!--font size-->
+    <style name="StyleTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/font_size_title</item>
+        <item name="android:textColor">@color/color_black</item>
+        <item name="android:padding">@dimen/padding_content</item>
+    </style>
+
+    <style name="StyleContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/font_size_content</item>
+        <item name="android:textColor">@color/color_black</item>
+        <item name="android:padding">@dimen/padding_content</item>
+    </style>
+
+    <style name="StyleMenu" parent="StyleContent">
+        <item name="android:textSize">@dimen/font_size_menu</item>
+    </style>
 
     <!-- Padding style -->
     <style name="paddingLayout">
@@ -43,7 +65,7 @@
     <style name="tabbarImage">
         <item name="android:layout_width">@dimen/bottom_icon</item>
         <item name="android:layout_height">@dimen/bottom_icon</item>
-        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_margin">@dimen/padding_content</item>
         <item name="android:scaleType">fitCenter</item>
     </style>
 
@@ -52,7 +74,7 @@
         <item name="android:layout_height">@dimen/bottom_line_height</item>
         <item name="android:layout_marginBottom">3dp</item>
         <item name="android:background">@color/colorDarkBlue</item>
-        <item name="android:visibility">invisible</item>
+        <item name="android:visibility">visible</item>
     </style>
 
     <style name="CustomProgressBar" parent="android:Widget.ProgressBar.Horizontal">
@@ -66,12 +88,13 @@
     <style name="iconSmall">
         <item name="android:layout_width">@dimen/icon_small</item>
         <item name="android:layout_height">@dimen/icon_small</item>
+        <item name="android:scaleType">fitCenter</item>
     </style>
 
     <style name="iconMedium">
         <item name="android:layout_width">@dimen/icon_medium</item>
         <item name="android:layout_height">@dimen/icon_medium</item>
-
+        <item name="android:scaleType">fitCenter</item>
     </style>
 
     <style name="tabMoreLinear">
@@ -79,32 +102,13 @@
         <item name="android:orientation">horizontal</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">@dimen/margin_top_image_tab_more</item>
-        <item name="android:layout_marginLeft">@dimen/margin_left_image_tab_more</item>
-        <item name="android:layout_marginRight">@dimen/margin_left_image_tab_more</item>
-        <item name="android:background">@drawable/bg_btn_click</item>
-    </style>
-
-    <style name="tabMoreImage">
-        <item name="android:layout_width">@dimen/width_image_tab_more</item>
-        <item name="android:layout_height">@dimen/height_image_tab_more</item>
-        <item name="android:scaleType">fitCenter</item>
-    </style>
-
-    <style name="tabMoreText">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginLeft">@dimen/margin_left_title_name</item>
-        <item name="android:fontFamily">@string/font_regular</item>
-        <item name="android:textSize">@dimen/text_size_18</item>
-        <item name="android:textColor">@color/colorTextGray</item>
+        <item name="android:background">@drawable/bg_null_gray_selector</item>
     </style>
 
     <style name="activityUserProfileText">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:fontFamily">@string/font_regular</item>
-        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textSize">@dimen/font_size_content</item>
         <item name="android:textColor">@color/colorTextGray</item>
         <item name="android:layout_marginLeft">@dimen/margin_left_edittext</item>
     </style>
@@ -112,8 +116,7 @@
     <style name="activityUserProfileEdittext">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:fontFamily">@string/font_bold</item>
-        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textSize">@dimen/font_size_content</item>
         <item name="android:textColor">@color/colorTextGray</item>
     </style>
 
@@ -127,12 +130,10 @@
     <style name="ThemeSpinner" parent="Widget.AppCompat.Spinner.Underlined">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:padding">@dimen/margin_left_avatar</item>
-        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textSize">@dimen/font_size_content</item>
         <item name="colorAccent">@color/colorLineTabMore</item>
         <item name="colorControlNormal">@color/colorLineTabMore</item>
         <item name="android:textColor">@color/colorTextGray</item>
-        <item name="android:fontFamily">@string/font_regular</item>
     </style>
 
     <style name="line">

@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.hannesdorfmann.mosby3.mvp.MvpFragment;
 import com.mc.books.R;
 import com.mc.books.fragments.home.infomationBook.InformationBookFragment;
 import com.mc.common.fragments.BaseMvpFragment;
@@ -18,7 +17,6 @@ import com.mc.utilities.FragmentUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 public class BookTabFragment extends BaseMvpFragment<IBookTabView, IBookTabPresenter<IBookTabView>> implements IBookTabView {
 
@@ -28,7 +26,6 @@ public class BookTabFragment extends BaseMvpFragment<IBookTabView, IBookTabPrese
     ImageView imgBookLesson;
     @BindView(R.id.imgBookSubject)
     ImageView imgBookSubject;
-    Unbinder unbinder;
 
     public static BookTabFragment newInstance() {
         Bundle args = new Bundle();
@@ -40,6 +37,7 @@ public class BookTabFragment extends BaseMvpFragment<IBookTabView, IBookTabPrese
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        bindButterKnife(view);
     }
 
     @Override
@@ -61,20 +59,6 @@ public class BookTabFragment extends BaseMvpFragment<IBookTabView, IBookTabPrese
     @Override
     public String getTitleString() {
         return "300 bài hát thiếu nhi";
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
     }
 
     @OnClick({R.id.imgBookInformation, R.id.imgBookLesson, R.id.imgBookSubject})

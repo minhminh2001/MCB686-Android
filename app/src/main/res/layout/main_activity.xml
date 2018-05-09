@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><!--suppress ALL -->
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -12,11 +11,11 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
-            app:titleTextColor="@color/colorBlack"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorWhite"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:titleTextColor="@color/colorBlack" />
 
     </android.support.design.widget.AppBarLayout>
 
@@ -39,57 +38,36 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:paddingTop="5dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingTop="5dp">
 
-            <LinearLayout style="@style/tabbarLinear">
+            <com.mc.customizes.bottombars.ItemBottomBar
+                android:id="@+id/home"
+                style="@style/tabbarLinear"
+                app:bottomBarActive="true"
+                app:bottomBarIconActive="@drawable/ic_book_active"
+                app:bottomBarIconNormal="@drawable/ic_book_normal" />
 
-                <ImageView
-                    android:id="@+id/home"
-                    style="@style/tabbarImage"
-                    app:srcCompat="@drawable/ic_book_normal" />
+            <com.mc.customizes.bottombars.ItemBottomBar
+                android:id="@+id/gift"
+                style="@style/tabbarLinear"
+                app:bottomBarActive="false"
+                app:bottomBarIconActive="@drawable/ic_card_giftcard_active"
+                app:bottomBarIconNormal="@drawable/ic_card_giftcard_normal" />
 
-                <View
-                    android:id="@+id/lineHome"
-                    style="@style/tabbarLine" />
-            </LinearLayout>
+            <com.mc.customizes.bottombars.ItemBottomBar
+                android:id="@+id/notification"
+                style="@style/tabbarLinear"
+                app:bottomBarActive="false"
+                app:bottomBarIconActive="@drawable/ic_notifications_active"
+                app:bottomBarIconNormal="@drawable/ic_notifications_normal" />
 
-            <LinearLayout style="@style/tabbarLinear">
-
-                <ImageView
-                    android:id="@+id/gift"
-                    style="@style/tabbarImage"
-                    app:srcCompat="@drawable/ic_card_giftcard_normal" />
-
-                <View
-                    android:id="@+id/lineGift"
-                    style="@style/tabbarLine" />
-            </LinearLayout>
-
-            <LinearLayout style="@style/tabbarLinear">
-
-                <ImageView
-                    android:id="@+id/notification"
-                    style="@style/tabbarImage"
-                    app:srcCompat="@drawable/ic_notifications_normal" />
-
-                <View
-                    android:id="@+id/lineNotification"
-                    style="@style/tabbarLine" />
-            </LinearLayout>
-
-            <LinearLayout style="@style/tabbarLinear">
-
-                <ImageView
-                    android:id="@+id/more"
-                    style="@style/tabbarImage"
-                    app:srcCompat="@drawable/ic_bars_line_normal" />
-
-                <View
-                    android:id="@+id/lineMore"
-                    style="@style/tabbarLine" />
-            </LinearLayout>
-
+            <com.mc.customizes.bottombars.ItemBottomBar
+                android:id="@+id/more"
+                style="@style/tabbarLinear"
+                app:bottomBarActive="false"
+                app:bottomBarIconActive="@drawable/ic_bars_line_active"
+                app:bottomBarIconNormal="@drawable/ic_bars_line_normal" />
         </LinearLayout>
 
     </LinearLayout>

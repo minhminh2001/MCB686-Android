@@ -7,8 +7,6 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.bon.viewanimation.Techniques;
@@ -18,35 +16,25 @@ import com.mc.books.fragments.home.dashboad.DashboardFragment;
 import com.mc.books.fragments.more.tabmore.MoreFragment;
 import com.mc.common.activities.BaseAppCompatActivity;
 import com.mc.common.fragments.BaseMvpFragment;
+import com.mc.customizes.bottombars.ItemBottomBar;
 import com.mc.utilities.FragmentUtils;
 import com.mc.utilities.shadow.ShadowProperty;
 import com.mc.utilities.shadow.ShadowViewDrawable;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseAppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.fl_content)
-    FrameLayout flContent;
     @BindView(R.id.home)
-    ImageView home;
+    ItemBottomBar home;
     @BindView(R.id.gift)
-    ImageView gift;
+    ItemBottomBar gift;
     @BindView(R.id.notification)
-    ImageView notification;
+    ItemBottomBar notification;
     @BindView(R.id.more)
-    ImageView more;
-    @BindView(R.id.lineHome)
-    View lineHome;
-    @BindView(R.id.lineGift)
-    View lineGift;
-    @BindView(R.id.lineNotification)
-    View lineNotification;
-    @BindView(R.id.lineMore)
-    View lineMore;
+    ItemBottomBar more;
     @BindView(R.id.llBottomBar)
     LinearLayout llBottomBar;
 
@@ -59,9 +47,6 @@ public class MainActivity extends BaseAppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_activity);
-        ButterKnife.bind(this);
-        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         ShadowProperty sp = new ShadowProperty()
@@ -82,6 +67,11 @@ public class MainActivity extends BaseAppCompatActivity {
     }
 
     @Override
+    protected int getContentViewId() {
+        return R.layout.main_activity;
+    }
+
+    @Override
     public ActionBar getAppSupportActionBar() {
         return getSupportActionBar();
     }
@@ -91,10 +81,10 @@ public class MainActivity extends BaseAppCompatActivity {
         this.changeTabBottom(HOME_TAB);
     }
 
-    private void playAnimator(View view) {
+    private void playAnimator(ItemBottomBar view) {
         YoYo.with(Techniques.ReBounceAnimator)
                 .duration(1000)
-                .playOn(view);
+                .playOn(view.getImageView());
     }
 
     public static int dip2px(Context context, float dpValue) {
@@ -108,28 +98,19 @@ public class MainActivity extends BaseAppCompatActivity {
     }
 
     private void activeTab(int index) {
-        home.setImageResource(R.drawable.ic_book_normal);
-        gift.setImageResource(R.drawable.ic_card_giftcard_normal);
-        notification.setImageResource(R.drawable.ic_notifications_normal);
-        more.setImageResource(R.drawable.ic_bars_line_normal);
-        lineGift.setVisibility(View.INVISIBLE);
-        lineHome.setVisibility(View.INVISIBLE);
-        lineMore.setVisibility(View.INVISIBLE);
-        lineNotification.setVisibility(View.INVISIBLE);
+        home.setActiveMode(false);
+        gift.setActiveMode(false);
+        notification.setActiveMode(false);
+        more.setActiveMode(false);
 
         if (index == HOME_TAB) {
-            home.setImageResource(R.drawable.ic_book_active);
-            lineHome.setVisibility(View.VISIBLE);
+            home.setActiveMode(true);
         } else if (index == GIFT_TAB) {
-            gift.setImageResource(R.drawable.ic_card_giftcard_active);
-            lineGift.setVisibility(View.VISIBLE);
+            gift.setActiveMode(true);
         } else if (index == NOTIFICATION_TAB) {
-            notification.setImageResource(R.drawable.ic_notifications_active);
-            lineNotification.setVisibility(View.VISIBLE);
+            notification.setActiveMode(true);
         } else if (index == MORE_TAB) {
-            more.setImageResource(R.drawable.ic_bars_line_active);
-            lineMore.setVisibility(View.VISIBLE);
-            toolbar.setVisibility(View.GONE);
+            more.setActiveMode(true);
         }
     }
 

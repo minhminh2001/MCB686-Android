@@ -4,14 +4,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -29,16 +26,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
 
 
 public class DashboardFragment extends BaseMvpFragment<IDashboardView, IDashboardPresenter<IDashboardView>> implements IDashboardView {
     @BindView(R.id.rvBook)
     RecyclerView rvBook;
-    Unbinder unbinder;
     @BindView(R.id.fbCreateBook)
     LinearLayout fbCreateBook;
     @BindView(R.id.rlDashbroad)
@@ -67,12 +61,14 @@ public class DashboardFragment extends BaseMvpFragment<IDashboardView, IDashboar
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        sectionAdapter = new SectionedRecyclerViewAdapter();
+        bindButterKnife(view);
 
+        sectionAdapter = new SectionedRecyclerViewAdapter();
         List<String> categoryBook = new ArrayList<>();
         categoryBook.add("1");
         categoryBook.add("2");
         categoryBook.add("3");
+
         sectionAdapter.addSection(new BookSectionAdapter("Tiếng Anh", categoryBook, imgMoreViewHolder -> {
             presenter.showDialog(true, imgMoreViewHolder);
         }, cvConsunmer -> this.goToBookTab()));
@@ -83,7 +79,7 @@ public class DashboardFragment extends BaseMvpFragment<IDashboardView, IDashboar
             presenter.showDialog(true, imgMoreViewHolder);
         }, cvConsunmer -> this.goToBookTab()));
 
-        rvBook.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvBook.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false));
         rvBook.setAdapter(sectionAdapter);
 
         dialogBookMenu = MenuUtil.getBookMenu(getAppContext(), this, onBookmenuListener);
@@ -107,20 +103,6 @@ public class DashboardFragment extends BaseMvpFragment<IDashboardView, IDashboar
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
     }
 
     private OnMenuItemClickListener<DialogBookMenuItem> onBookmenuListener = (position, item) -> {

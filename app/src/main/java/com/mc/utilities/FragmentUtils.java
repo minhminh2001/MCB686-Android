@@ -4,6 +4,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
+import com.bon.interfaces.Optional;
 import com.bon.logger.Logger;
 import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby3.mvp.MvpView;
@@ -67,12 +68,16 @@ public class FragmentUtils {
     public static <V extends MvpView, P extends MvpPresenter<V>> void replaceFragment(FragmentActivity fragmentActivity, int containerViewId,
                                                                                       BaseMvpFragment<V, P> fragment, Consumer<BaseMvpFragment<V, P>> fragmentConsumer) {
         try {
-            fragmentActivity.getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(containerViewId, fragment)
-                    .addToBackStack(null)
-                    .commitAllowingStateLoss();
-            if (fragmentConsumer != null) fragmentConsumer.accept(fragment);
+            Optional.from(fragment).doIfPresent(f -> {
+                fragmentActivity.getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(containerViewId, f)
+                        .addToBackStack(null)
+                        .commitAllowingStateLoss();
+                if (fragmentConsumer != null) fragmentConsumer.accept(f);
+            });
+
+
         } catch (ClassCastException e) {
             Logger.e(TAG, e);
         }

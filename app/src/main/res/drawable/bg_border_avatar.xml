@@ -13,10 +13,10 @@
     </item>
 
     <item
-        android:bottom="2dp"
-        android:left="2dp"
-        android:right="2dp"
-        android:top="2dp">
+        android:bottom="@dimen/avatar_border"
+        android:left="@dimen/avatar_border"
+        android:right="@dimen/avatar_border"
+        android:top="@dimen/avatar_border">
         <shape android:shape="oval">
             <solid android:color="@android:color/white" />
         </shape>

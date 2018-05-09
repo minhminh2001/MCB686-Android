@@ -1,10 +1,11 @@
-package com.mc.books;
+package com.mc.books.activity;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.widget.ImageView;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import com.bon.customview.button.ExtButton;
 import com.bon.customview.textview.ExtTextView;
 import com.bon.sharepreferences.AppPreferences;
+import com.mc.books.R;
 import com.mc.books.activity.MainActivity;
 import com.mc.common.activities.BaseAppCompatActivity;
 import com.mc.utilities.Constant;
@@ -36,8 +38,11 @@ public class SignInActivity extends BaseAppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sign_in_activity);
-        ButterKnife.bind(this);
+    }
+
+    @Override
+    protected int getContentViewId() {
+        return R.layout.sign_in_activity;
     }
 
     @Override

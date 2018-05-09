@@ -27,6 +27,7 @@ import com.mc.interactors.service.IApiService;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by dangpp on 2/21/2018.
@@ -49,6 +50,9 @@ public abstract class BaseMvpFragment<V extends MvpView, P extends MvpPresenter<
 
     @Inject
     protected IApiService apiService;
+
+    // unbind butter knife
+    private Unbinder unbinder;
 
     @Override
     public void onAttach(Activity activity) {
@@ -77,7 +81,10 @@ public abstract class BaseMvpFragment<V extends MvpView, P extends MvpPresenter<
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(view);
+
+        // update toolbar
+        Optional.from(mActivity.getAppSupportActionBar())
+                .doIfPresent(actionBar -> initToolbar(actionBar));
 
         // update title
         if (StringUtils.isEmpty(getTitleString())) {
@@ -85,10 +92,11 @@ public abstract class BaseMvpFragment<V extends MvpView, P extends MvpPresenter<
         } else {
             mActivity.setToolbarTitle(getTitleString());
         }
+    }
 
-        // update toolbar
-        Optional.from(mActivity.getAppSupportActionBar())
-                .doIfPresent(actionBar -> initToolbar(actionBar));
+    @Override
+    public void bindButterKnife(View view) {
+        Optional.from(view).doIfPresent(v -> unbinder = ButterKnife.bind(this, v));
     }
 
     @Override
@@ -97,6 +105,9 @@ public abstract class BaseMvpFragment<V extends MvpView, P extends MvpPresenter<
         // hide loading, keyboard
         showProgress(false);
         KeyboardUtils.hideSoftKeyboard(mActivity);
+
+        // unbind butter knife
+        Optional.from(unbinder).doIfPresent(u -> u.unbind());
     }
 
     @Override
@@ -133,5 +144,6 @@ public abstract class BaseMvpFragment<V extends MvpView, P extends MvpPresenter<
         supportActionBar.setDisplayHomeAsUpEnabled(false);
         supportActionBar.setHomeAsUpIndicator(0);
         supportActionBar.setIcon(0);
+        supportActionBar.show();
     }
 }

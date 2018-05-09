@@ -2,9 +2,7 @@ package com.mc.books.fragments.account.signin;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -14,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bon.customview.button.ExtButton;
-
 import com.mc.books.R;
 import com.mc.books.activity.MainActivity;
 import com.mc.common.fragments.BaseMvpFragment;
@@ -37,14 +34,13 @@ public class SignInFragment extends BaseMvpFragment<ISignInView, ISignInPresente
     @Override
     public void onStart() {
         super.onStart();
-        if(!McBookStore.getInstance(getAppContext()).getString(Constant.KEY_TOKEN).equals("")){
+        if (!McBookStore.getInstance(getAppContext()).getString(Constant.KEY_TOKEN).equals("")) {
             startActivity(new Intent(getAppContext(), MainActivity.class));
         }
     }
 
     @BindView(R.id.btnLogin)
     ExtButton btnLogin;
-    Unbinder unbinder;
 
     @Override
     public ISignInPresenter<ISignInView> createPresenter() {
@@ -59,6 +55,7 @@ public class SignInFragment extends BaseMvpFragment<ISignInView, ISignInPresente
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        bindButterKnife(view);
     }
 
     @Override
@@ -75,20 +72,6 @@ public class SignInFragment extends BaseMvpFragment<ISignInView, ISignInPresente
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
     }
 
     @Override

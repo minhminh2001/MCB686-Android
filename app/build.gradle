@@ -124,9 +124,7 @@ dependencies {
 
     //CircleImageView
     implementation "de.hdodenhof:circleimageview:${rootProject.ext.circleImageView}"
-
-    compile 'com.github.nguyenhoanglam:ImagePicker:1.2.1'
-
+    implementation 'com.github.nguyenhoanglam:ImagePicker:1.2.1'
 
     // auth
     implementation 'io.jsonwebtoken:jjwt:0.9.0'
@@ -134,11 +132,9 @@ dependencies {
     implementation 'org.jboss.aerogear:aerogear-android-store:4.0.0'
     implementation('org.jboss.aerogear:aerogear-android-pipe:4.0.0') {
         exclude group: 'com.android.support', module: "support-v4"
-
     }
 
     implementation 'io.github.luizgrp.sectionedrecyclerviewadapter:sectionedrecyclerviewadapter:1.2.0'
-
     implementation 'com.github.skydoves:powermenu:2.0.4'
 }
 

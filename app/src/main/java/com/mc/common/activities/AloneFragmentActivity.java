@@ -15,12 +15,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.WindowManager;
 
+import com.bon.interfaces.Optional;
 import com.bon.sharepreferences.AppPreferences;
 import com.mc.books.R;
 import com.mc.common.Keys;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import java8.util.function.Consumer;
 
 /**
@@ -39,19 +39,22 @@ public class AloneFragmentActivity extends BaseAppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && getIntent().getExtras().getBoolean(TRANSLUCENT)) {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
-
-        setContentView(R.layout.alone_fragment_activity);
-        ButterKnife.bind(this);
+        super.onCreate(savedInstanceState);
 
         setSupportActionBar(toolbar);
-        if (savedInstanceState == null) {
-            Bundle bundle = getIntent().getExtras();
-            getFragmentForOpen(bundle, fr -> replaceFragment(fr, false));
-        }
+        Optional.from(savedInstanceState)
+                .doIfEmpty(b -> {
+                    Bundle bundle = getIntent().getExtras();
+                    getFragmentForOpen(bundle, fr -> replaceFragment(fr, false));
+                });
+    }
+
+    @Override
+    protected int getContentViewId() {
+        return R.layout.alone_fragment_activity;
     }
 
     /**
@@ -69,10 +72,13 @@ public class AloneFragmentActivity extends BaseAppCompatActivity {
      */
     protected void getFragmentForOpen(Bundle bundle, Consumer<Fragment> fragmentForOpen) {
         String fragment;
+
         if (bundle.getString(FRAGMENT_NAME) == null) {
             fragment = AppPreferences.getInstance(getAppContext()).getString("FRAGMENT_INTENT");
-        } else
+        } else {
             fragment = bundle.getString(FRAGMENT_NAME);
+        }
+
         fragmentForOpen.accept(Fragment.instantiate(getBaseContext(), fragment, getArgsForFragment(bundle)));
     }
 

@@ -9,6 +9,7 @@ import android.view.MenuItem;
 
 import com.bon.eventbus.IEvent;
 import com.bon.eventbus.RxBus;
+import com.bon.interfaces.Optional;
 import com.bon.util.KeyboardUtils;
 import com.mc.application.AppContext;
 import com.mc.common.actions.IToolbarAction;
@@ -17,6 +18,9 @@ import com.mc.interactors.database.IDbModule;
 import com.mc.interactors.service.IApiService;
 
 import javax.inject.Inject;
+
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by dangpp on 2/21/2018.
@@ -37,16 +41,33 @@ public abstract class BaseAppCompatActivity extends ExtBaseActivity implements I
     @Inject
     protected IApiService apiService;
 
+    // get view id
+    protected abstract int getContentViewId();
+
+    // butter knife
+    private Unbinder unbinder;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // inject component
         getAppContext().getComponent().inject(this);
+
+        // set content view
+        if (getContentViewId() > 0) {
+            setContentView(getContentViewId());
+            unbinder = ButterKnife.bind(this);
+        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        // hide key board
         KeyboardUtils.hideSoftKeyboard(this);
+
+        // unbind butter knife
+        Optional.from(unbinder).doIfPresent(u -> u.unbind());
     }
 
     @Override
@@ -61,24 +82,27 @@ public abstract class BaseAppCompatActivity extends ExtBaseActivity implements I
         return result || super.onOptionsItemSelected(item);
     }
 
+    /**
+     * get support action bar
+     *
+     * @return
+     */
     public abstract ActionBar getAppSupportActionBar();
 
     @Override
     public void setToolbarTitle(@StringRes int titleId) {
-        if (getAppSupportActionBar() != null) {
+        Optional.from(getAppSupportActionBar()).doIfPresent(app -> {
             if (titleId == 0) {
                 setToolbarTitle("");
             } else {
                 setToolbarTitle(getResources().getString(titleId));
             }
-        }
+        });
     }
 
     @Override
     public void setToolbarTitle(@NonNull String titleId) {
-        if (getAppSupportActionBar() != null) {
-            getAppSupportActionBar().setTitle(titleId);
-        }
+        Optional.from(getAppSupportActionBar()).doIfPresent(app -> app.setTitle(titleId));
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.mc.books.activity;
 
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -8,12 +8,11 @@ import android.support.v7.app.ActionBar;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.bon.util.ActivityUtils;
 import com.mc.books.R;
-import com.mc.books.SignInActivity;
 import com.mc.common.activities.BaseAppCompatActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import pl.droidsonroids.gif.GifImageView;
 
 /**
@@ -26,29 +25,26 @@ public class SplashActivity extends BaseAppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.splash_activity);
-        ButterKnife.bind(this);
+        super.onCreate(savedInstanceState);
 
-        final Handler handler = new Handler();
+        // go to login screen
+        Handler handler = new Handler();
         handler.postDelayed(() -> {
-//            AloneFragmentActivity.with(getApplicationContext())
-//                    .start(SignInFragment.class);
-            startActivity(new Intent(SplashActivity.this, SignInActivity.class));
+            // ActivityUtils.startActivity(SignInActivity.class);
+            ActivityUtils.startActivity(MainActivity.class);
             finish();
-        }, 2000);
+        }, 2 * 1000);
+    }
+
+    @Override
+    protected int getContentViewId() {
+        return R.layout.splash_activity;
     }
 
     @Override
     public ActionBar getAppSupportActionBar() {
         return null;
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-
     }
 }
