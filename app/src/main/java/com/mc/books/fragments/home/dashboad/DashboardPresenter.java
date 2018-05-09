@@ -18,7 +18,12 @@ public class DashboardPresenter<V extends IDashboardView> extends BaseDataPresen
     }
 
     @Override
-    public void showDialog(boolean isShow, View view) {
-        getOptView().doIfPresent(v -> v.onShowDialog(isShow, view));
+    public void showDialog(boolean isShow, View view, int position) {
+        getOptView().doIfPresent(v -> v.onShowDialog(isShow, view, position));
+    }
+
+    @Override
+    public void onSearchBook(String keyword) {
+
     }
 }

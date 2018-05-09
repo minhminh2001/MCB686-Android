@@ -63,7 +63,6 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_main"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/padding_layout"
             android:paddingTop="@dimen/padding_layout">
 
             <com.mc.customizes.menus.ItemMenu

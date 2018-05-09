@@ -10,5 +10,7 @@ import com.hannesdorfmann.mosby3.mvp.MvpView;
  */
 
 public interface IDashboardPresenter<V extends MvpView> extends MvpPresenter<V> {
-    void showDialog(boolean isShow, View view);
+    void showDialog(boolean isShow, View view, int position);
+
+    void onSearchBook(String keyword);
 }
