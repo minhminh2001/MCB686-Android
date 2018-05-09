@@ -73,9 +73,7 @@
     <dimen name="height_button_save">40dp</dimen>
     <dimen name="margin_top_button_save">60dp</dimen>
     <dimen name="margin_bottom_button_save">98dp</dimen>
-
-
-
+    <dimen name="line">1dp</dimen>
 
 
 </resources>

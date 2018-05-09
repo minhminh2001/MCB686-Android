@@ -134,4 +134,11 @@
         <item name="android:textColor">@color/colorTextGray</item>
         <item name="android:fontFamily">@string/font_regular</item>
     </style>
+
+    <style name="line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/line</item>
+        <item name="android:background">@color/colorLineTabMore</item>
+        <item name="android:orientation">vertical</item>
+    </style>
 </resources>
