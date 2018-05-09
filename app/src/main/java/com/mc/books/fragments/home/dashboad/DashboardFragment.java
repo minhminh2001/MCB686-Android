@@ -1,22 +1,31 @@
 package com.mc.books.fragments.home.dashboad;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.bon.customview.edittext.ExtEditText;
+import com.bon.util.DialogUtils;
+import com.bon.util.ToastUtils;
 import com.mc.adapter.BookSectionAdapter;
 import com.mc.books.R;
+import com.mc.books.dialog.DeleteBookDialog;
+import com.mc.books.dialog.MessageBoxDialog;
 import com.mc.books.fragments.home.booktab.BookTabFragment;
 import com.mc.common.fragments.BaseMvpFragment;
 import com.mc.models.home.DialogBookMenuItem;
@@ -43,6 +52,11 @@ public class DashboardFragment extends BaseMvpFragment<IDashboardView, IDashboar
     LinearLayout fbCreateBook;
     @BindView(R.id.rlDashbroad)
     RelativeLayout rlDashbroad;
+    @BindView(R.id.edtSearch)
+    ExtEditText edtSearch;
+
+    private static final int DELETE_BOOK = 0;
+    private static final int SHARE_BOOK = 1;
 
     private SectionedRecyclerViewAdapter sectionAdapter;
     private CustomPowerMenu dialogBookMenu;
@@ -74,19 +88,32 @@ public class DashboardFragment extends BaseMvpFragment<IDashboardView, IDashboar
         categoryBook.add("2");
         categoryBook.add("3");
         sectionAdapter.addSection(new BookSectionAdapter("Tiếng Anh", categoryBook, imgMoreViewHolder -> {
-            presenter.showDialog(true, imgMoreViewHolder);
+            presenter.showDialog(true, imgMoreViewHolder, -1);
         }, cvConsunmer -> this.goToBookTab()));
         sectionAdapter.addSection(new BookSectionAdapter("Kinh dị", categoryBook, imgMoreViewHolder -> {
-            presenter.showDialog(true, imgMoreViewHolder);
+            presenter.showDialog(true, imgMoreViewHolder, -1);
         }, cvConsunmer -> this.goToBookTab()));
         sectionAdapter.addSection(new BookSectionAdapter("Ngôn Tình", categoryBook, imgMoreViewHolder -> {
-            presenter.showDialog(true, imgMoreViewHolder);
+            presenter.showDialog(true, imgMoreViewHolder, -1);
         }, cvConsunmer -> this.goToBookTab()));
 
         rvBook.setLayoutManager(new LinearLayoutManager(getContext()));
         rvBook.setAdapter(sectionAdapter);
 
         dialogBookMenu = MenuUtil.getBookMenu(getAppContext(), this, onBookmenuListener);
+
+        edtSearch.setOnEditorActionListener((textView, actionId, event) -> {
+            if ((actionId == EditorInfo.IME_ACTION_SEARCH) ||
+                    ((event.isShiftPressed() == false) &&
+                            (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) &&
+                            (event.getAction() == KeyEvent.ACTION_DOWN))) {
+
+                if (!textView.getText().toString().equals(""))
+                    presenter.onSearchBook(textView.getText().toString());
+                return true;
+            }
+            return false;
+        });
     }
 
     private void goToBookTab() {
@@ -125,7 +152,7 @@ public class DashboardFragment extends BaseMvpFragment<IDashboardView, IDashboar
 
     private OnMenuItemClickListener<DialogBookMenuItem> onBookmenuListener = (position, item) -> {
         Log.e("DialogBookMenuItem", "" + position);
-        presenter.showDialog(false, null);
+        presenter.showDialog(false, null, position);
     };
 
     @OnClick(R.id.fbCreateBook)
@@ -134,10 +161,24 @@ public class DashboardFragment extends BaseMvpFragment<IDashboardView, IDashboar
     }
 
     @Override
-    public void onShowDialog(boolean isShow, View dialog) {
+    public void onShowDialog(boolean isShow, View dialog, int position) {
         if (isShow)
             dialogBookMenu.showAsDropDown(dialog, -350, 0);
-        else
+        else {
             dialogBookMenu.dismiss();
+            if (position == DELETE_BOOK) {
+                DeleteBookDialog deleteBookDialog = new DeleteBookDialog(getActivity(), deleteConsumer -> ToastUtils.showToast(getActivity(), "Đã xóa"));
+                deleteBookDialog.show();
+//                MessageBoxDialog messageBoxDialog = new MessageBoxDialog(getActivity(), "Chúc mừng bạn 12312312");
+//                messageBoxDialog.show();
+            } else if (position == SHARE_BOOK) {
+                //b
+            }
+        }
+    }
+
+    @Override
+    public void onSearchSuccess() {
+
     }
 }

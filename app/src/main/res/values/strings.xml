@@ -42,5 +42,9 @@
     <string name="community_book">Cộng đồng sách</string>
     <string name="author">Tác giả</string>
     <string name="programs_study">Chương trình học</string>
+    <string name="delete_book_dialog">Bạn có chắc chắn muốn xoá Sách này?</string>
+    <string name="delete_gift_dialog">Bạn có chắc chắn muốn xoá quà tặng này?</string>
+    <string name="cancel">Hủy</string>
+    <string name="delete">Xóa</string>
 </resources>
 

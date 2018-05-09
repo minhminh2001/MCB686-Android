@@ -9,5 +9,7 @@ import com.hannesdorfmann.mosby3.mvp.MvpView;
  */
 
 public interface IDashboardView extends MvpView {
-    void onShowDialog(boolean isShow, View view);
+    void onShowDialog(boolean isShow, View view, int position);
+
+    void onSearchSuccess();
 }
