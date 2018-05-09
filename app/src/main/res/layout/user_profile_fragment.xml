@@ -112,6 +112,7 @@
                     <LinearLayout style="@style/activityUserProfileLL">
 
                         <com.bon.customview.textview.ExtTextView
+                            android:id="@+id/tvPhoneNumber"
                             style="@style/activityUserProfileText"
                             android:text="@string/phone_number" />
 

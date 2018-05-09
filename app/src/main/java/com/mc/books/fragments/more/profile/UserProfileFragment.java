@@ -1,12 +1,11 @@
 package com.mc.books.fragments.more.profile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatSpinner;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -15,9 +14,16 @@ import com.bon.customview.button.ExtButton;
 import com.bon.customview.edittext.ExtEditText;
 import com.mc.books.R;
 import com.mc.common.fragments.BaseMvpFragment;
+import com.nguyenhoanglam.imagepicker.model.Config;
+import com.nguyenhoanglam.imagepicker.model.Image;
+import com.nguyenhoanglam.imagepicker.ui.imagepicker.ImagePicker;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+
+import static android.app.Activity.RESULT_OK;
 
 public class UserProfileFragment extends BaseMvpFragment<IUserProfileView, IUserProfilePresenter<IUserProfileView>> implements IUserProfileView {
     @BindView(R.id.imgAvartar)
@@ -48,6 +54,7 @@ public class UserProfileFragment extends BaseMvpFragment<IUserProfileView, IUser
     ExtEditText edAddress;
     @BindView(R.id.btnSaveProfile)
     ExtButton btnSaveProfile;
+    private ArrayList<Image> images = new ArrayList<>();
 
     public static UserProfileFragment newInstance() {
         Bundle args = new Bundle();
@@ -80,13 +87,28 @@ public class UserProfileFragment extends BaseMvpFragment<IUserProfileView, IUser
     }
 
     @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        imgAvartar=(ImageView)view.findViewById(R.id.imgAvartar) ;
+        imgAvartar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectAvatar();
+            }
+        });
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
     }
 
-    @OnClick({R.id.spDateofBirth, R.id.spSex, R.id.spCity, R.id.spCounty, R.id.btnSaveProfile})
+    @OnClick({R.id.imgAvartar,R.id.spDateofBirth, R.id.spSex, R.id.spCity, R.id.spCounty, R.id.btnSaveProfile})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.imgAvartar:
+//                selectAvatar();
+                break;
             case R.id.spDateofBirth:
                 break;
             case R.id.spSex:
@@ -98,6 +120,27 @@ public class UserProfileFragment extends BaseMvpFragment<IUserProfileView, IUser
             case R.id.btnSaveProfile:
                 break;
         }
+    }
+
+    private void selectAvatar() {
+        ImagePicker.with(this)
+                .setCameraOnly(false)
+                .setFolderTitle("Download")
+                .setImageTitle("Galleries")
+                .setSelectedImages(images)
+                .setMaxSize(10)
+                .setKeepScreenOn(true)
+                .start();
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == Config.RC_PICK_IMAGES && resultCode == RESULT_OK && data != null) {
+            images = data.getParcelableArrayListExtra(Config.EXTRA_IMAGES);
+
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
 
