@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:gravity="center"
+    android:layout_marginTop="@dimen/margin_content"
+    android:layout_marginBottom="@dimen/margin_content"
+    android:orientation="vertical">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgAuthorAvatar"
+        android:layout_width="@dimen/width_image_avatar"
+        android:layout_height="@dimen/height_image_avatar"
+        android:src="@drawable/ic_avatar" />
+
+    <com.bon.customview.textview.ExtTextView
+        android:id="@+id/txtAuthorName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_content"
+        app:textViewFontAssetName="@string/font_bold"
+        android:textColor="@color/colorDarkBlue"
+        android:textSize="16sp"
+        tool:text="AAAAAAAA"
+        />
+
+</LinearLayout>

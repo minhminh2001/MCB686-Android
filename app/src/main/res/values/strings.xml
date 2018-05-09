@@ -39,5 +39,7 @@
     <string name="showMore">Xem thêm</string>
     <string name="showLess">Thu gọn</string>
     <string name="information_book">Thông tin chung</string>
+    <string name="community_book">Cộng đồng sách</string>
+    <string name="author">Tác giả</string>
 </resources>
 
